@@ -5,8 +5,8 @@ development:
   host: localhost
   pool: 64
   timeout: 5000
-  username: myapp
-  password: 1q1q
+  username: blogtest
+  password: szczutkowo
 
 test:
   adapter: postgresql
@@ -15,8 +15,8 @@ test:
   host: localhost
   pool: 64
   timeout: 5000
-  username: myapp
-  password: 1q1q
+  username: blogtest
+  password: szczutkowo
 
 production:
   adapter: postgresql
@@ -25,5 +25,5 @@ production:
   host: localhost
   pool: 64
   timeout: 5000
-  username: myapp
-  password: 1q1q
+  username: blogtest
+  password: szczutkowo
