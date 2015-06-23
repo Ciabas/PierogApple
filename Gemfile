@@ -21,6 +21,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass', '~> 3.3.1'
 end
 
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
+
 gem 'pg'
 gem 'devise'
 gem 'haml-rails'
