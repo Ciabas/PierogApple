@@ -1,0 +1,21 @@
+%h1 Produkty:
+%table{:border => 1}
+  %tbody
+    %tr
+      %td Produkt
+      %td Cena
+      %td Kategoria
+      %td Typ
+      %td Model
+  -@products.each do |p|
+    %tr
+      %td
+        =p.name
+      %td
+        =p.price
+      %td
+        =p.category.name
+      %td
+        =p.gear.parrent_id
+      %td
+        =p.gear.name

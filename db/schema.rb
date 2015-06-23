@@ -30,8 +30,11 @@ ActiveRecord::Schema.define(version: 20150622135547) do
   end
 
   create_table "products", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "gear_id"
     t.string   "name"
     t.float    "price"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
