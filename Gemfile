@@ -16,6 +16,8 @@ group :development, :test do
   gem 'shoulda-matchers'
 end
 
+gem 'rails_12factor', group: :production
+
 source 'https://rails-assets.org' do 
   gem 'rails-assets-bootstrap-sass', '~> 3.3.1'
 end
