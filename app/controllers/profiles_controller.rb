@@ -1,7 +1,9 @@
 class ProfilesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def show
-    @profile = Profile.find(params[:id])
+    @profile = current_user.profile
   end
 
   def new
@@ -9,8 +11,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @profile = Profile.new(profile_params, user_id: @user)
+    @profile = Profile.new(profile_params, user_id: current_user.id)
     if @profile.save
       redirect_to users_path
     else

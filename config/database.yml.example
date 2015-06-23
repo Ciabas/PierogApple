@@ -5,13 +5,8 @@ development:
   host: localhost
   pool: 64
   timeout: 5000
-<<<<<<< HEAD:config/database.yml
-  username: blogtest
-  password: szczutkowo
-=======
   username: yourusername
   password: yourpassword
->>>>>>> b2d21d73ad706d1e2a443926962c625d07346bb4:config/database.yml.example
 
 test:
   adapter: postgresql
@@ -20,13 +15,8 @@ test:
   host: localhost
   pool: 64
   timeout: 5000
-<<<<<<< HEAD:config/database.yml
-  username: blogtest
-  password: szczutkowo
-=======
   username: yourusername
   password: yourpassword
->>>>>>> b2d21d73ad706d1e2a443926962c625d07346bb4:config/database.yml.example
 
 production:
   adapter: postgresql
@@ -35,10 +25,5 @@ production:
   host: localhost
   pool: 64
   timeout: 5000
-<<<<<<< HEAD:config/database.yml
-  username: blogtest
-  password: szczutkowo
-=======
   username: yourusername
   password: yourpassword
->>>>>>> b2d21d73ad706d1e2a443926962c625d07346bb4:config/database.yml.example
