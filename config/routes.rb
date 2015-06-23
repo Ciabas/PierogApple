@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     #resources :products
     #resources :categories
     #resources :userprofiles
+    #resources :gear
   end
 
   
