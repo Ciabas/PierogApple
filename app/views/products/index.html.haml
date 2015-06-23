@@ -17,8 +17,9 @@
         %td
           =p.category.name
         %td
-          =Gear.find(p.gear.parrent_id).name
+          =p.gear.parrent.name
         %td
           =p.gear.name
         %td
           =link_to 'wiecej', product_path(p.id)
+  =link_to 'dodaj', new_product_path

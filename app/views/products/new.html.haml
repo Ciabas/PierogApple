@@ -1,0 +1,16 @@
+%h1
+  Dodaj product
+=form_for @product do |f|
+  =f.label :name, 'Nazwa'
+  =f.text_field :name
+  =f.label :price, 'Cena'
+  =f.text_field :price
+  =f.label :category, 'Kategoria'
+  =f.collection_select(:category_id, @categories, :id, :name)
+  =f.label :parrent, 'Model'
+  =f.collection_select(:gear_id, @gears.base, :id, :name)
+  =f.label :gear, 'Typ'
+  =#f.collection_select(:gear_id, params[:gear_id][@gears.base], :id, :name)
+  =f.label :description, 'Opis'
+  =f.text_area :description
+  =f.submit "Submit"
