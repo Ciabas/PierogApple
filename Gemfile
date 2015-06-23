@@ -13,6 +13,7 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'shoulda-matchers'
 end
 
 source 'https://rails-assets.org' do 
@@ -22,7 +23,7 @@ end
 gem 'pg'
 gem 'devise'
 gem 'haml-rails'
-gem 'rspec'
+gem 'rspec-rails', '~> 3.0'
 gem "will_paginate", git: 'https://github.com/mislav/will_paginate.git'
 gem 'will_paginate-bootstrap'
 gem 'paperclip' 
