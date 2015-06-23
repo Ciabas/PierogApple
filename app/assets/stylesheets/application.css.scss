@@ -12,11 +12,20 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap-sass
- */
+*/
+
+$icon-font-path: 'bootstrap/';
+
+@import 'bootstrap-sass';
 
 body {
     padding-top: 70px;
+}
+.navbar{
+  background-color: #97ddfb;
+}
+.lead{
+  margin-bottom: 10px;
 }
 
 .thumbnail img {
