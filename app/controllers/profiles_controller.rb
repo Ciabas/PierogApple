@@ -11,7 +11,8 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = Profile.new(profile_params, user_id: current_user.id)
+    @profile = Profile.new(profile_params)
+    @profile.user = current_user
     if @profile.save
       redirect_to root_url
     else
