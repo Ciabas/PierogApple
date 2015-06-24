@@ -1,0 +1,32 @@
+= form_for(@profile) do |f|
+  -if @profile.errors.any? 
+    %div id="error_explanation"
+      %h2 pluralize(@profile.errors.count, "error") prohibited this profile from being saved:
+
+      %ul
+      - @profile.errors.full_messages.each do |message| 
+        %li message 
+
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :street_name
+    = f.text_field :street_name
+  .field
+    = f.label :house_no
+    = f.number_field :house_no
+  .field
+    = f.label :apartment_no
+    = f.number_field :apartmnent_no
+  .field
+    = f.label :zip_code
+    = f.text_field :zip_code
+  .field
+    = f.label :city_name
+    = f.text_field :city_name
+  .actions
+    = f.submit "Save!"

@@ -1,0 +1,31 @@
+%h2
+  Edytuj #{resource_name.to_s.humanize}
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = devise_error_messages!
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email, autofocus: true
+  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    %div
+      Trwa czakanie na potwierdzenie: #{resource.unconfirmed_email}
+  .field
+    = f.label :password
+    %i (zostaw puste jeśli nie chcesz zmieniać)
+    %br/
+    = f.password_field :password, autocomplete: "off"
+  .field
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "off"
+  .field
+    = f.label :current_password
+    %i (potrzbujemy Twojego obecnego hasła do potwierdzenia zmian)
+    %br/
+    = f.password_field :current_password, autocomplete: "off"
+  .actions
+    = f.submit "Zmień"
+%h3 Usuń konto
+%p
+  Będziemy za Tobą tęsknić :( #{button_to "Usuń konto", registration_path(resource_name), data: { confirm: "Na pewno?" }, method: :delete}
+= link_to "Cofnij", :back
