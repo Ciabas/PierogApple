@@ -1,2 +1,14 @@
-%h1
-  =@product.name
+.container
+  %h1
+    =@product.name
+  %p
+    -(@product.product_images).each do |image|
+      =img_tag image.url
+  =@product.price
+  =@product.category.name
+  =@product.gear.parrent.name
+  =@product.gear.name
+  =@product.description
+  -(@product.product_images).each do |image|
+    =img_tag image.url
+  =@product.product_images.first

@@ -9,9 +9,9 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    3.times {@product.product_images.build}
     @categories = Category.all 
     @gears = Gear.all
-    # 3.times {@product.product_images.build}
   end
 
   def create

@@ -1,16 +1,27 @@
-%h1
-  Dodaj product
-=form_for @product do |f|
-  =f.label :name, 'Nazwa'
-  =f.text_field :name
-  =f.label :price, 'Cena'
-  =f.text_field :price
-  =f.label :category, 'Kategoria'
-  =f.collection_select(:category_id, @categories, :id, :name)
-  =f.label :parrent, 'Model'
-  =f.collection_select(:gear_id, @gears.base, :id, :name)
-  =f.label :gear, 'Typ'
-  =#f.collection_select(:gear_id, params[:gear_id][@gears.base], :id, :name)
-  =f.label :description, 'Opis'
-  =f.text_area :description
-  =f.submit "Submit"
+.container
+  %h1
+    Dodaj product
+  =form_for @product, :html => {multipart: true} do |f|
+    =f.label :name, 'Nazwa'
+    =f.text_field :name
+    =f.label :price, 'Cena'
+    =f.text_field :price
+    =f.label :category, 'Kategoria'
+    =f.collection_select(:category_id, @categories, :id, :name)
+    =f.label :parrent, 'Model'
+    =f.collection_select(:gear_id, @gears.base, :id, :name)
+    =f.label :gear, 'Typ'
+    =f.collection_select(:gear_id, @gears-@gears.base, :id, :name)
+    =f.label :description, 'Opis'
+    =f.text_area :description
+    %h2
+      Dodaj zdjęcia
+    =f.fields_for :product_images do |builder|
+      -if builder.object.new_record?
+        %p
+          =builder.label :caption, "Tytuł zdjęcia"
+          =builder.text_field :caption
+        %p
+          =builder.label :photo, "Plik zdjęcia"
+          =builder.file_field :photo
+    =f.submit "Dodaj produkt"
