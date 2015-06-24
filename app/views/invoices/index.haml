@@ -9,12 +9,12 @@
   .invoice-details-tbl {
     position: absolute;
     left: 7px;
-    top: 100px;
+    top: 95px;
     width: 315px;
     margin-bottom: 15px;
-    border-top: 1pt solid #EEEEEE;
-    border-left: 1pt solid #EEEEEE;
-    border-right: 1pt solid #EEEEEE;
+    /*border-top: 1pt solid #EEEEEE; */
+    /*border-left: 1pt solid #EEEEEE; */
+    /*border-right: 1pt solid #EEEEEE; */
   }
   .transaction-date {  }
   .transaction-date + .invoicing-date { margin-top: -5mm; }
@@ -22,15 +22,17 @@
   .invoicing-date + .invoicing-place { margin-top: -5mm; }
   .invoicing-place {  }
 
+
+  /* dane sprzedawcy */
   .seller-details-tbl {
     position: absolute;
     left: 7px;
-    top: 190px;
+    top: 166px;
     width: 315px;
     margin-bottom: 15px;
-    border-top: 1pt solid #EEEEEE;
-    border-left: 1pt solid #EEEEEE;
-    border-right: 1pt solid #EEEEEE;
+    /*border-top: 1pt solid #EEEEEE; */
+    /*border-left: 1pt solid #EEEEEE; */
+    /*border-right: 1pt solid #EEEEEE; */
   }
   .seller-label { }
   .seller-label + .seller-name { margin-top: -2mm; }
@@ -38,15 +40,17 @@
   .seller-name + .seller-param { margin-top: -2mm; }
   .seller-param { margin-top: -5mm; }
   
+
+  /* dane nabywcy */
   .buyer-details-tbl {
     position: absolute;
-    left: 322px;
-    top: 190px;
+    left: 350px;
+    top: 166px;
     width: 315px;
     margin-bottom: 15px;
-    border-top: 1pt solid #EEEEEE;
-    border-left: 1pt solid #EEEEEE;
-    border-right: 1pt solid #EEEEEE;
+    /*border-top: 1pt solid #EEEEEE; */
+    /*border-left: 1pt solid #EEEEEE; */
+    /*border-right: 1pt solid #EEEEEE; */
   }
   .buyer-label { }
   .buyer-label + .buyer-name { margin-top: -2mm; }
@@ -62,13 +66,16 @@
     %title Faktura
   %body
     %h1.header Faktura VAT
-    %h3.invoice-number nr 1/FV/2015
+    %h3.invoice-number
+      = 'nr '+@invoice_number+'/FV/'+@current_year
     
     %h3.status ORYGINAŁ
     
     %div.invoice-details-tbl
-      %p.transaction-date Data sprzedaży: 01-01-2015
-      %p.invoicing-date Data wystawienia: 01-01-2015
+      %p.transaction-date
+        = "Data sprzedaży: "+@transaction_date
+      %p.invoicing-date
+        = "Data wystawienia: "+@invoicing_date
       %p.invoicing-place Miejsce wystawienia: Łódź
 
 
@@ -80,16 +87,17 @@
         Nazwaulicy 10/10
         %br>/
         90-210, Łódź
-      %p.seller-param tel. 500-500-500
-      %p.seller-param applepierog@applepierog.com
+      %p.seller-param tel: 500-500-500
+      %p.seller-param email: email@applepierog.com
 
     %div.buyer-details-tbl
       %p.buyer-label Nabywca:
       %p.buyer-name
         = @buyer_first_name + " " +@buyer_last_name
       %p.buyer-param
-        Nazwaulicy 10/10
+        = @buyer_street_name + " " + @buyer_house_no + @buyer_apartment_no
         %br>/
-        90-210, Łódź
-      %p.buyer-param tel. 500-500-500
-      %p.buyer-param applepierog@applepierog.com
+        = @buyer_zip_code + ", " + @buyer_city_name
+      -# %p.buyer-param tel: 500-500-500
+      %p.buyer-param
+        = "email: " + @buyer_user_email
