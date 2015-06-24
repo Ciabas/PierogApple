@@ -87,4 +87,5 @@ Rails.application.configure do
       :password             => 'binarapps',
       :authentication       => 'plain',
       :enable_starttls_auto => true
+  }
 end
