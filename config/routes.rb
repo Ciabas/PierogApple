@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   namespace :admin do
     #resources :users
     #resources :products
@@ -7,5 +8,8 @@ Rails.application.routes.draw do
     #resources :gears
   end
 
-  
+  devise_for :users
+  root 'home#home'
+  resources :profiles, except:  [:index, :destroy]
+
 end

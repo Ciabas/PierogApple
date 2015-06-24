@@ -1,0 +1,4 @@
+%p
+  Witaj #{@email}!
+%p Możesz potwierdzić swój email przez link podany poniżej:
+%p= link_to 'Potwierdź moje konto', confirmation_url(@resource, confirmation_token: @token)

@@ -1,29 +1,16 @@
-development:
+default: &default
   adapter: postgresql
-  encoding: utf-8
-  database: pierog_dev
   host: localhost
-  pool: 64
+  encoding: unicode
+  pool: 5
   timeout: 5000
-  username: yourusername
-  password: yourpassword
+  username: 
+  password:
+
+development:
+  <<: *default
+  database: pierogapple_development
 
 test:
-  adapter: postgresql
-  encoding: utf-8
-  database: pierog_test
-  host: localhost
-  pool: 64
-  timeout: 5000
-  username: yourusername
-  password: yourpassword
-
-production:
-  adapter: postgresql
-  encoding: utf-8
-  database: pierog_prod
-  host: localhost
-  pool: 64
-  timeout: 5000
-  username: yourusername
-  password: yourpassword
+  <<: *default
+  database: pierogapple_test
