@@ -1,6 +1,6 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw destroy
+  devise_for :users
   root 'home#home'
-  #root 'products#index'
+  resources :profiles, except:  [:index, :destroy]
   resources :products, except: [:update, :edit]
-
 end

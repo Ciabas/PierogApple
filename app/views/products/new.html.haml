@@ -1,19 +1,27 @@
 .container
   %h1
-    Dodaj product
+    Dodaj produkt
   =form_for @product, :html => {multipart: true} do |f|
-    =f.label :name, 'Nazwa'
-    =f.text_field :name
-    =f.label :price, 'Cena'
-    =f.text_field :price
-    =f.label :category, 'Kategoria'
-    =f.collection_select(:category_id, @categories, :id, :name)
-    =f.label :parrent, 'Model'
-    =f.collection_select(:gear_id, @gears.base, :id, :name)
-    =f.label :gear, 'Typ'
-    =f.collection_select(:gear_id, @gears-@gears.base, :id, :name)
-    =f.label :description, 'Opis'
-    =f.text_area :description
+    .col-row-1.col-row-5
+      %p
+        =f.label :name, 'Nazwa'
+        =f.text_field :name
+      %p
+        =f.label :price, 'Cena'
+        =f.text_field :price
+      %p
+        =f.label :category, 'Kategoria'
+        =f.collection_select(:category_id, @categories, :id, :name)
+      %p
+        =f.label :parrent, 'Model'
+        =f.collection_select(:gear_id, @gears.base, :id, :name)
+      %p
+        =f.label :gear, 'Typ'
+        =f.collection_select(:gear_id, @gears-@gears.base, :id, :name)
+      %p
+        =f.label :description, 'Opis'
+        =f.text_area :description
+    .col-row-6
     %h2
       Dodaj zdjęcia
     =f.fields_for :product_images do |builder|
@@ -24,4 +32,5 @@
         %p
           =builder.label :photo, "Plik zdjęcia"
           =builder.file_field :photo
+    .col-md-5
     =f.submit "Dodaj produkt"
