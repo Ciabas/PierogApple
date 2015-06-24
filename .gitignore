@@ -18,3 +18,8 @@
 /log/*
 !/log/.keep
 /tmp
+/nbproject
+
+# Vim artifacts
+*.swp
+*.swo
