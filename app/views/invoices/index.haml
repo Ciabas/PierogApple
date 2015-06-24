@@ -5,7 +5,7 @@
   .status { }
 
   /* invoicing date and place */
-  .invoice-details-tbl {
+  .invoice-details-div {
     position: absolute;
     left: 7px;
     top: 122px;
@@ -18,7 +18,7 @@
   .invoice-detail { margin-top: -5mm; }
 
   /* seller details */
-  .seller-details-tbl {
+  .seller-details-div {
     position: absolute;
     left: 7px;
     top: 166px;
@@ -32,7 +32,7 @@
   
 
   /* buyer details */
-  .buyer-details-tbl {
+  .buyer-details-div {
     position: absolute;
     left: 350px;
     top: 166px;
@@ -52,11 +52,22 @@
     width: 100%;
     font-size: 10pt;
     border-collapse: collapse;
+    empty-cells: hide;
   }
-  .t-al-right { text-align: right; }
-  .t-bold { font-weight: bold; }
+  .al-right { text-align: right; }
+  .al-left { text-align: left; }
+  .bold { font-weight: bold; }
   td { padding: 5px; border: 1px solid black; }
+  th:empty, td:empty { border: 0; background-color: #FFFFFF }
+  .gray { background-color: #BBBBBB }
+  .no-border { border: 0 }
 
+  .sum-div {
+    position: absolute;
+    left: 7px;
+    top: 700px;
+    width: 315px;
+  }
 
 
 
@@ -73,7 +84,7 @@
     
     %h3.status ORYGINAŁ
     
-    %div.invoice-details-tbl
+    %div.invoice-details-div
       %p.invoice-detail
         = "Data sprzedaży: "+@transaction_date
       %p.invoice-detail
@@ -81,7 +92,7 @@
       %p.invoice-detail Miejsce wystawienia: Łódź
 
 
-    %div.seller-details-tbl
+    %div.seller-details-div
       %p.seller-label Sprzedawca:
       %p.seller-name Apple Pieróg
       %p.seller-param NIP: 000-000-00-00
@@ -92,7 +103,7 @@
       %p.seller-param tel: 500-500-500
       %p.seller-param email: email@applepierog.com
 
-    %div.buyer-details-tbl
+    %div.buyer-details-div
       %p.buyer-label Nabywca:
       %p.buyer-name
         = @buyer_first_name + " " +@buyer_last_name
@@ -108,41 +119,95 @@
     -#%div.items-tbl-div
     %table.items-tbl
       %tbody
-        %tr
-          %td.t-al-right.t-bold{:style => "width: 2em; "}
+        %tr.al-right.bold.gray
+          %td{:style => "width: 2em; "}
             Lp.
-          %td.t-bold{:style => "width: 13em;"}
+          %td.al-left{:style => "width: 13em;"}
             Nazwa towaru
-          %td.t-al-right.t-bold{:style => "width: 3em;"}
+          %td{:style => "width: 3em;"}
             Jm.
-          %td.t-al-right.t-bold{:style => "width: 3em;"}
+          %td{:style => "width: 3em;"}
             Ilość
-          %td.t-al-right.t-bold{:style => "width: 4em;"}
+          %td{:style => "width: 4em;"}
             Cena j. netto
-          %td.t-al-right.t-bold{:style => "width: 4em;"}
+          %td{:style => "width: 4em;"}
             Wartość netto
-          %td.t-al-right.t-bold{:style => "width: 4em;"}
+          %td{:style => "width: 4em;"}
             Stawka VAT
-          %td.t-al-right.t-bold{:style => "width: 4em;"}
+          %td{:style => "width: 4em;"}
             Kwota VAT
-          %td.t-al-right.t-bold{:style => "width: 4em;"}
+          %td{:style => "width: 4em;"}
             Wartość brutto
-        %tr
-          %td.t-al-right
+        %tr.al-right
+          %td
+            1
+          %td.al-left
+            Wyjątkowo długa nazwa towaru
+          %td
+            szt.
+          %td
             1
           %td
-            Wyjątkowo długa nazwa towaru
-          %td.t-al-right
-            szt.
-          %td.t-al-right
-            1
-          %td.t-al-right
             100,00
-          %td.t-al-right.t-bold
+          %td.bold
             100,00
-          %td.t-al-right
+          %td
             23%
-          %td.t-al-right
+          %td
             23,00
-          %td.t-al-right.t-bold
+          %td.bold
             123,00
+        %tr.al-right
+          %td
+            2
+          %td.al-left
+            Krótsza nazwa towaru
+          %td
+            szt.
+          %td
+            3
+          %td
+            50,00
+          %td.bold
+            150,00
+          %td
+            23%
+          %td
+            31,50
+          %td.bold
+            181,50
+        /*summing row*/
+        %tr.bold.al-right.gray
+          %td
+          %td
+          %td
+          %td
+          %td
+            RAZEM
+          %td
+            250,00
+          %td
+            =' '
+          %td
+            54,50
+          %td
+            304,50
+        %tr.al-right
+          %td
+          %td
+          %td
+          %td
+          %td
+            w tym
+          %td
+            250,00
+          %td
+            23%
+          %td
+            54,50
+          %td
+            304,50
+    %div.sum-div
+      %h2
+        Do zapłaty: 304,50zł
+
