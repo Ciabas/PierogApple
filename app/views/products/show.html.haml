@@ -11,4 +11,7 @@
   =@product.description
   -(@product.product_images).each do |image|
     =img_tag image.url
+
+  =img_tag @product.product_images.first.url
+
   =@product.product_images.first
