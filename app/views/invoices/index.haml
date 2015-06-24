@@ -2,37 +2,27 @@
   .header { font-size: 20pt; }
   .header + .invoice-number { margin-top: -5mm; }
   .invoice-number {  }
-
   .status { }
 
-  /* daty i miejsce fakturowania */
+  /* invoicing date and place */
   .invoice-details-tbl {
     position: absolute;
     left: 7px;
-    top: 95px;
+    top: 122px;
     width: 315px;
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
     /*border-top: 1pt solid #EEEEEE; */
     /*border-left: 1pt solid #EEEEEE; */
     /*border-right: 1pt solid #EEEEEE; */
   }
-  .transaction-date {  }
-  .transaction-date + .invoicing-date { margin-top: -5mm; }
-  .invoicing-date {  }
-  .invoicing-date + .invoicing-place { margin-top: -5mm; }
-  .invoicing-place {  }
+  .invoice-detail { margin-top: -5mm; }
 
-
-  /* dane sprzedawcy */
+  /* seller details */
   .seller-details-tbl {
     position: absolute;
     left: 7px;
     top: 166px;
     width: 315px;
-    margin-bottom: 15px;
-    /*border-top: 1pt solid #EEEEEE; */
-    /*border-left: 1pt solid #EEEEEE; */
-    /*border-right: 1pt solid #EEEEEE; */
   }
   .seller-label { }
   .seller-label + .seller-name { margin-top: -2mm; }
@@ -41,24 +31,36 @@
   .seller-param { margin-top: -5mm; }
   
 
-  /* dane nabywcy */
+  /* buyer details */
   .buyer-details-tbl {
     position: absolute;
     left: 350px;
     top: 166px;
     width: 315px;
-    margin-bottom: 15px;
-    /*border-top: 1pt solid #EEEEEE; */
-    /*border-left: 1pt solid #EEEEEE; */
-    /*border-right: 1pt solid #EEEEEE; */
   }
   .buyer-label { }
   .buyer-label + .buyer-name { margin-top: -2mm; }
   .buyer-name { font-weight: bold; }
   .buyer-name + .buyer-param { margin-top: -2mm; }
   .buyer-param { margin-top: -5mm; }
-  
 
+  /*items table*/  
+  .items-tbl {
+    position: absolute;
+    left: 7px;
+    top: 400px;
+    width: 100%;
+    font-size: 10pt;
+    border-collapse: collapse;
+  }
+  .t-al-right { text-align: right; }
+  .t-bold { font-weight: bold; }
+  td { padding: 5px; border: 1px solid black; }
+
+
+
+
+/* THERE BE HTML */
 
 %html
   %head
@@ -72,11 +74,11 @@
     %h3.status ORYGINAŁ
     
     %div.invoice-details-tbl
-      %p.transaction-date
+      %p.invoice-detail
         = "Data sprzedaży: "+@transaction_date
-      %p.invoicing-date
+      %p.invoice-detail
         = "Data wystawienia: "+@invoicing_date
-      %p.invoicing-place Miejsce wystawienia: Łódź
+      %p.invoice-detail Miejsce wystawienia: Łódź
 
 
     %div.seller-details-tbl
@@ -101,3 +103,46 @@
       -# %p.buyer-param tel: 500-500-500
       %p.buyer-param
         = "email: " + @buyer_user_email
+
+
+    -#%div.items-tbl-div
+    %table.items-tbl
+      %tbody
+        %tr
+          %td.t-al-right.t-bold{:style => "width: 2em; "}
+            Lp.
+          %td.t-bold{:style => "width: 13em;"}
+            Nazwa towaru
+          %td.t-al-right.t-bold{:style => "width: 3em;"}
+            Jm.
+          %td.t-al-right.t-bold{:style => "width: 3em;"}
+            Ilość
+          %td.t-al-right.t-bold{:style => "width: 4em;"}
+            Cena j. netto
+          %td.t-al-right.t-bold{:style => "width: 4em;"}
+            Wartość netto
+          %td.t-al-right.t-bold{:style => "width: 4em;"}
+            Stawka VAT
+          %td.t-al-right.t-bold{:style => "width: 4em;"}
+            Kwota VAT
+          %td.t-al-right.t-bold{:style => "width: 4em;"}
+            Wartość brutto
+        %tr
+          %td.t-al-right
+            1
+          %td
+            Wyjątkowo długa nazwa towaru
+          %td.t-al-right
+            szt.
+          %td.t-al-right
+            1
+          %td.t-al-right
+            100,00
+          %td.t-al-right.t-bold
+            100,00
+          %td.t-al-right
+            23%
+          %td.t-al-right
+            23,00
+          %td.t-al-right.t-bold
+            123,00
