@@ -1,7 +1,95 @@
+:css
+  .header { font-size: 20pt; }
+  .header + .invoice-number { margin-top: -5mm; }
+  .invoice-number {  }
+
+  .status { }
+
+  /* daty i miejsce fakturowania */
+  .invoice-details-tbl {
+    position: absolute;
+    left: 7px;
+    top: 100px;
+    width: 315px;
+    margin-bottom: 15px;
+    border-top: 1pt solid #EEEEEE;
+    border-left: 1pt solid #EEEEEE;
+    border-right: 1pt solid #EEEEEE;
+  }
+  .transaction-date {  }
+  .transaction-date + .invoicing-date { margin-top: -5mm; }
+  .invoicing-date {  }
+  .invoicing-date + .invoicing-place { margin-top: -5mm; }
+  .invoicing-place {  }
+
+  .seller-details-tbl {
+    position: absolute;
+    left: 7px;
+    top: 190px;
+    width: 315px;
+    margin-bottom: 15px;
+    border-top: 1pt solid #EEEEEE;
+    border-left: 1pt solid #EEEEEE;
+    border-right: 1pt solid #EEEEEE;
+  }
+  .seller-label { }
+  .seller-label + .seller-name { margin-top: -2mm; }
+  .seller-name { font-weight: bold; }
+  .seller-name + .seller-param { margin-top: -2mm; }
+  .seller-param { margin-top: -5mm; }
+  
+  .buyer-details-tbl {
+    position: absolute;
+    left: 322px;
+    top: 190px;
+    width: 315px;
+    margin-bottom: 15px;
+    border-top: 1pt solid #EEEEEE;
+    border-left: 1pt solid #EEEEEE;
+    border-right: 1pt solid #EEEEEE;
+  }
+  .buyer-label { }
+  .buyer-label + .buyer-name { margin-top: -2mm; }
+  .buyer-name { font-weight: bold; }
+  .buyer-name + .buyer-param { margin-top: -2mm; }
+  .buyer-param { margin-top: -5mm; }
+  
+
+
 %html
   %head
-    %meta{:charset => "utf-8"}/
+    %meta{:charset => "utf-8"}
+    %title Faktura
   %body
-    %h1 Hej, jestem Artur
-    %h3 i bardzo pragnę zostać plikiem pdf
-    %p Pomożesz mi?
+    %h1.header Faktura VAT
+    %h3.invoice-number nr 1/FV/2015
+    
+    %h3.status ORYGINAŁ
+    
+    %div.invoice-details-tbl
+      %p.transaction-date Data sprzedaży: 01-01-2015
+      %p.invoicing-date Data wystawienia: 01-01-2015
+      %p.invoicing-place Miejsce wystawienia: Łódź
+
+
+    %div.seller-details-tbl
+      %p.seller-label Sprzedawca:
+      %p.seller-name Apple Pieróg
+      %p.seller-param NIP: 000-000-00-00
+      %p.seller-param
+        Nazwaulicy 10/10
+        %br>/
+        90-210, Łódź
+      %p.seller-param tel. 500-500-500
+      %p.seller-param applepierog@applepierog.com
+
+    %div.buyer-details-tbl
+      %p.buyer-label Nabywca:
+      %p.buyer-name
+        = @buyer_first_name + " " +@buyer_last_name
+      %p.buyer-param
+        Nazwaulicy 10/10
+        %br>/
+        90-210, Łódź
+      %p.buyer-param tel. 500-500-500
+      %p.buyer-param applepierog@applepierog.com

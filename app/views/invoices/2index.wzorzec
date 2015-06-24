@@ -1,0 +1,98 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %title Invoice
+    %link{:href => "style.css", :rel => "stylesheet"}/
+    %link{:href => "http://www.opensource.org/licenses/mit-license/", :rel => "license"}/
+    %script{:src => "script.js"}
+  %body
+    %header
+      %h1 Invoice
+      %address{:contenteditable => ""}
+        %p Jonathan Neal
+        %p
+          101 E. Chapman Ave
+          %br>/
+          Orange, CA 92866
+        %p (800) 555-1234
+      %span
+        %img{:alt => "", :src => "logo.png"}/
+        %input{:accept => "image/*", :type => "file"}/
+    %article
+      %h1 Recipient
+      %address{:contenteditable => ""}
+        %p
+          Some Company
+          %br>/
+          c/o Some Guy
+      %table.meta
+        %tr
+          %th
+            %span{:contenteditable => ""} Invoice #
+          %td
+            %span{:contenteditable => ""} 101138
+        %tr
+          %th
+            %span{:contenteditable => ""} Date
+          %td
+            %span{:contenteditable => ""} January 1, 2012
+        %tr
+          %th
+            %span{:contenteditable => ""} Amount Due
+          %td
+            %span#prefix{:contenteditable => ""} $
+            %span 600.00
+      %table.inventory
+        %thead
+          %tr
+            %th
+              %span{:contenteditable => ""} Item
+            %th
+              %span{:contenteditable => ""} Description
+            %th
+              %span{:contenteditable => ""} Rate
+            %th
+              %span{:contenteditable => ""} Quantity
+            %th
+              %span{:contenteditable => ""} Price
+        %tbody
+          %tr
+            %td
+              %a.cut -
+              %span{:contenteditable => ""} Front End Consultation
+            %td
+              %span{:contenteditable => ""} Experience Review
+            %td
+              %span{"data-prefix" => ""} $
+              %span{:contenteditable => ""} 150.00
+            %td
+              %span{:contenteditable => ""} 4
+            %td
+              %span{"data-prefix" => ""} $
+              %span 600.00
+      %a.add +
+      %table.balance
+        %tr
+          %th
+            %span{:contenteditable => ""} Total
+          %td
+            %span{"data-prefix" => ""} $
+            %span 600.00
+        %tr
+          %th
+            %span{:contenteditable => ""} Amount Paid
+          %td
+            %span{"data-prefix" => ""} $
+            %span{:contenteditable => ""} 0.00
+        %tr
+          %th
+            %span{:contenteditable => ""} Balance Due
+          %td
+            %span{"data-prefix" => ""} $
+            %span 600.00
+    %aside
+      %h1
+        %span{:contenteditable => ""} Additional Notes
+      %div{:contenteditable => ""}
+        %p A finance charge of 1.5% will be made on unpaid balances after 30 days.
