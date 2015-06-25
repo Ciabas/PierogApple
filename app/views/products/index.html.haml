@@ -6,7 +6,7 @@
         %th{data_field: :product} Produkt
         %th{data_field: :price} Cena
         %th{data_field: :category} Kategoria
-        %th{data_field: 'gear.parrent'} Typ
+        %th{data_field: 'gear.parent'} Typ
         %th{data_field: :gear} Model
     -@products.each do |p|
       %tr
@@ -17,7 +17,7 @@
         %td
           =p.category.name
         %td
-          =p.gear.parrent.name
+          =p.gear.parent.name
         %td
           =p.gear.name
         %td

@@ -13,7 +13,7 @@
         =f.label :category, 'Kategoria'
         =f.collection_select(:category_id, @categories, :id, :name)
       %p
-        =f.label :parrent, 'Model'
+        =f.label :parent, 'Model'
         =f.collection_select(:gear_id, @gears.base, :id, :name)
       %p
         =f.label :gear, 'Typ'

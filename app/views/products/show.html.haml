@@ -1,17 +1,15 @@
 .container
-  %h1
-    =@product.name
-  %p
+  .col-md-4
+  .col-md-8
+    %h1
+      =@product.name
+    %p
+  .col-md-4
+    Zdjecia:
     -(@product.product_images).each do |image|
-      =img_tag image.url
+      =image_tag image.photo.url(), class: "thumbnail"
   =@product.price
   =@product.category.name
-  =@product.gear.parrent.name
+  =@product.gear.parent.name
   =@product.gear.name
   =@product.description
-  -(@product.product_images).each do |image|
-    =img_tag image.url
-
-  =img_tag @product.product_images.first.url
-
-  =@product.product_images.first

@@ -23,6 +23,3 @@
 # Vim artifacts
 *.swp
 *.swo
-
-# Ignore heroku folder
-/applepierog

@@ -3,12 +3,14 @@ class Gear < ActiveRecord::Base
 
   validates :name, presence: true
 
-  scope :base, -> { where(parrent_id: nil) }
-  scope :specific, lambda {|whiczGear| where(parrent_id: whiczGear.id ) }
+  scope :base, -> { where(parent_id: nil) }
+  # scope :specific, lambda {|whiczGear| where(parent_id: whiczGear.id ) }
 
-  def parrent
-    gear_parrents = Gear.base
-    my_parrent = gear_parrents.where(id: self.parrent_id)
-    return my_parrent
+  def parent
+    Gear.base.where(id: self.parent_id)
+  end
+
+  def children
+    Gear.where(parent_id: self.id)
   end
 end

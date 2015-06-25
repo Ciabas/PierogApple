@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    puts params.inspect
     @product = Product.new(product_params)
     if @product.save
       redirect_to root_url
@@ -31,6 +32,6 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :price, :category_id, :gear_id, :description)
+    params.require(:product).permit!#(:name, :price, :category_id, :gear_id, :description, :product_images_attributes)
   end
 end
