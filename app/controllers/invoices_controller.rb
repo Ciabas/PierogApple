@@ -2,30 +2,24 @@ class InvoicesController < ApplicationController
   def index
     
     now = Time.new
-
+    
     @invoice_number = '1'
     @current_year = now.year.to_s
-
+    
     @transaction_date = now.strftime("%Y-%m-%d")
     @invoicing_date = now.strftime("%Y-%m-%d")
-
-    @buyer_first_name = 'Andrzej'
-    @buyer_last_name = 'Jakcinaimie'
-    @buyer_street_name = 'Uliczna'
-    @buyer_house_no = '15'
-    buyer_ap = 5
-    @buyer_apartment_no = ( buyer_ap ? '/'+buyer_ap.to_s : '')
-    @buyer_zip_code = '90-000'
-    @buyer_city_name = 'Łódź'
-    @buyer_user_email = 'foo@bar.com'
-
+    
+    #static data kept in a hash
+    @buyer = {email: "foo@bar.com"}
+    @buyer_profile = {first_name: "Andrzej", last_name: "Jakcinaimie", street_name: "Uliczna", house_no: "15", apartment_no: 6, zip_code: "90-210", city_name: "Łódź", phone_no: "500500500"}
+    
     @sum = 304.5
-
-
+    
+    
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "invoices"   # Excluding ".pdf" extension.
+        render pdf: "faktura"   # Excluding ".pdf" extension.
       end
     end
   end

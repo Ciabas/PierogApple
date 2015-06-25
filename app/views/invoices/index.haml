@@ -29,6 +29,8 @@
   .seller-name { font-weight: bold; }
   .seller-name + .seller-param { margin-top: -2mm; }
   .seller-param { margin-top: -5mm; }
+  .seller-param + .bank-param { margin-top: -2mm; }
+  .bank-param { margin-top: -5mm; }
   
 
   /* buyer details */
@@ -103,18 +105,21 @@
         90-210, Łódź
       %p.seller-param tel: 500-500-500
       %p.seller-param email: email@applepierog.com
+      %p.bank-param Bank: NazwaBank
+      %p.bank-param Konto: 12 3456 7890 1234 1234 1234 1234
 
     %div.buyer-details-div
       %p.buyer-label Nabywca:
       %p.buyer-name
-        = @buyer_first_name + " " +@buyer_last_name
+        = @buyer_profile[:first_name] + " " + @buyer_profile[:last_name]
       %p.buyer-param
-        = @buyer_street_name + " " + @buyer_house_no + @buyer_apartment_no
+        - formatted_apartment = ( @buyer_profile[:apartment_no] ? '/'+ @buyer_profile[:apartment_no].to_s : '')
+        = @buyer_profile[:street_name] + " " + @buyer_profile[:house_no] + formatted_apartment
         %br>/
-        = @buyer_zip_code + ", " + @buyer_city_name
+        = @buyer_profile[:zip_code] + ", " + @buyer_profile[:city_name]
       -# %p.buyer-param tel: 500-500-500
       %p.buyer-param
-        = "email: " + @buyer_user_email
+        = "email: " + @buyer[:email]
 
 
     %table.items-tbl
