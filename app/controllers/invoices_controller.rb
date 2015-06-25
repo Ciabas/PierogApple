@@ -1,4 +1,7 @@
 class InvoicesController < ApplicationController
+  
+  before_action :check_token
+
   def index
     
     now = Time.new
@@ -23,4 +26,14 @@ class InvoicesController < ApplicationController
       end
     end
   end
+
+  private
+  def check_token
+    #unless params[:token]==Invoices.find[:id].token - autentykacja rozwiązana!
+    unless params[:token]=="aaa"
+      redirect_to root_url
+    end
+  end
+
+
 end
