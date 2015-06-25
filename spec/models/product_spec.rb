@@ -6,7 +6,7 @@ RSpec.describe Product, :type => :model do
   it { should have_many(:product_images) }
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:price) }
-  it { should accept_nested_attribute_for(:product_images) }
+  it { should accept_nested_attributes_for(:product_images) }
 
   describe 'price validation' do
     it do 
