@@ -23,7 +23,7 @@ RSpec.describe Gear, :type => :model do
     let!(:gear_kid) { Gear.create(name: '5s', parent_id: gear_mom.id) }
 
     it  do
-      gear_kid.parent.should == gear_mom
+      gear_kid.parent.should eq gear_mom
     end
   end
 
@@ -33,7 +33,7 @@ RSpec.describe Gear, :type => :model do
     let!(:gear_kid_basia) { Gear.create(name: '5c', parent_id: gear_mom.id) }
 
     it  do
-      gear_mom.children.should == [gear_kid_adam, gear_kid_basia]
+      gear_mom.children.should eq [gear_kid_adam, gear_kid_basia]
     end
   end
 

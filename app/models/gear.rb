@@ -7,7 +7,7 @@ class Gear < ActiveRecord::Base
   # scope :specific, lambda {|whiczGear| where(parent_id: whiczGear.id ) }
 
   def parent
-    Gear.base.where(id: self.parent_id)
+    Gear.base.find_by(id: self.parent_id)
   end
 
   def children
