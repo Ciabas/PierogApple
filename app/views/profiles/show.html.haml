@@ -1,6 +1,8 @@
 %h1
   = @profile.first_name 
   = @profile.last_name
+  %br/
+  = @profile.phone_no.to_s
 %h3
   = @profile.street_name 
   = @profile.house_no.to_s 
