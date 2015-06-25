@@ -24,6 +24,7 @@ end
 
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
+gem 'polish_number'
 
 gem 'pg'
 gem 'devise'

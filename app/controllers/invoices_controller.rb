@@ -19,6 +19,9 @@ class InvoicesController < ApplicationController
     @buyer_city_name = 'Łódź'
     @buyer_user_email = 'foo@bar.com'
 
+    @sum = 304.5
+
+
     respond_to do |format|
       format.html
       format.pdf do

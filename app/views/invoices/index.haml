@@ -210,7 +210,9 @@
 
     %div.sum-div
       %h2
-        Do zapłaty: 304,50zł
+        -sum=number_with_precision(@sum, precision: 2, separator: ',', delimiter: ' ')
+        = 'Do zapłaty: ' + sum + ' zł'
       %p
-        Słownie: trzysta cztery złote, pięćdziesiąt groszy
+        -fraction= number_with_precision( (@sum - @sum.floor) * 100 , precision: 0)
+        = 'Słownie: ' + PolishNumber.translate(@sum, :currency => :PLN) + ' ' + fraction + '/100'
 
