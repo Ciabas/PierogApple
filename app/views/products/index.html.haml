@@ -10,16 +10,10 @@
         %th{data_field: :gear} Model
     -@products.each do |p|
       %tr
-        %td
-          =p.name
-        %td
-          =p.price
-        %td
-          =p.category.name
-        %td
-          =p.gear.parent.name
-        %td
-          =p.gear.name
-        %td
-          =link_to 'wiecej', product_path(p.id)
+        %td=  p.name
+        %td=  p.price
+        %td=  p.category.name
+        %td=  p.gear.parent.name
+        %td=  p.gear.name
+        %td=  link_to 'wiecej', product_path(p.id)
   =link_to 'dodaj', new_product_path

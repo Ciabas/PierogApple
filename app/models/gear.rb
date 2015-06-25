@@ -4,7 +4,6 @@ class Gear < ActiveRecord::Base
   validates :name, presence: true
 
   scope :base, -> { where(parent_id: nil) }
-  # scope :specific, lambda {|whiczGear| where(parent_id: whiczGear.id ) }
 
   def parent
     Gear.base.find_by(id: self.parent_id)

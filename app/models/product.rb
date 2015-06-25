@@ -5,5 +5,6 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :product_images
 
   validates :name, :price, presence: true 
-  validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, :numericality => {:greater_than => 0}
+  validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, 
+            :numericality => {:greater_than => 0}
 end 

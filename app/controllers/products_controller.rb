@@ -32,6 +32,13 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit!#(:name, :price, :category_id, :gear_id, :description, :product_images_attributes)
+    # {"caption"=>"1", 
+    # "photo"=>#<ActionDispatch::Http::UploadedFile:0xb49280ec 
+    # @tempfile=#<Tempfile:/tmp/RackMultipart20150625-3499-1j231xs.jpg>, 
+    # @original_filename="1.jpg", @content_type="image/jpeg", 
+    # @headers="Content-Disposition: form-data; 
+    # name=\"product[product_images_attributes][0][photo]\"; 
+    # filename=\"1.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+    params.require(:product).permit(:name, :price, :category_id, :gear_id, :description, product_images_attributes: [:file])
   end
 end

@@ -1,6 +1,5 @@
 .container
-  %h1
-    Dodaj produkt
+  %h1 Dodaj produkt
   =form_for @product, :html => {multipart: true} do |f|
     .col-row-1.col-row-5
       %p
@@ -17,20 +16,19 @@
         =f.collection_select(:gear_id, @gears.base, :id, :name)
       %p
         =f.label :gear, 'Typ'
-        =f.collection_select(:gear_id, @gears-@gears.base, :id, :name)
+        =f.collection_select(:gear_id, @gears, :id, :name)
       %p
         =f.label :description, 'Opis'
         =f.text_area :description
     .col-row-6
-    %h2
-      Dodaj zdjęcia
-    =f.fields_for :product_images do |builder|
-      -if builder.object.new_record?
-        %p
-          =builder.label :caption, "Tytuł zdjęcia"
-          =builder.text_field :caption
-        %p
-          =builder.label :photo, "Plik zdjęcia"
-          =builder.file_field :photo
+      %h2 Dodaj zdjęcia
+      =f.fields_for :product_images do |builder|
+        -if builder.object.new_record?
+          %p
+            =builder.label :caption, "Tytuł zdjęcia"
+            =builder.text_field :caption
+          %p
+            =builder.label :photo, "Plik zdjęcia"
+            =builder.file_field :photo
     .col-md-5
-    =f.submit "Dodaj produkt"
+      =f.submit "Dodaj produkt"
