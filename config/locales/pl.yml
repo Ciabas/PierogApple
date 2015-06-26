@@ -31,3 +31,7 @@ pl:
         apartment_no: "Nr mieszkania"
         zip_code: "Kod pocztowy"
         city_name: "Miasto"
+      user:
+        password: "Hasło"
+        password_confirmation: "Potwierdź hasło"
+        current_password: "Obecne hasło"

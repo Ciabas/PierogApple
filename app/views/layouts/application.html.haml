@@ -36,9 +36,9 @@
               %li
                 = link_to (edit_user_registration_path) do
                   = icon 'wrench'
-                  Edytuj swoje dane logowania
+                  Edytuj swoje konto
               %li
-                = link_to( destroy_user_session_path, method: :delete, data: { confirm: 'We will miss you :(' } ) do
+                = link_to( destroy_user_session_path, method: :delete, data: { confirm: 'Jesteś pewien?' } ) do
                   = icon 'log-out'
                   Wyloguj się
             - else
