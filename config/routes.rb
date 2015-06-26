@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  root 'home#home'
+  root 'products#index'
   resources :profiles, except:  [:index, :destroy]
   resources :products, except: [:update, :edit]
 end
