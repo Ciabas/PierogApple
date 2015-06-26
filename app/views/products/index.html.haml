@@ -1,0 +1,19 @@
+.container
+  %h1 Produkty:
+  %table.table.table-striped
+    %thead
+      %tr
+        %th{data_field: :product} Produkt
+        %th{data_field: :price} Cena
+        %th{data_field: :category} Kategoria
+        %th{data_field: 'gear.parent'} Typ
+        %th{data_field: :gear} Model
+    -@products.each do |p|
+      %tr
+        %td=  p.name
+        %td=  p.price
+        %td=  p.category.name
+        %td=  p.gear.parent.name
+        %td=  p.gear.name
+        %td=  link_to 'wiecej', product_path(p.id)
+  =link_to 'dodaj', new_product_path
