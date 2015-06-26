@@ -1,0 +1,16 @@
+%h1
+  = @profile.first_name 
+  = @profile.last_name
+  %br/
+  = @profile.phone_no.to_s
+%h3
+  = @profile.street_name 
+  = @profile.house_no.to_s 
+  = @profile.apartment_no.to_s
+  %br/
+  = @profile.zip_code 
+  = @profile.city_name
+%br/
+%h6
+  Created at #{@profile.created_at.to_s}
+= link_to "Cofnij", admin_profiles_path

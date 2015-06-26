@@ -1,4 +1,4 @@
-class Admin::ProfilesController < AdminController
+class Admin::ProfilesController < Admin::AdminController
   
   def index
     @profiles = Profile.all
