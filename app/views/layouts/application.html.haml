@@ -2,8 +2,8 @@
 %html
   %head
     %title ApplePieróg
-    = stylesheet_link_tag 'application', :media => 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', :media => 'all'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
     %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
@@ -50,10 +50,20 @@
                 = link_to( new_user_registration_path ) do
                   = icon 'pencil'
                   Załóż konto
+    -if flash[:notice]
+      .alert.alert-info{:role => "alert"}
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times; 
+        .text-center
+          =flash[:notice]
+    -if flash[:error]
+      .alert.alert-warning{:role => "warning"}
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times; 
+        .text-center
+          =flash[:error] 
     = yield
     .container
       %hr
       %footer
         .row
           .col-lg-12.text-center
-            %p footer
+            %p Apple Pieróg
