@@ -10,6 +10,7 @@
       %table.table.table-striped
         %thead
           %tr
+            %th
             %th{data_field: :product} Produkt
             %th{data_field: :price} Cena
             %th{data_field: :category} Kategoria
@@ -17,6 +18,7 @@
             %th{data_field: :gear} Model
         - @products.each do |p|
           %tr
+            %td=  image_tag p.product_images.first.photo(:miniature)
             %td=  p.name
             %td=  p.price
             %td=  p.category.name
