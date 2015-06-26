@@ -50,6 +50,14 @@
                 = link_to( new_user_registration_path ) do
                   = icon 'pencil'
                   Załóż konto
+    -if flash[:notice]
+      .alert.alert-info{:role => "alert"}
+        .text-center
+          =flash[:notice]
+    -if flash[:error]
+      .alert.alert-warning{:role => "warning"}
+        .text-center
+          =flash[:error] 
     = yield
     .container
       %hr

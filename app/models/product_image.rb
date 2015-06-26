@@ -1,5 +1,4 @@
 class ProductImage < ActiveRecord::Base
-  attr_accessor :photo
 
   belongs_to :product
   has_attached_file :photo, :styles => { :small => "150x150>", :medium => "300x300>" }
