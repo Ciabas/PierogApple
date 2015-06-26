@@ -4,7 +4,7 @@ class Admin::AdminController < ApplicationController
 
   def admin
     @users = User.all
-    @orders = Order.all
+   # @orders = Order.all
     @products = Product.all
     @categories = Category.all
     @gears = Gear.all

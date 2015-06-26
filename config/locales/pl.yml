@@ -19,6 +19,19 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
-
+pl:
+  helpers:
+    label:
+      profile:
+        first_name: "Imię"
+        last_name: "Nazwisko"
+        phone_no: "Nr telefonu"
+        street_name: "Ulica"
+        house_no: "Nr domu"
+        apartment_no: "Nr mieszkania"
+        zip_code: "Kod pocztowy"
+        city_name: "Miasto"
+      user:
+        password: "Hasło"
+        password_confirmation: "Potwierdź hasło"
+        current_password: "Obecne hasło"

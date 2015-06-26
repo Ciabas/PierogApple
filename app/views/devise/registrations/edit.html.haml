@@ -1,5 +1,5 @@
 %h2
-  Edytuj #{resource_name.to_s.humanize}
+  Edytuj swoje konto
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = devise_error_messages!
   .field
@@ -8,10 +8,10 @@
     = f.email_field :email, autofocus: true
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     %div
-      Trwa czakanie na potwierdzenie: #{resource.unconfirmed_email}
+      Trwa czekanie na potwierdzenie: #{resource.unconfirmed_email}
   .field
     = f.label :password
-    %i (zostaw puste jeśli nie chcesz zmieniać)
+    %i (pozostaw puste, jeśli nie chcesz zmieniać)
     %br/
     = f.password_field :password, autocomplete: "off"
   .field
@@ -20,7 +20,7 @@
     = f.password_field :password_confirmation, autocomplete: "off"
   .field
     = f.label :current_password
-    %i (potrzbujemy Twojego obecnego hasła do potwierdzenia zmian)
+    %i (potrzebujemy Twojego obecnego hasła do potwierdzenia zmian)
     %br/
     = f.password_field :current_password, autocomplete: "off"
   .actions
@@ -30,4 +30,3 @@
 %h4 Usuń konto
 %p
   =button_to "Usuń konto", registration_path(resource_name), data: { confirm: "Na pewno?" }, method: :delete
-= link_to "Cofnij", :back
