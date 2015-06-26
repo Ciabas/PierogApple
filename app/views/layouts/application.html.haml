@@ -17,6 +17,8 @@
         %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times; 
         .text-center
           =flash[:error] 
+    -unless session[:cart].nil?
+      =session[:cart].to_s
     =yield
     .container
       %hr

@@ -3,4 +3,9 @@ Rails.application.routes.draw do
   root 'products#index'
   resources :profiles, except:  [:index, :destroy]
   resources :products, except: [:update, :edit]
+  resource :cart, only: [:show, :destroy] do
+    member do
+      post 'additem'
+    end
+  end
 end

@@ -22,3 +22,11 @@
       %p
         Opis:
         =@product.description
+      
+      = form_tag("/cart/additem", method: "post") do
+        = label_tag(:quantity, "Ilość sztuk:")
+        = text_field_tag(:quantity)
+        = hidden_field_tag(:product_id, @product.id)
+        = submit_tag("Dodaj")
+
+
