@@ -1,0 +1,8 @@
+%h1 Stwórz nową kategorię
+%br/
+/ =form_for @admin_category do |f|
+/   .field
+/     = f.label :name
+/     = f.text_field :name
+/   .actions
+/     = f.submit "Zapisz!"

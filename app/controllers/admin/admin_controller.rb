@@ -7,7 +7,8 @@ class Admin::AdminController < ApplicationController
    # @orders = Order.all
     @products = Product.all
     @categories = Category.all
-    @gears = Gear.all
+    @models = Gear.notbase
+    @types = Gear.base
   end
 
   private

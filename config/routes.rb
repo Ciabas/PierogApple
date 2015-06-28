@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :profiles, only: [:show, :index]
+    resources :categories, only: [:index, :new]
     root 'admin#admin'
     #resources :users
     #resources :products
