@@ -4,8 +4,8 @@ default: &default
   encoding: unicode
   pool: 5
   timeout: 5000
-  username: blogtest
-  password: szczutkowo
+  username: 
+  password: 
 
 development:
   <<: *default
