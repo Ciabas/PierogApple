@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :profiles, only: [:show, :index]
     resources :categories, only: [:index, :new, :destroy, :create]
     resources :products
+    resources :gears
+    get '/modelindex' => 'gears#modelindex'
     root 'admin#admin'
     #resources :users
     #resources :products

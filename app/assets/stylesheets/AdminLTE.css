@@ -151,7 +151,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif
 }
 /* General Links */
 a {
@@ -4359,4 +4359,13 @@ fieldset[disabled] .btn-vk.active {
   .table-responsive > .table tr td {
     white-space: normal!important;
   }
+}
+
+/*
+ * ApplePierog
+ * 
+ */
+
+.padded {
+  padding-left: 35px;
 }
