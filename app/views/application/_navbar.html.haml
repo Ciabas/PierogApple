@@ -14,7 +14,9 @@
             = icon 'shopping-cart'
             Koszyk
             %span{ :style => "color: green" }
-              (0 produktów, 0.00 zł)
+              -count_items = (session[:cart_count] ? session[:cart_count]['count_items'] : 0)
+              -items_value = (session[:cart_count] ? session[:cart_count]['items_value'] : 0)
+              = "("+count_items.to_s+" produktów, "+items_value.to_s+" zł)"
         - if user_signed_in?
           %li.dropdown 
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
