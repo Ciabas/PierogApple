@@ -1,0 +1,28 @@
+.container-fluid
+  .row
+    .col-md-2.text-center
+      .list-group
+        %h4.list-group-item.active Kategorie
+        - @categories.each do |category|
+          = link_to category.name.capitalize, products_path(category_id: category.id), class: "list-group-item"
+    .col-md-10
+      %h1 Produkty:
+      %table.table.table-striped
+        %thead
+          %tr
+            %th
+            %th{data_field: :product} Produkt
+            %th{data_field: :price} Cena
+            %th{data_field: :category} Kategoria
+            %th{data_field: 'gear.parent'} Typ
+            %th{data_field: :gear} Model
+        - @products.each do |p|
+          %tr
+            %td=  image_tag p.product_images.first.photo(:miniature)
+            %td=  p.name
+            %td=  p.price
+            %td=  p.category.name
+            %td=  p.gear.parent.name
+            %td=  p.gear.name
+            %td=  link_to 'wiecej', product_path(p.id)
+      = link_to 'dodaj', new_product_path
