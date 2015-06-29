@@ -1,0 +1,26 @@
+.container
+  .row
+    .col-md-4.col-md-offset-4
+      %h1=  @product.name
+  .row
+    .col-md-5
+      -(@product.product_images).each do |image|
+        =link_to (image_tag image.photo.url(:medium), class: "thumbnail"), image.photo.url
+    .col-md-offset-6
+      %p
+        Cena:
+        =@product.price
+      %p
+        Kategoria:
+        =@product.category.name
+      %p
+        Typ:
+        =@product.gear.parent.name
+      %p
+        Model:
+        =@product.gear.name 
+      %p
+        Opis:
+        =@product.description
+      %p
+        =link_to "Edytuj ten produkt", edit_admin_product_path(@product)
