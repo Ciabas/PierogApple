@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
 
+  
+
   def additem
     if session[:cart].nil?
       session[:cart] = [ {id: params[:product_id], quantity: params[:quantity]} ]
