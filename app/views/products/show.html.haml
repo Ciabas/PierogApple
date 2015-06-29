@@ -4,7 +4,11 @@
       %h1=  @product.name
   .row
     .col-md-5
+      .carousel-inner
       -(@product.product_images).each do |image|
+        .item
+        -if image == @product.product_images.first
+          .active
         =link_to (image_tag image.photo.url(:medium), class: "thumbnail"), image.photo.url
     .col-md-offset-6
       %p
@@ -22,3 +26,25 @@
       %p
         Opis:
         =@product.description
+  .row
+    .carousel.slide{:id=>"slide-images", :data => {:ride => "carousel"}}
+      %ol
+        %li.active{:data => {:target => "slide-images", :slide_to => "0"}}
+        %li{:data => {:target => "slide-images", :slide_to => "1"}}
+        %li{:data => {:target => "slide-images", :slid1_to => "2"}}
+      .carousel-inner
+        .item.active
+          %img{:src => "@product.product_images.first.url", :alt => ""}/
+        .item
+          %img{:src => "@path slider2.jpg", :alt => ""}/
+        .item
+          %img{:src => "@path slider3.jpg", :alt => ""}/
+        .item
+          %img{:src => "@path slider4.jpg", :alt => ""}/
+        .item
+          %img{:src => "@path slider5.jpg", :alt => ""}/
+
+      %a.left.carousel-control{:href => "#slide-images", :data => {:slide => "prev"}}
+        %span.glyphicon.glyphicon-chevron-left
+      %a.right.carousel-control{:href => "#slide-images", :data => {:slide => "next"}}
+        %span.glyphicon.glyphicon-chevron-right
