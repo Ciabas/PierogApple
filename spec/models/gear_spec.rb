@@ -18,6 +18,18 @@ RSpec.describe Gear, :type => :model do
     end
   end
 
+  describe 'notbase scope' do
+    let!(:gear_base_one) { Gear.create(name: 'telefon') }
+    let!(:gear_base_two) { Gear.create(name: 'tablet') }
+    let!(:gear_another) { Gear.create(name: '11c', parent_id: gear_base_two.id) }
+    let!(:gear_anotherone) { Gear.create(name: '5s', parent_id: gear_base_one.id) }
+
+    it  do
+      Gear.notbase.should_not eq [gear_base_one, gear_base_two]
+      Gear.notbase.should eq [gear_another, gear_anotherone]
+    end
+  end
+
   describe 'parent' do
     let!(:gear_mom) { Gear.create(name: 'telefon') }
     let!(:gear_kid) { Gear.create(name: '5s', parent_id: gear_mom.id) }
