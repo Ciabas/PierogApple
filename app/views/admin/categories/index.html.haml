@@ -17,8 +17,7 @@
                   %td.sorting_1 
                     = category.name
                   %td 
-                    %a{:href => new_admin_category_path }
-                      %span Usuń
+                    = link_to "Usuń", admin_category_path(category), method: :delete, data: { confirm: 'Na pewno?' }
             %tfoot
               %tr
                 %th{:colspan => "1", :rowspan => "1"} 

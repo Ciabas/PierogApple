@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :profiles, only: [:show, :index]
-    resources :categories, only: [:index, :new]
+    resources :categories, only: [:index, :new, :destroy, :create]
+    resources :products
     root 'admin#admin'
     #resources :users
     #resources :products
@@ -14,5 +15,5 @@ Rails.application.routes.draw do
   devise_for :users
   root 'products#index'
   resources :profiles, except:  [:index, :destroy]
-  resources :products, except: [:update, :edit]
+  resources :products, except: [:update, :edit, :create]
 end
