@@ -16,23 +16,28 @@
             %span{ :style => "color: green" }
               (0 produktów, 0.00 zł)
         - if user_signed_in?
-          %li
-            - if current_user.profile
-              = link_to ( profile_path(current_user) ) do
-                = icon 'user'
-                Zobacz swój profil
-            - else
-              = link_to ( new_profile_path ) do
-                = icon 'user'
-                Uzupełnij swój profil!
-          %li
-            = link_to (edit_user_registration_path) do
-              = icon 'wrench'
-              Edytuj swoje konto
-          %li
-            = link_to( destroy_user_session_path, method: :delete, data: { confirm: 'Jesteś pewien?' } ) do
-              = icon 'log-out'
-              Wyloguj się
+          %li.dropdown 
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              = current_user.email
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                - if current_user.profile
+                  = link_to ( profile_path(current_user) ) do
+                    = icon 'user'
+                    Zobacz swój profil
+                - else
+                  = link_to ( new_profile_path ) do
+                    = icon 'user'
+                    Uzupełnij swój profil!
+              %li
+                = link_to (edit_user_registration_path) do
+                  = icon 'wrench'
+                  Edytuj swoje konto
+              %li
+                = link_to( destroy_user_session_path, method: :delete, data: { confirm: 'Jesteś pewien?' } ) do
+                  = icon 'log-out'
+                  Wyloguj się
         - else
           %li
             = link_to( new_user_session_path ) do
