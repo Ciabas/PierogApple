@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resource :cart, only: [:show, :destroy] do
     member do
       post 'additem'
+      post 'edititem'
     end
   end
 end

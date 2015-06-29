@@ -23,10 +23,10 @@
         Opis:
         =@product.description
       
-      = form_tag("/cart/additem", method: "post") do
-        = label_tag(:quantity, "Ilość sztuk:")
-        = number_field_tag(:quantity)
-        = hidden_field_tag(:product_id, @product.id)
-        = submit_tag("Dodaj")
+      = form_tag "/cart/additem", method: "post" do
+        = label_tag :quantity, "Ilość sztuk:"
+        = number_field_tag :quantity, 1, min:1, max:99, style: "width:45px;"
+        = hidden_field_tag :product_id, @product.id
+        = submit_tag "Dodaj"
 
 

@@ -1,0 +1,31 @@
+.container-fluid
+  .row
+    .col-md-12
+      %h1 Twój koszyk:
+      %table.table.table-striped
+        %thead
+          %tr
+            %th
+            %th{data_field: :product} Produkt
+            %th{data_field: :price} Cena
+            %th{data_field: :category} Kategoria
+            %th{data_field: 'gear.parent'} Typ
+            %th{data_field: :gear} Model
+            %th Ilość
+        -#iterator used to align the quantity contained in cart to the listed product
+        -#both lists sorted by ids, so it's only required to increment the iterator after displaying each product
+        - iter=0
+        - @products.each do |p|
+          %tr
+
+            %td=  image_tag p.product_images.first.photo(:miniature)
+            %td=  p.name
+            %td=  p.price
+            %td=  p.category.name
+            %td=  p.gear.parent.name
+            %td=  p.gear.name
+            = form_tag "/cart/edititem", method: "post" do
+              %td=  number_field_tag :quantity, session[:cart][iter]['quantity'], min:1, max:99, style: "width:45px;"
+              = hidden_field_tag :product_id, p.id
+              %td=  submit_tag "Zmień"
+            -iter+=1
