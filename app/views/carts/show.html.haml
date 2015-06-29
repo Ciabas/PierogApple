@@ -28,4 +28,7 @@
               %td=  number_field_tag :quantity, session[:cart][iter]['quantity'], min:1, max:99, style: "width:45px;"
               = hidden_field_tag :product_id, p.id
               %td=  submit_tag "Zmień"
+            = form_tag "/cart/removeitem", method: "post" do
+              = hidden_field_tag :product_id, p.id
+              %td=  submit_tag "Usuń"
             -iter+=1

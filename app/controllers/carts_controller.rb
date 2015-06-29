@@ -14,7 +14,7 @@ class CartsController < ApplicationController
       end
       redirect_to root_url, notice: 'Produkt dodany.'
     else
-      redirect_to root_url, alert: 'Błąd. Spróbuj ponownie.'
+      redirect_to root_url, error: 'Błąd. Spróbuj ponownie.'
     end
   end
 
@@ -30,7 +30,7 @@ class CartsController < ApplicationController
       end
       redirect_to cart_path, notice: 'Produkt zmieniony.'
     else
-      redirect_to cart_path, alert: 'Błąd. Spróbuj ponownie.'
+      redirect_to cart_path, error: 'Błąd. Spróbuj ponownie.'
     end
   end  
 
@@ -45,8 +45,15 @@ class CartsController < ApplicationController
     @products=Product.where(id: id_array)
   end
 
-  def destroy
-
+  def removeitem
+    #if the product isn't in cart, inform the user
+    if session[:cart].select{|a| a["id"]==params[:product_id]}.empty?
+      redirect_to cart_path, error: 'W koszyku nie ma takiego produktu.'
+    #if the product is already in cart, remove it
+    else
+      session[:cart].delete_if {|a| a["id"]==params[:product_id] }
+      redirect_to cart_path, notice: 'Produkt usunięto.'
+    end
   end
 
   private
