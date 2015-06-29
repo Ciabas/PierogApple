@@ -4,12 +4,30 @@
       %h1=  @product.name
   .row
     .col-md-5
-      .carousel-inner
-      -(@product.product_images).each do |image|
-        .item
-        -if image == @product.product_images.first
-          .active
-        =link_to (image_tag image.photo.url(:medium), class: "thumbnail"), image.photo.url
+      #myCarousel.carousel.slide{"data-ride" => "carousel"}
+        / Indicators
+        %ol.carousel-indicators
+          -(@product.product_images).each do |index|
+            -if index == @product.product_images.first
+              %li.active{"data-slide-to" => index, "data-target" => "#myCarousel"}
+            -else 
+              %li{"data-slide-to" => index, "data-target" => "#myCarousel"}
+        / Wrapper for slides
+        .carousel-inner{:role => "listbox"}
+          -(@product.product_images).each do |image|
+            -if image == @product.product_images.first
+              .item.active
+                =link_to (image_tag image.photo.url), image.photo.url
+            -else
+              .item
+                =link_to (image_tag image.photo.url), image.photo.url
+        / Left and right controls
+        %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel", :role => "button"}
+          %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+          %span.sr-only Previous
+        %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel", :role => "button"}
+          %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+          %span.sr-only Next
     .col-md-offset-6
       %p
         Cena:
@@ -26,25 +44,3 @@
       %p
         Opis:
         =@product.description
-  .row
-    .carousel.slide{:id=>"slide-images", :data => {:ride => "carousel"}}
-      %ol
-        %li.active{:data => {:target => "slide-images", :slide_to => "0"}}
-        %li{:data => {:target => "slide-images", :slide_to => "1"}}
-        %li{:data => {:target => "slide-images", :slid1_to => "2"}}
-      .carousel-inner
-        .item.active
-          %img{:src => "@product.product_images.first.url", :alt => ""}/
-        .item
-          %img{:src => "@path slider2.jpg", :alt => ""}/
-        .item
-          %img{:src => "@path slider3.jpg", :alt => ""}/
-        .item
-          %img{:src => "@path slider4.jpg", :alt => ""}/
-        .item
-          %img{:src => "@path slider5.jpg", :alt => ""}/
-
-      %a.left.carousel-control{:href => "#slide-images", :data => {:slide => "prev"}}
-        %span.glyphicon.glyphicon-chevron-left
-      %a.right.carousel-control{:href => "#slide-images", :data => {:slide => "next"}}
-        %span.glyphicon.glyphicon-chevron-right
