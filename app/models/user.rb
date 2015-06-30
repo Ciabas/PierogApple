@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
-  validates :encrypted_password, :email, presence: true
-  validates :email, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
-  validates :email, uniqueness: true
+  validates :encrypted_password, :email, presence: {message: '- nie wypełniono wymaganego pola'}
+  validates :email, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: '- niewłaściwy format'}
+  validates :email, uniqueness: {message: '- już istnieje użytkownik o takim adresie'}
  end
