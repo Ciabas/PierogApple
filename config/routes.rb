@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :profiles, only: [:show, :index]
+    resources :profiles, only: [:show, :index, :destroy]
     resources :categories, only: [:index, :new, :destroy, :create]
     resources :products
-    resources :gears
+    resources :gears, only: [:index, :new, :create, :destroy]
     get '/modelindex' => 'gears#modelindex'
+    get '/new_model' => 'gears#new_model'
+    post '/new_model' => 'gears#create_model'
+    delete '/modelindex/:id' => 'gears#destroy_model'
     root 'admin#admin'
-    #resources :users
-    #resources :products
-    #resources :categories
-    #resources :gears
     #resources :orders
   end
 

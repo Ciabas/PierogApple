@@ -37,4 +37,5 @@
             =builder.file_field :photo
     .row
       .col-md-2.col-md-offset-5
-        =f.submit "Dodaj produkt"
+        = button_to "Zapisz", { action: "create"} , class: 'btn btn-primary'
+ 

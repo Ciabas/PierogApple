@@ -7,7 +7,7 @@
   .row
     .col-sm-1
     .col-sm-2
-      %a.btn.btn-primary.btn-block{:type => "button", :href => new_admin_gear_path } Dodaj model
+      %a.btn.btn-primary.btn-block{:type => "button", :href => admin_new_model_path } Dodaj model
   %br/
   .row
     .col-sm-1
@@ -23,7 +23,7 @@
               %td.sorting_1 
                 = gear.name
               %td 
-                %a.btn.btn-default.active{:href => admin_gear_path(gear), :method => :delete, :role => "button"} Usuń
+                = button_to "Usuń", { action: "destroy_model", id: gear.id }, method: :delete, data: { confirm: "Na pewno?" }, class: 'btn btn-primary'
         %tfoot
   .row
     .col-sm-5

@@ -22,8 +22,8 @@
             %tr.odd{:role => "row"}
               %td.sorting_1 
                 = category.name
-              %td 
-                %a.btn.btn-default.active{:href => admin_category_path(category), :method => :delete, :role => "button"} Usuń
+              %td
+                = button_to "Usuń", { action: "destroy", id: category.id }, method: :delete, data: { confirm: "Na pewno?" }, class: 'btn btn-primary' 
         %tfoot
   .row
     .col-sm-5

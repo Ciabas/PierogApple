@@ -1,47 +1,51 @@
-.box
-  .box-header
-    %h3.box-title Twoi klienci
-  / /.box-header
-  .box-body
-    #example2_wrapper.dataTables_wrapper.form-inline.dt-bootstrap
-      .row
-        .col-sm-6
-        .col-sm-6
-      .row
-        .col-sm-12
-          %table#example2.table.table-bordered.table-hover.dataTable{"aria-describedby" => "example2_info", :role => "grid"}
-            %thead
-              %tr{:role => "row"}
-                %th.sorting_asc{"aria-controls" => "example2", "aria-label" => "Rendering engine: activate to sort column descending", "aria-sort" => "ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Imię
-                %th.sorting{"aria-controls" => "example2", "aria-label" => "Browser: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Nazwisko
-                %th.sorting{"aria-controls" => "example2", "aria-label" => "Platform(s): activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Numer telefonu
-                %th.sorting{"aria-controls" => "example2", "aria-label" => "Engine version: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Adres
-                %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Miasto
-            %tbody
-              - @profiles.each do |profile|
-                %tr.odd{:role => "row"}
-                  %td.sorting_1 
-                    = profile.first_name
-                  %td 
-                    = profile.last_name
-                  %td 
-                    = profile.phone_no.to_s
-                  %td 
-                    = profile.street_name
-                    = profile.house_no.to_s
-                    = profile.apartment_no.to_s
-                  %td 
-                    = profile.zip_code
-                    = profile.city_name
-            %tfoot
-              %tr
-                %th{:colspan => "1", :rowspan => "1"} Imię
-                %th{:colspan => "1", :rowspan => "1"} Nazwisko
-                %th{:colspan => "1", :rowspan => "1"} Numer telefonu
-                %th{:colspan => "1", :rowspan => "1"} Adres
-                %th{:colspan => "1", :rowspan => "1"} Miasto
-      .row
-        .col-sm-5
-          #example2_info.dataTables_info{"aria-live" => "polite", :role => "status"} Pokazuję #{@profiles.count} klientów
-  / /.box-body
-/ /.
+.row
+  .col-sm-1
+  .col-sm-6
+    %h2 Twoi klienci
+    %br/
+  .col-sm-5
+#example2_wrapper.dataTables_wrapper.form-inline.dt-bootstrap
+  .row
+    .col-sm-6
+    .col-sm-6
+  .row
+    .col-sm-1
+    .col-sm-10
+      %table#example2.table.table-bordered.table-hover.dataTable{"aria-describedby" => "example2_info", :role => "grid"}
+        %thead
+          %tr{:role => "row"}
+            %th.sorting_asc{"aria-controls" => "example2", "aria-label" => "Rendering engine: activate to sort column descending", "aria-sort" => "ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Imię
+            %th.sorting{"aria-controls" => "example2", "aria-label" => "Browser: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Nazwisko
+            %th.sorting{"aria-controls" => "example2", "aria-label" => "Platform(s): activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Numer telefonu
+            %th.sorting{"aria-controls" => "example2", "aria-label" => "Engine version: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Adres
+            %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Miasto
+            %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Akcje
+        %tbody
+          - @profiles.each do |profile|
+            %tr.odd{:role => "row"}
+              %td.sorting_1 
+                = profile.first_name
+              %td 
+                = profile.last_name
+              %td 
+                = profile.phone_no.to_s
+              %td 
+                = profile.street_name
+                = profile.house_no.to_s
+                = profile.apartment_no.to_s
+              %td 
+                = profile.zip_code
+                = profile.city_name
+              %td
+                = button_to "Usuń", { action: "destroy", id: profile.id }, method: :delete, data: { confirm: "Na pewno?" }, class: 'btn btn-primary'
+        %tfoot
+          %tr
+            %th{:colspan => "1", :rowspan => "1"} Imię
+            %th{:colspan => "1", :rowspan => "1"} Nazwisko
+            %th{:colspan => "1", :rowspan => "1"} Numer telefonu
+            %th{:colspan => "1", :rowspan => "1"} Adres
+            %th{:colspan => "1", :rowspan => "1"} Miasto
+            %th{:colspan => "1", :rowspan => "1"} Akcje
+  .row
+    .col-sm-5
+      #example2_info.dataTables_info{"aria-live" => "polite", :role => "status"} Pokazuję #{@profiles.count} klientów

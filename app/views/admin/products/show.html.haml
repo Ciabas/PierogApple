@@ -2,10 +2,33 @@
   .row
     .col-md-4.col-md-offset-4
       %h1=  @product.name
+      %br/
   .row
     .col-md-5
-      -(@product.product_images).each do |image|
-        =link_to (image_tag image.photo.url(:medium), class: "thumbnail"), image.photo.url
+      #myCarousel.carousel.slide{"data-ride" => "carousel"}
+        / Indicators
+        %ol.carousel-indicators
+          -(@product.product_images).each do |index|
+            -if index == @product.product_images.first
+              %li.active{"data-slide-to" => index, "data-target" => "#myCarousel"}
+            -else 
+              %li{"data-slide-to" => index, "data-target" => "#myCarousel"}
+        / Wrapper for slides
+        .carousel-inner{:role => "listbox"}
+          -(@product.product_images).each do |image|
+            -if image == @product.product_images.first
+              .item.active
+                =link_to (image_tag image.photo.url), image.photo.url
+            -else
+              .item
+                =link_to (image_tag image.photo.url), image.photo.url
+        / Left and right controls
+        %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel", :role => "button"}
+          %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+          %span.sr-only Previous
+        %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel", :role => "button"}
+          %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+          %span.sr-only Next
     .col-md-offset-6
       %p
         Cena:
@@ -23,4 +46,4 @@
         Opis:
         =@product.description
       %p
-        =link_to "Edytuj ten produkt", edit_admin_product_path(@product)
+        =button_to "Edytuj ten produkt", { action: "edit", id: @product.id }, method: 'get',class: 'btn btn-primary'

@@ -1,0 +1,13 @@
+.row
+  .jumbotron
+    %h1.padded Stwórz nowy model
+    %p
+      = form_for @model, :html => {multipart: true}, url: admin_new_model_path do |f|
+        .field.padded
+          = f.label :name
+          = f.text_field :name
+        .field.padded
+          =f.label :parent_id, 'Model'
+          =f.collection_select(:parent_id, @types, :id, :name)
+        .actions.padded
+          = button_to "Zapisz", { action: "create_model"} , class: 'btn btn-primary' 

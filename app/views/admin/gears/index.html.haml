@@ -23,7 +23,7 @@
               %td.sorting_1 
                 = gear.name
               %td 
-                %a.btn.btn-default.active{:href => admin_gear_path(gear), :method => :delete, :role => "button"} Usuń
+                = button_to "Usuń", { action: "destroy", id: gear.id }, method: :delete, data: { confirm: "Na pewno?" }, class: 'btn btn-primary' 
         %tfoot
   .row
     .col-sm-5
