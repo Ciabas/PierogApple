@@ -40,6 +40,8 @@ class CartsController < ApplicationController
   end  
 
   def show
+    #count the cart value so the navbar aligns perfectly with the view
+    cart_count
     #sort the array by item id, so the array aligns with the object list
     session[:cart].sort! {|x,y| x['id']<=>y['id']}
     #array containing ids of the items in cart - we'll feed it to the query
@@ -88,6 +90,6 @@ class CartsController < ApplicationController
         end
       end
     end
-    session[:cart_count] = {count_items: count, items_value: value}
+    session[:cart_count] = {'count_items' => count, 'items_value' => value}
   end
 end

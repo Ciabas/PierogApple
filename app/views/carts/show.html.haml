@@ -12,6 +12,9 @@
             %th{data_field: 'gear.parent'} Typ
             %th{data_field: :gear} Model
             %th Ilość
+            %th
+            %th Wartość
+            %th
         -#iterator used to align the quantity contained in cart to the listed product
         -#both lists sorted by ids, so it's only required to increment the iterator after displaying each product
         - iter=0
@@ -28,7 +31,22 @@
               %td=  number_field_tag :quantity, session[:cart][iter]['quantity'], min:1, max:99, style: "width:45px;"
               = hidden_field_tag :product_id, p.id
               %td=  submit_tag "Zmień"
+            %td= p.price * session[:cart][iter]['quantity'].to_i
             = form_tag "/cart/removeitem", method: "post" do
               = hidden_field_tag :product_id, p.id
               %td=  submit_tag "Usuń"
             -iter+=1
+            
+        %tr
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+            %b SUMA
+          %td
+            %b= session[:cart_count]['items_value']
+          %td
