@@ -10,11 +10,11 @@
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
         %li
-          = link_to '#' do
+          = link_to cart_path do
             = icon 'shopping-cart'
             Koszyk
             %span{ :style => "color: green" }
-              (0 produktów, 0.00 zł)
+              = "(#{get_count_items.to_s} produktów, #{number_to_currency(get_items_value, format: '%n%u', unit: 'zł')})"
         - if user_signed_in?
           %li.dropdown 
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
