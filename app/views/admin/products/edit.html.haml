@@ -5,8 +5,8 @@
         =err
   .row
     .col-md-4.col-md-offset-4
-      %h1 Dodaj produkt
-  =form_for @product, :html => {multipart: true} do |f|
+      %h1 Edytuj produkt
+  =form_for @product, :html => {multipart: true}, url: admin_product_path do |f|
     .col-md-6
       %p
         =f.label :name, 'Nazwa'
@@ -37,4 +37,4 @@
             =builder.file_field :photo
     .row
       .col-md-2.col-md-offset-5
-        =f.submit "Dodaj produkt"
+        =f.submit "Zapisz produkt"

@@ -1,0 +1,15 @@
+.row
+  %ul
+    -@category.errors.full_messages.each do |err|
+      %li
+        =err
+.row
+  .jumbotron
+    %h1.padded Stwórz nową kategorię
+    %p
+      = form_for @category, url: admin_categories_path do |f|
+        .field.padded
+          = f.label :name
+          = f.text_field :name
+        .actions.padded
+          = button_to "Zapisz", { action: "create"} , class: 'btn btn-primary' 

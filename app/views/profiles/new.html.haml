@@ -1,3 +1,9 @@
-%h1 Stwórz swój profil
-%br/
-=render 'form'
+.row
+  %ul
+    -@profile.errors.full_messages.each do |err|
+      %li
+        =err
+.row
+  %h1 Stwórz swój profil
+  %br/
+  =render 'form'

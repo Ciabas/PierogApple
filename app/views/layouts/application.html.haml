@@ -12,12 +12,12 @@
         %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times; 
         .text-center
           =flash[:notice]
-    -if flash[:error]
+    -if alert
       .alert.alert-warning{:role => "warning"}
         %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times; 
         .text-center
-          =flash[:error] 
-    =yield
+          = alert
+    = yield
     .container
       %hr
       %footer

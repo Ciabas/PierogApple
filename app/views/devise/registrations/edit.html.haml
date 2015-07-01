@@ -25,8 +25,3 @@
     = f.password_field :current_password, autocomplete: "off"
   .actions
     = f.submit "Zmień"
-%br/
-%br/
-%h4 Usuń konto
-%p
-  =button_to "Usuń konto", registration_path(resource_name), data: { confirm: "Na pewno?" }, method: :delete

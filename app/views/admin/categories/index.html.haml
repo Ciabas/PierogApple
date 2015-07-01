@@ -1,0 +1,30 @@
+.row
+  .col-sm-1
+  .col-sm-6
+    %h2 Kategorie Twoich produktów
+  .col-sm-5
+#example2_wrapper.dataTables_wrapper.form-inline.dt-bootstrap
+  .row
+    .col-sm-1
+    .col-sm-2
+      %a.btn.btn-primary.btn-block{:type => "button", :href => new_admin_category_path } Dodaj kategorię
+  %br/
+  .row
+    .col-sm-1
+    .col-sm-10
+      %table#example2.table.table-bordered.table-hover.dataTable{"aria-describedby" => "example2_info", :role => "grid"}
+        %thead
+          %tr{:role => "row"}
+            %th.sorting_asc{"aria-controls" => "example2", "aria-label" => "Rendering engine: activate to sort column descending", "aria-sort" => "ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Kategoria
+            %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Akcje
+        %tbody
+          - @categories.each do |category|
+            %tr.odd{:role => "row"}
+              %td.sorting_1 
+                = category.name
+              %td
+                = button_to "Usuń", { action: "destroy", id: category.id }, method: :delete, data: { confirm: "Na pewno?" }, class: 'btn btn-primary' 
+        %tfoot
+  .row
+    .col-sm-5
+      #example2_info.dataTables_info{"aria-live" => "polite", :role => "status"} Pokazuję #{@categories.count} kategorii

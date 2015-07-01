@@ -1,0 +1,16 @@
+.row
+  %ul
+    -@gear.errors.full_messages.each do |err|
+      %li
+        =err
+.row
+  .jumbotron
+    %h1.padded Stwórz nowy typ
+    %p
+      = form_for @gear, url: admin_gears_path do |f|
+        .field.padded
+          = f.label :name
+          = f.text_field :name
+        .actions.padded
+          = button_to "Zapisz", { action: "create"} , class: 'btn btn-primary'
+ 
