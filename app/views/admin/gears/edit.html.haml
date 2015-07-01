@@ -1,0 +1,10 @@
+.row
+  .jumbotron
+    %h1.padded Edytuj typ
+    %p
+      = form_for @gear, :html => {multipart: true}, url: admin_gear_path do |f|
+        .field.padded
+          = f.label :name
+          = f.text_field :name
+        .actions.padded
+          = button_to "Zapisz", { action: "update"} , class: 'btn btn-primary' 

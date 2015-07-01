@@ -7,7 +7,6 @@ RSpec.describe Profile, :type => :model do
   it { should validate_presence_of(:last_name) }
   it { should validate_presence_of(:street_name) }
   it { should validate_presence_of(:house_no) }
-  it { should validate_presence_of(:apartment_no) }
   it { should validate_presence_of(:zip_code) }
   it { should validate_presence_of(:city_name) }
   it { should validate_numericality_of(:apartment_no).only_integer }

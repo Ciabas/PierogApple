@@ -2,7 +2,7 @@
   .container
     .navbar-header
       %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
+        %span.sr-only Rozwiń
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
@@ -14,7 +14,7 @@
             = icon 'shopping-cart'
             Koszyk
             %span{ :style => "color: green" }
-              = "(#{get_count_items.to_s} produktów, #{get_items_value.to_s} zł)"
+              = "(#{get_count_items.to_s} produktów, #{number_to_currency(get_items_value, format: '%n%u', unit: 'zł')})"
         - if user_signed_in?
           %li.dropdown 
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
@@ -34,6 +34,11 @@
                 = link_to (edit_user_registration_path) do
                   = icon 'wrench'
                   Edytuj swoje konto
+              -if current_user &&  current_user.is_admin
+                %li
+                  = link_to (admin_root_path) do
+                    = icon 'list'
+                    Panel Administratora
               %li
                 = link_to( destroy_user_session_path, method: :delete, data: { confirm: 'Jesteś pewien?' } ) do
                   = icon 'log-out'

@@ -2,28 +2,55 @@
   .row
     .col-md-2.text-center
       .list-group
-        %h4.list-group-item.active Kategorie
+        %h2.list-group-item.active Kategorie
         - @categories.each do |category|
           = link_to category.name.capitalize, products_path(category_id: category.id), class: "list-group-item"
+      .list-group
+        .list-group-item
+          %h3.filters-header
+            = icon 'search'
+            Filtrowanie
+            %span.caret-wrap
+              %span.caret
+        .list-group-item.filters
+          = form_tag(products_path, method: :get, id: "filters-form") do
+            .price
+              %h4 Cena
+              = text_field_tag 'price_min', nil, placeholder: "od", value: @price_low
+              = text_field_tag 'price_max', nil, placeholder: "do", value: @price_high
+            %hr
+            .categories
+              %h4 Kategorie
+              - @categories.each do |category|
+                = label_tag do
+                  = check_box_tag 'cid[]', category.id, ( !@cid.blank? and @cid.include?( (category.id).to_s ) )
+                  = category.name.capitalize
+            %hr
+            .gears
+              %h4 Typy
+              - @gears.each do |gear|
+                = label_tag do
+                  = check_box_tag 'g[]', gear.id, ( !@g.blank? and @g.include?( (gear.id).to_s ) )
+                  = gear.name + "y"
+            %hr
+            .models
+              - unless @models == nil
+                %h4 Modele
+                - @models.each do |model|
+                  = label_tag do
+                    = check_box_tag 'm[]', model.id, ( !@m.blank? and @m.include?( (model.id).to_s ) )
+                    = model.name
+                %hr
+            = button_tag 'Filtruj!', name: nil, class: "btn btn-default"
     .col-md-10
       %h1 Produkty:
-      %table.table.table-striped
-        %thead
-          %tr
-            %th
-            %th{data_field: :product} Produkt
-            %th{data_field: :price} Cena
-            %th{data_field: :category} Kategoria
-            %th{data_field: 'gear.parent'} Typ
-            %th{data_field: :gear} Model
-        - @products.each do |p|
-          %tr
-            %td=  image_tag p.product_images.first.photo(:miniature)
-            %td=  p.name
-            %td=  p.price
-            %td=  p.category.name
-            %td=  p.gear.parent.name
-            %td=  p.gear.name
-            %td=  link_to 'więcej', product_path(p.id)
-      = link_to 'dodaj', new_product_path
-
+      - @products.each do |p|
+        .col-xs-6.col-md-2.text-center
+          %a.thumbnail{:href => product_path(p.id), title: "#{p.gear.parent.name.capitalize} - model: #{p.gear.name}", 'data-placement' => 'bottom', 'data-toggle' => 'tooltip'}
+            =image_tag p.product_images.first.photo(:thumb)
+            .caption
+              =p.name
+              %br/
+              %b=number_to_currency(p.price, format: '%n%u', unit: 'zł')
+:javascript
+  $(document).ready(filters);
