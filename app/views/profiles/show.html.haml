@@ -1,29 +1,17 @@
 .container  
-  %h1
-    = @profile.first_name 
-    = @profile.last_name
-    %br/
-    = @profile.phone_no.to_s
-  %h3
-    = @profile.street_name 
-    = @profile.house_no.to_s + (@profile.apartment_no ? '/' + @profile.apartment_no.to_s : '')
-    %br/
-    = @profile.zip_code 
-    = @profile.city_name
-  %br/
-  %h6
-    Konto założone #{@profile.created_at.to_s}
-  = link_to "Cofnij", root_url
-  %br/
-<<<<<<< HEAD
-  = link_to "Edytuj swoje dane", edit_profile_path(@profile)
-=======
-  = @profile.zip_code 
-  = @profile.city_name
-%br/
-%h6
-  =@profile.created_at.strftime("Konto założone %d/%m/%Y, %k:%M:%S")
-= link_to "Cofnij", root_url
-%br/
-= link_to "Edytuj swoje dane", edit_profile_path(@profile)
->>>>>>> master
+  .col-md-6.col-md-offset-3
+    %h1
+      = @profile.first_name 
+      = @profile.last_name
+      %br/
+      = @profile.phone_no.to_s
+    %h3
+      = @profile.street_name 
+      = @profile.house_no.to_s + (@profile.apartment_no ? '/' + @profile.apartment_no.to_s : '')
+      %br/
+      = @profile.zip_code 
+      = @profile.city_name
+    %hr
+      %small
+        .row= @profile.created_at.strftime("Konto założone %d/%m/%Y, %k:%M:%S")
+        .row= link_to "Edytuj swoje dane", edit_profile_path(@profile)
