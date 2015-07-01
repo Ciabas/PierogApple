@@ -40,8 +40,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :price, :category_id, :gear_id, :description, product_images_attributes: [:caption, :photo])
   end
   
-  def params_check
-    
+  def params_check    
     products = Product.all
     unless params[:cid].blank?
       products = products.where( category_id: params[:cid] )
@@ -62,8 +61,7 @@ class ProductsController < ApplicationController
     end
     products = products.where( gear_id: params[:m] )
     m = params[:m]
-    return products, cid, price_low, price_high, models, g, m
-  
+    return products, cid, price_low, price_high, models, g, m  
   end
   
 end
