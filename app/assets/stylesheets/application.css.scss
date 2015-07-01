@@ -22,6 +22,25 @@ body {
   font-family: 'Lato', sans-serif;  
   padding-top: 70px;
 }
+.caret.caret-reversed {
+    border-top-width: 0;
+    border-bottom: 4px solid transparent;
+}
+.invalid{
+  border-radius: 4px;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+}
+h2{
+  font-size: 24px;
+}
+h3{
+  font-size: 18px;
+}
+h4{
+  font-size: 14px;
+}
 /* nav styles */
 
 .navbar{
@@ -33,6 +52,46 @@ body {
 }
 
 /* middle styles */
+
+.filters{
+  display: none;
+  padding: 10px;
+  font-size: 90%;
+  h4{
+    margin-top: 0;
+    color: #337ab7;
+    text-decoration: underline;
+  }
+  .price{
+    input{
+      display: inline;
+      width: 30%;
+      height: 28px;
+    }
+  }
+  .categories, .gears{
+    label{
+      display: block;
+      font-weight: normal;
+    }
+  }
+  .models{
+    label{
+      width: 40%;
+      font-weight: normal;
+    }
+  }
+}
+
+  ul{
+    list-style-type: none;
+    padding: 0;
+  }
+
+.filters-header{
+  margin: 0;
+  cursor: pointer;
+}
 
 .lead{
   margin-bottom: 10px;
