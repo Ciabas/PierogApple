@@ -1,9 +1,9 @@
-.container
+.container 
   .row
     .col-md-4.col-md-offset-4
       %h1=  @product.name
   .row
-    .col-md-5
+    .col-md-7
       #myCarousel.carousel.slide{"data-ride" => "carousel"}
         / Indicators
         %ol.carousel-indicators
@@ -28,7 +28,7 @@
         %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel", :role => "button"}
           %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
           %span.sr-only Next
-    .col-md-offset-6
+    .col-md-offset-4
       %p
         Cena:
         =@product.price
@@ -44,3 +44,9 @@
       %p
         Opis:
         =@product.description
+      
+      = form_tag :additem, method: "post" do
+        = label_tag :quantity, "Ilość sztuk:"
+        = number_field_tag :quantity, 1, min:1, max:99, class: 'item-number-field'
+        = hidden_field_tag :product_id, @product.id
+        = submit_tag "Dodaj"

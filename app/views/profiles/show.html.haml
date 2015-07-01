@@ -15,4 +15,15 @@
     Konto założone #{@profile.created_at.to_s}
   = link_to "Cofnij", root_url
   %br/
+<<<<<<< HEAD
   = link_to "Edytuj swoje dane", edit_profile_path(@profile)
+=======
+  = @profile.zip_code 
+  = @profile.city_name
+%br/
+%h6
+  =@profile.created_at.strftime("Konto założone %d/%m/%Y, %k:%M:%S")
+= link_to "Cofnij", root_url
+%br/
+= link_to "Edytuj swoje dane", edit_profile_path(@profile)
+>>>>>>> master

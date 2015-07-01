@@ -35,3 +35,25 @@ pl:
         password: "Hasło"
         password_confirmation: "Potwierdź hasło"
         current_password: "Obecne hasło"
+  activerecord:
+    attributes:
+      user:
+        password: "Hasło"
+        encrypted_password: "Hasło"
+        email: "Email"
+      profile:
+        first_name: "Imię"
+        last_name: "Nazwisko"
+        phone_no: "Nr telefonu"
+        street_name: "Nazwa ulicy"
+        house_no: "Nr domu"
+        apartment_no: "Nr mieszkania"
+        zip_code: "Kod pocztowy"
+        city_name: "Nazwa miasta"
+      product_images:
+        photo: " "
+      product:
+        name: "Nazwa"
+        price: "Cena"
+      gear:
+        name: ""
