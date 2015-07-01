@@ -11,7 +11,7 @@ class Admin::CategoriesController < Admin::AdminController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to admin_categories_path
+      redirect_to admin_categories_path, notice: 'Kategoria dodana'
     else
       render :new
     end
@@ -26,7 +26,7 @@ class Admin::CategoriesController < Admin::AdminController
     if @category.update(category_params)
       redirect_to admin_categories_path, notice: 'Kategoria zmieniona'
     else 
-      render :edit, alert: 'Błąd, sprawdź parametry'
+      render :edit
     end
   end
 
@@ -37,8 +37,8 @@ class Admin::CategoriesController < Admin::AdminController
   end
 
   private
+
   def category_params
     params.require(:category).permit(:name)
   end
-
 end

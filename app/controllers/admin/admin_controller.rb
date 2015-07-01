@@ -2,20 +2,20 @@ class Admin::AdminController < ApplicationController
   before_action :authenticate_user!
   before_action :authorized
 
-  def admin
-    @users = User.all
+  def index
+    @users = User.count
    # @orders = Order.all
-    @products = Product.all
-    @categories = Category.all
-    @models = Gear.notbase
-    @types = Gear.base
+    @products = Product.count
+    @categories = Category.count
+    @models = Gear.notbase.count
+    @types = Gear.base.count
   end
 
   private
+
   def authorized
     unless current_user.is_admin
-     flash[:error] = "Nie masz uprawnień do przeglądania tej strony."
-     redirect_to root_path
+      redirect_to root_path, alert: 'Nie masz uprawnień do przeglądania tej strony.'
    end
   end
 end

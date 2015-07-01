@@ -27,9 +27,9 @@ class Admin::GearsController < Admin::AdminController
       end
     else 
       if (@gear.parent_id == nil)
-        render :new, alert: 'Błąd, sprawdź parametry'
+        render :new
       else
-        render :new_model, alert: 'Błąd, sprawdź parametry'
+        render :new_model
       end
     end
   end
@@ -54,36 +54,34 @@ class Admin::GearsController < Admin::AdminController
       end
     else 
       if (@gear.parent_id == nil)
-        render :edit, alert: 'Błąd, sprawdź parametry'
+        render :edit
       else
-        render :edit_model, alert: 'Błąd, sprawdź parametry'
+        render :edit_model
       end
     end
   end
 
   def destroy
     @gear = Gear.find(params[:id])
-    @models = Gear.where("parent_id = ?", @gear.id)
-    @products = Product.where("gear_id = ?", @gear.id)
-    if @models.empty?
-      if @products.empty?
-        @gear.destroy
-        if (@gear.parent_id == nil)
-          redirect_to admin_gears_path, notice: 'Typ usunięty'
-        else
-          redirect_to admin_modelindex_path, notice: 'Model usunięty'
-        end
-      else
-        redirect_to admin_modelindex_path, alert: 'Nie można usunąć modelu, dla którego posiadasz produkty.'
-      end
+    @models = Gear.where(parent_id: @gear.id)
+    @products = Product.where(gear_id: @gear.id)
+    if @models.empty? && @products.empty?
+      @gear.destroy
+      flash[:notice] = 'Usunięto'
     else
-      redirect_to admin_gears_path, alert: 'Nie można usunąć typu, którego posiadasz modele.'
+      flash[:alert] = 'Nie można usunąć'
+    end
+
+    if @gear.parent_id
+      redirect_to admin_modelindex_path
+    else
+      redirect_to admin_gears_path
     end
   end
 
   private
+
   def model_params
     params.require(:gear).permit(:name, :parent_id)
   end
-
 end

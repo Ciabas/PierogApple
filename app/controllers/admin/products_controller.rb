@@ -27,7 +27,7 @@ class Admin::ProductsController < Admin::AdminController
     if @product.save
       redirect_to admin_products_path, notice: 'Produkt dodany'
     else 
-      render :new, error: 'Błąd, sprawdź parametry'
+      render :new
     end
   end
 
@@ -49,7 +49,7 @@ class Admin::ProductsController < Admin::AdminController
     if @product.update(product_params)
       redirect_to admin_products_path, notice: 'Produkt zmieniony'
     else 
-      render :edit, error: 'Błąd, sprawdź parametry'
+      render :edit
     end
   end
 

@@ -1,4 +1,9 @@
 .row
+  %ul
+    -@category.errors.full_messages.each do |err|
+      %li
+        =err
+.row
   .jumbotron
     %h1.padded Stwórz nową kategorię
     %p

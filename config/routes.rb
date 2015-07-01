@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get '/modelindex', to: 'gears#modelindex', as: :modelindex
     get '/new_model' => 'gears#new_model'
     post '/new_model' => 'gears#create'
-    root 'admin#admin'
+    root 'admin#index'
     #resources :orders
   end
 
