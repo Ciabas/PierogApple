@@ -20,4 +20,8 @@ Rails.application.routes.draw do
   post '/cart/edititem', to: 'carts#edititem', as: :edititem
   post '/cart/removeitem', to: 'carts#removeitem', as: :removeitem
   post '/cart/additem', to: 'carts#additem', as: :additem
+
+  get 'static_pages/about', to: 'static_pages#about', as: :about
+  get 'static_pages/contact', to: 'static_pages#contact', as: :contact
+  get 'static_pages/rules', to: 'static_pages#rules', as: :rules
 end
