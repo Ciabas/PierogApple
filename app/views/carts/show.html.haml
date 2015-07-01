@@ -21,7 +21,7 @@
           %tr
             %td=  image_tag p.product_images.first.photo(:miniature)
             %td=  p.name
-            %td=  p.price
+            %td=  number_to_currency(p.price, format: '%n%u', unit: 'zł')
             %td=  p.category.name
             %td=  p.gear.parent.name
             %td=  p.gear.name
@@ -29,7 +29,7 @@
               %td=  number_field_tag :quantity, session[:cart][iter]['quantity'], min:1, max:99, class: 'item-number-field'
               = hidden_field_tag :product_id, p.id
               %td=  submit_tag "Zmień"
-            %td= p.price * session[:cart][iter]['quantity'].to_i
+            %td= number_to_currency(p.price * session[:cart][iter]['quantity'].to_i, format: '%n%u', unit: 'zł')
             = form_tag :removeitem, method: "post" do
               = hidden_field_tag :product_id, p.id
               %td=  submit_tag "Usuń"
