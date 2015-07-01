@@ -4,11 +4,10 @@ Rails.application.routes.draw do
     resources :profiles, only: [:show, :index, :destroy]
     resources :categories, only: [:index, :new, :destroy, :create]
     resources :products
-    resources :gears, only: [:index, :new, :create, :destroy]
-    get '/modelindex' => 'gears#modelindex'
+    resources :gears, except: [:show]
+    get '/modelindex', to: 'gears#modelindex', as: :modelindex
     get '/new_model' => 'gears#new_model'
-    post '/new_model' => 'gears#create_model'
-    delete '/modelindex/:id' => 'gears#destroy_model'
+    post '/new_model' => 'gears#create'
     root 'admin#admin'
     #resources :orders
   end

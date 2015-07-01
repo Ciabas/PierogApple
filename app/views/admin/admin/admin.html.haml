@@ -13,7 +13,7 @@
           %h3 150
           %p Zamówień
         .icon
-          %i.ion.ion-bag
+          = icon 'shopping-cart'
         %a.small-box-footer{:href => "#"}
           Zarządzaj
           %i.fa.fa-arrow-circle-right
@@ -25,8 +25,8 @@
           %h3 #{@models.count}
           %p Modeli
         .icon
-          %i.ion.ion-stats-bars
-        %a.small-box-footer{:href => "/admin/modelindex"}
+          = icon 'phone'
+        %a.small-box-footer{:href => admin_modelindex_path }
           Zarządzaj
           %i.fa.fa-arrow-circle-right
     / ./col
@@ -37,7 +37,7 @@
           %h3 #{@types.count}
           %p Typów
         .icon
-          %i.ion.ion-stats-bars
+          = icon 'cog'
         %a.small-box-footer{:href => admin_gears_path }
           Zarządzaj
           %i.fa.fa-arrow-circle-right
@@ -49,7 +49,7 @@
           %h3 #{@categories.count}
           %p Kategorii
         .icon
-          %i.ion.ion-pie-graph
+          = icon 'th-large'
         %a.small-box-footer{:href => admin_categories_path }
           Zarządzaj
           %i.fa.fa-arrow-circle-right
@@ -61,7 +61,7 @@
           %h3 #{@users.count}
           %p Użytkowników
         .icon
-          %i.ion.ion-person-add
+          = icon 'user'
         %a.small-box-footer{:href => admin_profiles_path}
           Zarządzaj
           %i.fa.fa-arrow-circle-right
@@ -73,7 +73,7 @@
           %h3 #{@products.count}
           %p Produktów
         .icon
-          %i.ion.ion-pie-graph
+          = icon 'option-horizontal'
         %a.small-box-footer{:href => admin_products_path}
           Zarządzaj
           %i.fa.fa-arrow-circle-right

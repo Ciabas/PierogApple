@@ -7,7 +7,7 @@
   .row
     .col-sm-1
     .col-sm-2
-      %a.btn.btn-primary.btn-block{:type => "button", :href => admin_new_model_path } Dodaj model
+      = link_to 'Dodaj model', admin_new_model_path , class: 'btn btn-primary btn-block'
   %br/
   .row
     .col-sm-1
@@ -15,16 +15,18 @@
       %table#example2.table.table-bordered.table-hover.dataTable{"aria-describedby" => "example2_info", :role => "grid"}
         %thead
           %tr{:role => "row"}
-            %th.sorting_asc{"aria-controls" => "example2", "aria-label" => "Rendering engine: activate to sort column descending", "aria-sort" => "ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Model
+            %th.sorting_asc.col-md-6{"aria-controls" => "example2", "aria-label" => "Rendering engine: activate to sort column descending", "aria-sort" => "ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Model
             %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Akcje
         %tbody
-          - @gears.each do |gear|
+          - @notbasegears.each do |gear|
             %tr.odd{:role => "row"}
               %td.sorting_1 
                 = gear.name
               %td 
-                = button_to "Usuń", { action: "destroy_model", id: gear.id }, method: :delete, data: { confirm: "Na pewno?" }, class: 'btn btn-primary'
+                = link_to "Usuń", { action: "destroy", id: gear.id }, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-warning'
+                = link_to 'Edytuj', edit_admin_gear_path(gear.id) , class: 'btn btn-primary'
+
         %tfoot
   .row
     .col-sm-5
-      #example2_info.dataTables_info{"aria-live" => "polite", :role => "status"} Pokazuję #{@gears.count} modeli
+      #example2_info.dataTables_info{"aria-live" => "polite", :role => "status"} Pokazuję #{@notbasegears.count} modeli
