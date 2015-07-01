@@ -34,6 +34,11 @@
                 = link_to (edit_user_registration_path) do
                   = icon 'wrench'
                   Edytuj swoje konto
+              -if current_user &&  current_user.is_admin
+                %li
+                  = link_to (admin_root_path) do
+                    = icon 'list'
+                    Panel Administratora
               %li
                 = link_to( destroy_user_session_path, method: :delete, data: { confirm: 'Jesteś pewien?' } ) do
                   = icon 'log-out'
