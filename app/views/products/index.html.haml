@@ -8,32 +8,13 @@
     .col-md-10
       %h1 Produkty:
       - @products.each do |p|
-        .col-xs-6.col-md-3.text-center
+        .col-xs-6.col-md-2.text-center
           %a.thumbnail{:href => product_path(p.id), title: "#{p.gear.parent.name.capitalize} - model: #{p.gear.name}", 'data-placement' => 'bottom', 'data-toggle' => 'tooltip'}
             =image_tag p.product_images.first.photo(:thumb)
             .caption
               =p.name
               %br/
               %b=number_to_currency(p.price, format: '%n%u', unit: 'zł')
-
-      / %table.table.table-striped
-      /   %thead
-      /     %tr
-      /       %th
-      /       %th{data_field: :product} Produkt
-      /       %th{data_field: :price} Cena
-      /       %th{data_field: :category} Kategoria
-      /       %th{data_field: 'gear.parent'} Typ
-      /       %th{data_field: :gear} Model
-      /   - @products.each do |p|
-      /     %tr
-      /       %td=  image_tag p.product_images.first.photo(:miniature)
-      /       %td=  p.name
-      /       %td=  p.price
-      /       %td=  p.category.name
-      /       %td=  p.gear.parent.name
-      /       %td=  p.gear.name
-      /       %td=  link_to 'wiecej', product_path(p.id)
       .row
         .col-md-12.text-center
           %b= link_to 'dodaj', new_product_path
