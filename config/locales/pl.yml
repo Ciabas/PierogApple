@@ -23,41 +23,47 @@ pl:
   helpers:
     label:
       profile:
-        first_name: "Imię"
-        last_name: "Nazwisko"
-        phone_no: "Nr telefonu"
-        street_name: "Ulica"
-        house_no: "Nr domu"
-        apartment_no: "Nr mieszkania"
-        zip_code: "Kod pocztowy"
-        city_name: "Miasto"
+        first_name: 'Imię'
+        last_name: 'Nazwisko'
+        phone_no: 'Nr telefonu'
+        street_name: 'Ulica'
+        house_no: 'Nr domu'
+        apartment_no: 'Nr mieszkania'
+        zip_code: 'Kod pocztowy'
+        city_name: 'Miasto'
       user:
-        password: "Hasło"
-        password_confirmation: "Potwierdź hasło"
-        current_password: "Obecne hasło"
+        password: 'Hasło'
+        password_confirmation: 'Potwierdź hasło'
+        current_password: 'Obecne hasło'
   activerecord:
+    models:
+      user: 'Użytkownik'
+      category: 'Kategoria'
+      gear: 'Urządzenie'
+      product: 'Produkt'
+      profile: 'Profil'
     attributes:
       user:
-        password: "Hasło"
-        encrypted_password: "Hasło"
-        email: "Email"
+        password: 'Hasło'
+        encrypted_password: 'Hasło'
+        email: 'Email'
         password_confirmation: ''
       profile:
-        first_name: "Imię"
-        last_name: "Nazwisko"
-        phone_no: "Nr telefonu"
-        street_name: "Nazwa ulicy"
-        house_no: "Nr domu"
-        apartment_no: "Nr mieszkania"
-        zip_code: "Kod pocztowy"
-        city_name: "Nazwa miasta"
+        first_name: 'Imię'
+        last_name: 'Nazwisko'
+        phone_no: 'Nr telefonu'
+        street_name: 'Nazwa ulicy'
+        house_no: 'Nr domu'
+        apartment_no: 'Nr mieszkania'
+        zip_code: 'Kod pocztowy'
+        city_name: 'Nazwa miasta'
       product_images:
-        photo: ""
+        photo: ''
       product:
-        name: "Nazwa"
-        price: "Cena"
+        name: 'Nazwa'
+        price: 'Cena'
       gear:
-        name: ""
+        name: ''
     errors:
       models:
         category:
