@@ -14,7 +14,7 @@
             = icon 'shopping-cart'
             Koszyk
             %span{ :style => "color: green" }
-              = "(#{get_count_items.to_s} produktów, #{number_to_currency(session[:cart_count]['items_value'], format: '%n%u', unit: 'zł')})"
+              = "(#{get_count_items.to_s} produktów, {number_to_currency(get_items_value, format: '%n%u', unit: 'zł')})"
         - if user_signed_in?
           %li.dropdown 
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
