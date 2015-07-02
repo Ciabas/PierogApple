@@ -1,0 +1,88 @@
+%section.content-header
+  %h1
+    Tablica
+    %small Panel administratora
+/ Main content
+%section.content.content-wrapper
+  / Small boxes (Stat box)
+  .row
+    .col-lg-2.col-xs-6
+      / small box
+      .small-box.bg-purple
+        .inner
+          %h3 150
+          %p Zamówień
+        .icon
+          = icon 'shopping-cart'
+        %a.small-box-footer{:href => "#"}
+          Zarządzaj
+          %i.fa.fa-arrow-circle-right
+    / ./col
+    .col-lg-2.col-xs-6
+      / small box
+      .small-box.bg-aqua
+        .inner
+          %h3 #{@models}
+          %p Modeli
+        .icon
+          = icon 'phone'
+        %a.small-box-footer{:href => admin_modelindex_path }
+          Zarządzaj
+          %i.fa.fa-arrow-circle-right
+    / ./col
+    .col-lg-2.col-xs-6
+      / small box
+      .small-box.bg-green
+        .inner
+          %h3 #{@types}
+          %p Typów
+        .icon
+          = icon 'cog'
+        %a.small-box-footer{:href => admin_gears_path }
+          Zarządzaj
+          %i.fa.fa-arrow-circle-right
+    / ./col
+    .col-lg-2.col-xs-6
+      / small box
+      .small-box.bg-yellow
+        .inner
+          %h3 #{@categories}
+          %p Kategorii
+        .icon
+          = icon 'th-large'
+        %a.small-box-footer{:href => admin_categories_path }
+          Zarządzaj
+          %i.fa.fa-arrow-circle-right
+    / ./col
+    .col-lg-2.col-xs-6
+      / small box
+      .small-box.bg-orange
+        .inner
+          %h3 #{@users}
+          %p Użytkowników
+        .icon
+          = icon 'user'
+        %a.small-box-footer{:href => admin_profiles_path}
+          Zarządzaj
+          %i.fa.fa-arrow-circle-right
+    / ./col
+    .col-lg-2.col-xs-6
+      / small box
+      .small-box.bg-red
+        .inner
+          %h3 #{@products}
+          %p Produktów
+        .icon
+          = icon 'option-horizontal'
+        %a.small-box-footer{:href => admin_products_path}
+          Zarządzaj
+          %i.fa.fa-arrow-circle-right
+    / ./col
+  / /.row
+  / Main row
+  .row
+  %br/
+  .row
+    .col-md-1
+    .col-md-10
+      #line-example{:style => "height: 300px;"}

@@ -1,32 +1,22 @@
-%h2
-  Edytuj swoje konto
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Trwa czekanie na potwierdzenie: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (pozostaw puste, jeśli nie chcesz zmieniać)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label :current_password
-    %i (potrzebujemy Twojego obecnego hasła do potwierdzenia zmian)
-    %br/
-    = f.password_field :current_password, autocomplete: "off"
-  .actions
-    = f.submit "Zmień"
-%br/
-%br/
-%h4 Usuń konto
-%p
-  =button_to "Usuń konto", registration_path(resource_name), data: { confirm: "Na pewno?" }, method: :delete
+.container  
+  .col-md-6.col-md-offset-3
+    %h2 Edytuj swoje konto
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = devise_error_messages!
+      .form-group
+        = f.label :email, 'Adres email', class: 'control-label'
+        = f.email_field :email, autofocus: true, class: 'form-control'
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %div Trwa czekanie na potwierdzenie: #{resource.unconfirmed_email}
+      .form-group
+        = f.label :password, 'Nowe hasło', class: 'control-label'
+        %i (pozostaw puste, jeśli nie chcesz zmieniać)
+        = f.password_field :password, autocomplete: 'off', class: 'form-control'
+      .form-group
+        = f.label :password_confirmation, 'Ponów nowe hasło', class: 'control-label'
+        = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
+      .form-group
+        = f.label :current_password, 'Obecne hasło', class: 'control-label'
+        %i (do potwierdzenia zmian)
+        = f.password_field :current_password, autocomplete: 'off', class: 'form-control'
+      .actions= f.submit 'Zmień', class: 'btn btn-default btn-primary'

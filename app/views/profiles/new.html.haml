@@ -1,3 +1,10 @@
-%h1 Stwórz swój profil
-%br/
-=render 'form'
+.container  
+  .row
+    %ul
+      -@profile.errors.full_messages.each do |err|
+        %li
+          =err
+  .row
+    .col-md-6.col-md-offset-3
+      %h1 Stwórz swój profil
+  =render 'form'

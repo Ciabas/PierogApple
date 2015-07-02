@@ -22,6 +22,25 @@ body {
   font-family: 'Lato', sans-serif;  
   padding-top: 70px;
 }
+.caret.caret-reversed {
+    border-top-width: 0;
+    border-bottom: 4px solid transparent;
+}
+.invalid{
+  border-radius: 4px;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+}
+h2{
+  font-size: 24px;
+}
+h3{
+  font-size: 18px;
+}
+h4{
+  font-size: 14px;
+}
 /* nav styles */
 
 .navbar{
@@ -33,6 +52,46 @@ body {
 }
 
 /* middle styles */
+
+.filters{
+  display: none;
+  padding: 10px;
+  font-size: 90%;
+  h4{
+    margin-top: 0;
+    color: #337ab7;
+    text-decoration: underline;
+  }
+  .price{
+    input{
+      display: inline;
+      width: 30%;
+      height: 28px;
+    }
+  }
+  .categories, .gears{
+    label{
+      display: block;
+      font-weight: normal;
+    }
+  }
+  .models{
+    label{
+      width: 40%;
+      font-weight: normal;
+    }
+  }
+}
+
+  ul{
+    list-style-type: none;
+    padding: 0;
+  }
+
+.filters-header{
+  margin: 0;
+  cursor: pointer;
+}
 
 .lead{
   margin-bottom: 10px;
@@ -65,4 +124,11 @@ body {
 
 footer {
     margin: 20px 0;
+}
+
+.morris-hover{position:absolute;z-index:1000}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255,255,255,0.8);border:solid 2px rgba(230,230,230,0.8);font-family:sans-serif;font-size:12px;text-align:center}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0}
+.morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0}
+
+.cart-summary{
+  float: right;
 }
