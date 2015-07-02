@@ -23,37 +23,108 @@ pl:
   helpers:
     label:
       profile:
-        first_name: "Imię"
-        last_name: "Nazwisko"
-        phone_no: "Nr telefonu"
-        street_name: "Ulica"
-        house_no: "Nr domu"
-        apartment_no: "Nr mieszkania"
-        zip_code: "Kod pocztowy"
-        city_name: "Miasto"
+        first_name: 'Imię'
+        last_name: 'Nazwisko'
+        phone_no: 'Nr telefonu'
+        street_name: 'Ulica'
+        house_no: 'Nr domu'
+        apartment_no: 'Nr mieszkania'
+        zip_code: 'Kod pocztowy'
+        city_name: 'Miasto'
       user:
-        password: "Hasło"
-        password_confirmation: "Potwierdź hasło"
-        current_password: "Obecne hasło"
+        password: 'Hasło'
+        password_confirmation: 'Potwierdź hasło'
+        current_password: 'Obecne hasło'
   activerecord:
+    models:
+      user: 'Użytkownik'
+      category: 'Kategoria'
+      gear: 'Urządzenie'
+      product: 'Produkt'
+      profile: 'Profil'
     attributes:
       user:
-        password: "Hasło"
-        encrypted_password: "Hasło"
-        email: "Email"
+        password: 'Hasło'
+        encrypted_password: 'Hasło'
+        email: 'Email'
+        password_confirmation: ''
       profile:
-        first_name: "Imię"
-        last_name: "Nazwisko"
-        phone_no: "Nr telefonu"
-        street_name: "Nazwa ulicy"
-        house_no: "Nr domu"
-        apartment_no: "Nr mieszkania"
-        zip_code: "Kod pocztowy"
-        city_name: "Nazwa miasta"
+        first_name: 'Imię'
+        last_name: 'Nazwisko'
+        phone_no: 'Nr telefonu'
+        street_name: 'Nazwa ulicy'
+        house_no: 'Nr domu'
+        apartment_no: 'Nr mieszkania'
+        zip_code: 'Kod pocztowy'
+        city_name: 'Nazwa miasta'
       product_images:
-        photo: " "
+        photo: ''
       product:
-        name: "Nazwa"
-        price: "Cena"
+        name: 'Nazwa'
+        price: 'Cena'
       gear:
-        name: ""
+        name: ''
+    errors:
+      models:
+        category:
+          attributes:
+            name:
+              presence: 'Nie podano nazwy kategorii'
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: 'Wprowadzone hasła różnią się'
+            password:
+              too_short: 'jest za krótkie'
+              blank: '- pole puste'
+            encrypted_password:
+              presence: '- pole puste'
+              blank: '- pole puste'
+            email:
+              presence: '- nie wypełniono wymaganego pola'
+              format: '- niewłaściwy format'
+              taken: '- już istnieje użytkownik o takim adresie'
+        profile:
+          attributes:
+            first_name:
+              presence: '- nie wypełniono wymaganego pola'
+              length: 'dłuższe niż 40 znaków'
+            last_name:
+              presence: '- nie wypełniono wymaganego pola'
+              length: 'dłuższe niż 40 znaków'
+            phone_no:
+              presence: '- nie wypełniono wymaganego pola'
+              format: '- niewłaściwy format'
+            street_name:
+              presence: '- nie wypełniono wymaganego pola'
+              length: 'dłuższa niż 80 znaków'
+            house_no:
+              presence: '- nie wypełniono wymaganego pola'
+              format: '- niewłaściwy format'
+            apartment_no:
+              presence: '- nie wypełniono wymaganego pola'
+              numericality: '- niewłaściwy format'
+            zip_code:
+              presence: '- nie wypełniono wymaganego pola'
+            city_name:
+              presence: '- nie wypełniono wymaganego pola'
+              length: 'dłuższa niż 80 znaków'
+        #product_images:
+          #attributes:
+            #photo:
+              #attachment_presence: 'Nie dodano trzech zdjęć'
+              #attachment_size: 'Za duży rozmiar pliku'
+              #attachment_content_size: 'Niewłaściwy format zdjęcia'
+        product:
+          attributes:
+            name:
+              presence: '- nie wypełniono pola'
+              uniqueness: ' - istnieje już produkt o takiej nazwie'
+            price:
+              presence: '- nie wypełniono pola'
+              format: '- niewłaściwy format'
+              numericality: '- niewłaściwy format'
+        gear:
+          attributes:
+            name:
+              presence: 'Nie podano nazwy urządzenia'

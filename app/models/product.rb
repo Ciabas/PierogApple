@@ -4,8 +4,8 @@ class Product < ActiveRecord::Base
   has_many :product_images
   accepts_nested_attributes_for :product_images
 
-  validates :name, :price, presence: { message: '- nie wypełniono pola'}
-  validates :name, uniqueness: {message: ' - istnieje już produkt o takiej nazwie'}
-  validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ , message: '- niewłaściwy format'}, 
-            :numericality => {:greater_than => 0, message: '- niewłaściwy format'}
+  validates :name, :price, presence: true
+  validates :name, uniqueness: true
+  validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/}, 
+            :numericality => {:greater_than => 0}
 end 
