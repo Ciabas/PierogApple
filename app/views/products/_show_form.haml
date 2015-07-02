@@ -47,10 +47,34 @@
       =@product.description
     %p
       %h2 Status:
-      =@product.status
+      -if @product.status == 'dostepny'
+        %h4.available 
+          Dostępny
+      -if @product.status == 'niedostepny'
+        %h4.unavailable
+          Produkt obecnie niedostępny
+      -if @product.status == 'zamowienie'
+        %h4.special-order
+          Produkt dostępny na specjalne zamówienie. Skontaktuj się ze sklepem.
     -if @product.status == 'dostepny'
       = form_tag :additem, method: "post" do
         = label_tag :quantity, "Ilość sztuk:"
         = number_field_tag :quantity, 1, min:1, max:99, class: 'item-number-field'
         = hidden_field_tag :product_id, @product.id
         = submit_tag "Dodaj"
+.row
+  %br/
+  %hr/
+  .col-sm-10.col-sm-offset-1
+    %h2.text-center
+      Podobne produkty:
+    %br/
+    - @similar.each do |p|
+      -unless p == @product
+        .col-xs-6.col-md-2.text-center
+          %a.thumbnail{:href => product_path(p.id), title: "#{p.gear.parent.name.capitalize} - model: #{p.gear.name}", 'data-placement' => 'bottom', 'data-toggle' => 'tooltip'}
+            =image_tag p.product_images.first.photo(:thumb)
+            .caption
+              =p.name.truncate(28)
+              %br/
+              %b=number_to_currency(p.price, format: '%n%u', unit: 'zł')
