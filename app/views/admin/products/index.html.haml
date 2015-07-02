@@ -22,6 +22,7 @@
                 %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Kategoria
                 %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Typ
                 %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Model
+                %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Status
                 %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Akcje
             %tbody
               - @products.each do |p|
@@ -32,7 +33,8 @@
                   %td=  p.category.name
                   %td=  p.gear.parent.name
                   %td=  p.gear.name
-                  %td= button_to "Szczegóły", { action: "show", id: p.id }, method: 'get',class: 'btn btn-primary'
+                  %td=  p.status
+                  %td=  button_to "Szczegóły", { action: "show", id: p.id }, method: 'get',class: 'btn btn-primary'
             %tfoot
       .row
         .col-sm-5
