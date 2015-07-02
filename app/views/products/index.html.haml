@@ -41,11 +41,11 @@
     .col-md-10
       %h1 Produkty:
       - @products.each do |p|
-        .col-xs-6.col-md-2.text-center
+        .col-xs-4.col-md-2.text-center
           %a.thumbnail{:href => product_path(p.id), title: "#{p.gear.parent.name.capitalize} - model: #{p.gear.name}", 'data-placement' => 'bottom', 'data-toggle' => 'tooltip'}
             =image_tag p.product_images.first.photo(:thumb)
             .caption
-              =p.name
+              =p.name.truncate(28)
               %br/
               %b=number_to_currency(p.price, format: '%n%u', unit: 'zł')
 :javascript

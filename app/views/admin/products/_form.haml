@@ -1,36 +1,35 @@
-=form_for @product, :html => {multipart: true} do |f|
-  .row
-    .col-md-6{:style => 'padding-right:10px; border-right: 1px solid #ccc;'}
-      .form-group
-        =f.label :name, 'Nazwa', class: 'control-label col-sm-2'
-        .col-sm-10
-          =f.text_field :name, class: 'form-control'
-      .form-group
-        =f.label :price, 'Cena', class: 'control-label col-sm-2'
-        .col-sm-10
-          =f.text_field :price, class: 'form-control'
-      .form-group
-        =f.label :category, 'Kategoria', class: 'control-label col-sm-2'
-        .col-sm-10
-          =f.collection_select :category_id, @categories, :id, :name, {}, {class: 'form-control'}
-      .form-group
-        =f.label :parent, 'Model', class: 'control-label col-sm-2'
-        .col-sm-10
-          =f.collection_select :gear_id, @gears.base, :id, :name, {}, {class: 'form-control'}
-      .form-group
-        =f.label :gear, 'Typ', class: 'control-label col-sm-2'
-        .col-sm-10
-          =f.collection_select :gear_id, @gears.notbase, :id, :name, {}, {class: 'form-control'}
-      .form-group
-        =f.label :description, 'Opis', class: 'control-label col-sm-2'
-        .col-sm-10
-          =f.text_area :description, class: 'form-control description'
-    .col-md-offset-6{:style => 'padding-left:10px'}
-      %h3 Zdjęcia:
-      =f.fields_for :product_images do |builder|
-        -if builder.object.new_record?
-          .form-group
-            -builder.label :photo
-            =builder.file_field :photo
-  .row
-    .col-md-2.col-md-offset-5=  f.submit 'Dodaj produkt', class: 'btn btn-default btn-primary'
+.row
+  .col-md-6{:style => 'padding-right:10px; border-right: 1px solid #ccc;'}
+    .form-group
+      =f.label :name, 'Nazwa', class: 'control-label col-sm-2'
+      .col-sm-10
+        =f.text_field :name, class: 'form-control'
+    .form-group
+      =f.label :price, 'Cena', class: 'control-label col-sm-2'
+      .col-sm-10
+        =f.text_field :price, class: 'form-control'
+    .form-group
+      =f.label :category, 'Kategoria', class: 'control-label col-sm-2'
+      .col-sm-10
+        =f.collection_select :category_id, @categories, :id, :name, {}, {class: 'form-control'}
+    .form-group
+      =f.label :parent, 'Model', class: 'control-label col-sm-2'
+      .col-sm-10
+        =f.collection_select :gear_id, @gears.base, :id, :name, {}, {class: 'form-control'}
+    .form-group
+      =f.label :gear, 'Typ', class: 'control-label col-sm-2'
+      .col-sm-10
+        =f.collection_select :gear_id, @gears.notbase, :id, :name, {}, {class: 'form-control'}
+    .form-group
+      =f.label :description, 'Opis', class: 'control-label col-sm-2'
+      .col-sm-10
+        =f.text_area :description, class: 'form-control description'
+  .col-md-offset-6{:style => 'padding-left:10px'}
+    %h3 Zdjęcia:
+    =f.fields_for :product_images do |builder|
+      -if builder.object.new_record?
+        .form-group
+          -builder.label :photo
+          =builder.file_field :photo
+.row
+  .col-md-2.col-md-offset-5=  f.submit 'Dodaj produkt', class: 'btn btn-default btn-primary'
