@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
   end
 
   private
-  
+
   def params_check    
     products = Product.all
     unless params[:cid].blank?
@@ -39,5 +39,4 @@ class ProductsController < ApplicationController
     end
     return products, cid, price_low, price_high, models, g, m  
   end
-  
 end

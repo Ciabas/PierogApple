@@ -9,6 +9,10 @@
       .col-sm-10
         =f.text_field :price, class: 'form-control'
     .form-group
+      =f.label :staus, "Status", class: 'control-label col-sm-2'
+      .col-sm-10
+        =f.select :status, Product::STATUSES.map {|a| [a, a]}, {}, {class: 'form-control'}
+    .form-group
       =f.label :category, 'Kategoria', class: 'control-label col-sm-2'
       .col-sm-10
         =f.collection_select :category_id, @categories, :id, :name, {}, {class: 'form-control'}
