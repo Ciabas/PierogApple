@@ -50,16 +50,10 @@ class Admin::ProductsController < Admin::AdminController
     end
   end
 
-  def destroy
-    @product = Product.find(params[:id])
-    @product.destroy
-    redirect_to admin_products_path
-  end
-
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :category_id, :gear_id, :description, product_images_attributes: [:caption, :photo])
+    params.require(:product).permit(:name, :price, :status, :category_id, :gear_id, :description, product_images_attributes: [:caption, :photo])
   end
 
   def params_check    
