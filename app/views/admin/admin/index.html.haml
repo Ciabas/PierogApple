@@ -6,7 +6,7 @@
 %section.content.content-wrapper
   / Small boxes (Stat box)
   .row
-    .col-lg-2.col-xs-6
+    .col-lg-4.col-xs-6
       / small box
       .small-box.bg-purple
         .inner
@@ -18,31 +18,7 @@
           Zarządzaj
           %i.fa.fa-arrow-circle-right
     / ./col
-    .col-lg-2.col-xs-6
-      / small box
-      .small-box.bg-aqua
-        .inner
-          %h3 #{@models}
-          %p Modeli
-        .icon
-          = icon 'phone'
-        %a.small-box-footer{:href => admin_modelindex_path }
-          Zarządzaj
-          %i.fa.fa-arrow-circle-right
-    / ./col
-    .col-lg-2.col-xs-6
-      / small box
-      .small-box.bg-green
-        .inner
-          %h3 #{@types}
-          %p Typów
-        .icon
-          = icon 'cog'
-        %a.small-box-footer{:href => admin_gears_path }
-          Zarządzaj
-          %i.fa.fa-arrow-circle-right
-    / ./col
-    .col-lg-2.col-xs-6
+    .col-lg-4.col-xs-6
       / small box
       .small-box.bg-yellow
         .inner
@@ -54,7 +30,43 @@
           Zarządzaj
           %i.fa.fa-arrow-circle-right
     / ./col
-    .col-lg-2.col-xs-6
+    .col-lg-4.col-xs-6
+      / small box
+      .small-box.bg-red
+        .inner
+          %h3 #{@products}
+          %p Produktów
+        .icon
+          = icon 'option-horizontal'
+        %a.small-box-footer{:href => admin_products_path}
+          Zarządzaj
+          %i.fa.fa-arrow-circle-right
+    / ./col
+    .col-lg-3.col-xs-6
+      / small box
+      .small-box.bg-aqua
+        .inner
+          %h3 #{@models}
+          %p Modeli
+        .icon
+          = icon 'phone'
+        %a.small-box-footer{:href => admin_modelindex_path }
+          Zarządzaj
+          %i.fa.fa-arrow-circle-right
+    / ./col
+    .col-lg-3.col-xs-6
+      / small box
+      .small-box.bg-green
+        .inner
+          %h3 #{@types}
+          %p Typów
+        .icon
+          = icon 'cog'
+        %a.small-box-footer{:href => admin_gears_path }
+          Zarządzaj
+          %i.fa.fa-arrow-circle-right
+    / ./col
+    .col-lg-3.col-xs-6
       / small box
       .small-box.bg-orange
         .inner
@@ -66,15 +78,15 @@
           Zarządzaj
           %i.fa.fa-arrow-circle-right
     / ./col
-    .col-lg-2.col-xs-6
+    .col-lg-3.col-xs-6
       / small box
-      .small-box.bg-red
+      .small-box.bg-teal
         .inner
-          %h3 #{@products}
-          %p Produktów
+          %h3 #{@slider_images}
+          %p Zdjęć na stronie głównej
         .icon
-          = icon 'option-horizontal'
-        %a.small-box-footer{:href => admin_products_path}
+          = icon 'picture'
+        %a.small-box-footer{:href => admin_slider_images_path}
           Zarządzaj
           %i.fa.fa-arrow-circle-right
     / ./col

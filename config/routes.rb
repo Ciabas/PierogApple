@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :new, :destroy, :create]
     resources :products, except: [:destroy]
     resources :gears, except: [:show]
+    resources :slider_images, only: [:index, :new, :create, :destroy]
     get '/modelindex', to: 'gears#modelindex', as: :modelindex
     get '/new_model' => 'gears#new_model'
     post '/new_model' => 'gears#create'

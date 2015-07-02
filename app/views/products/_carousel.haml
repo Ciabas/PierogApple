@@ -1,0 +1,36 @@
+#myCarousel.carousel.slide{"data-ride" => "carousel"}
+  / Indicators
+  %ol.carousel-indicators
+    -@sliders.each do |slider|
+      -if slider == @sliders.first
+        %li.active{"data-slide-to" => slider, "data-target" => "#myCarousel"}
+      -else 
+        %li{"data-slide-to" => slider, "data-target" => "#myCarousel"}
+  / Wrapper for slides
+  .carousel-inner.slider{:role => "listbox"}
+    -@sliders.each do |image|
+      -if image == @sliders.first
+        .item.active
+          -if image.link
+            =link_to (image_tag image.photo(:slider)), image.link
+          -else
+            =image_tag image.photo(:slider)
+          .carousel-caption
+            %h1= image.title
+            %p= image.caption
+      -else
+        .item
+          -unless image.link==''
+            =link_to (image_tag image.photo(:slider)), image.link
+          -else
+            =image_tag image.photo(:slider)
+          .carousel-caption
+            %h1= image.title
+            %p= image.caption
+  / Left and right controls
+  %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel", :role => "button"}
+    %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+    %span.sr-only Previous
+  %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel", :role => "button"}
+    %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+    %span.sr-only Next
