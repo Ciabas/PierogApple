@@ -13,7 +13,7 @@
             -else 
               %li{"data-slide-to" => index, "data-target" => "#myCarousel"}
         / Wrapper for slides
-        .carousel-inner{:role => "listbox"}
+        .carousel-inner.product-carousel{:role => "listbox"}
           -(@product.product_images).each do |image|
             -if image == @product.product_images.first
               .item.active
