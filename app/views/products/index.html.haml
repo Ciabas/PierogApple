@@ -4,10 +4,6 @@
   .row
     .col-md-2.text-center
       .list-group
-        %h2.list-group-item.active Kategorie
-        - @categories.each do |category|
-          = link_to category.name.capitalize, products_path(category_id: category.id), class: "list-group-item"
-      .list-group
         .list-group-item
           %h3.filters-header
             = icon 'search'
@@ -33,7 +29,7 @@
               - @gears.each do |gear|
                 = label_tag do
                   = check_box_tag 'g[]', gear.id, ( !@g.blank? and @g.include?( (gear.id).to_s ) )
-                  = gear.name + "y"
+                  = gear.name
             %hr
             .models
               - unless @models == nil
@@ -47,11 +43,11 @@
     .col-md-10
       %h1 Produkty:
       - @products.each do |p|
-        .col-xs-6.col-md-2.text-center
+        .col-xs-4.col-md-2.text-center
           %a.thumbnail{:href => product_path(p.id), title: "#{p.gear.parent.name.capitalize} - model: #{p.gear.name}", 'data-placement' => 'bottom', 'data-toggle' => 'tooltip'}
             =image_tag p.product_images.first.photo(:thumb)
             .caption
-              =p.name
+              =p.name.truncate(28)
               %br/
               %b=number_to_currency(p.price, format: '%n%u', unit: 'zł')
 :javascript

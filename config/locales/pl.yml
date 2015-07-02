@@ -83,7 +83,9 @@ pl:
             email:
               presence: '- nie wypełniono wymaganego pola'
               format: '- niewłaściwy format'
+              invalid: '- niewłaściwy format'
               taken: '- już istnieje użytkownik o takim adresie'
+              blank: '- pole puste'
         profile:
           attributes:
             first_name:
