@@ -4,13 +4,8 @@ default: &default
   encoding: unicode
   pool: 5
   timeout: 5000
-<<<<<<< HEAD:config/database.yml
-  username: myapp
-  password: 1q1q
-=======
   username: USERNAME
   password: PASSWORD
->>>>>>> 0680f21d161aebe887fb7429e6043488939b70dc:config/database.yml.example
 
 development:
   <<: *default
