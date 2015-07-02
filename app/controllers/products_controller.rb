@@ -27,7 +27,8 @@ class ProductsController < ApplicationController
       price_high = params[:price_max]
     end
     unless params[:g].blank?
-      products = products.where( gear_id: params[:g]  )
+      gear = Gear.where(parent_id: params[:g])
+      products = products.where( gear_id: gear )
       models = Gear.where( parent_id: params[:g] )
       g = params[:g]
     end
