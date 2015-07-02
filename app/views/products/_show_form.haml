@@ -1,6 +1,7 @@
 .row
-  .col-md-4.col-md-offset-4
+  .col-md-10.col-md-offset-1.text-center
     %h1=  @product.name
+    %hr/
 .row
   .col-md-7
     #myCarousel.carousel.slide{"data-ride" => "carousel"}
@@ -27,24 +28,25 @@
       %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel", :role => "button"}
         %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
         %span.sr-only Next
-  .col-md-offset-4
+  .col-md-5.text-center.status
     %p
-      Cena:
+      %h2 Cena:
       =@product.price
+      zł
     %p
-      Kategoria:
+      %h2 Kategoria:
       =@product.category.name
     %p
-      Typ:
+      %h2 Typ:
       =@product.gear.parent.name
     %p
-      Model:
+      %h2 Model:
       =@product.gear.name 
     %p
-      Opis:
+      %h2 Opis:
       =@product.description
     %p
-      Status:
+      %h2 Status:
       =@product.status
     -if @product.status == 'dostepny'
       = form_tag :additem, method: "post" do
