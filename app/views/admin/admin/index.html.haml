@@ -13,7 +13,7 @@
           %h3 150
           %p Zamówień
         .icon
-          = icon 'shopping-cart'
+          %i.fa.fa-cart-plus
         %a.small-box-footer{:href => "#"}
           Zarządzaj
           %i.fa.fa-arrow-circle-right
@@ -25,7 +25,7 @@
           %h3 #{@categories}
           %p Kategorii
         .icon
-          = icon 'th-large'
+          %i.fa.fa-cubes
         %a.small-box-footer{:href => admin_categories_path }
           Zarządzaj
           %i.fa.fa-arrow-circle-right
@@ -37,7 +37,7 @@
           %h3 #{@products}
           %p Produktów
         .icon
-          = icon 'option-horizontal'
+          %i.fa.fa-barcode
         %a.small-box-footer{:href => admin_products_path}
           Zarządzaj
           %i.fa.fa-arrow-circle-right
@@ -49,7 +49,7 @@
           %h3 #{@models}
           %p Modeli
         .icon
-          = icon 'phone'
+          %i.fa.fa-mobile
         %a.small-box-footer{:href => admin_modelindex_path }
           Zarządzaj
           %i.fa.fa-arrow-circle-right
@@ -61,7 +61,7 @@
           %h3 #{@types}
           %p Typów
         .icon
-          = icon 'cog'
+          %i.fa.fa-cogs
         %a.small-box-footer{:href => admin_gears_path }
           Zarządzaj
           %i.fa.fa-arrow-circle-right
@@ -73,7 +73,7 @@
           %h3 #{@users}
           %p Użytkowników
         .icon
-          = icon 'user'
+          %i.fa.fa-user
         %a.small-box-footer{:href => admin_profiles_path}
           Zarządzaj
           %i.fa.fa-arrow-circle-right
@@ -85,7 +85,7 @@
           %h3 #{@slider_images}
           %p Zdjęć na stronie głównej
         .icon
-          = icon 'picture'
+          %i.fa.fa-photo
         %a.small-box-footer{:href => admin_slider_images_path}
           Zarządzaj
           %i.fa.fa-arrow-circle-right
