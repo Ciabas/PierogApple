@@ -26,6 +26,17 @@ class Order < ActiveRecord::Base
   validates :client_house_no, format: { with: /\A(\d)((\w)|(\/))*\z/i }
   validates :client_phone_no, format: { with: /\A[0-9]{9}\z/ }
   
+
+  def from_session(cart, order_id)
+    cart.each do |t|
+      product_id = t['id']
+      quantity = t['quantity']
+      product_name = Product.find_by(id: product_id).name
+      product_price = Product.find_by(id: product_id).price
+      order_product = OrderProduct.create(product_id: product_id, quantity: quantity, product_name: product_name, product_price: product_price, order_id: order_id)
+    end
+  end
+
   private
   
   def populate_company_data
