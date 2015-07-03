@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20150702103151) do
   end
 
   create_table "product_images", force: :cascade do |t|
+    t.string   "caption"
     t.integer  "product_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -78,7 +79,6 @@ ActiveRecord::Schema.define(version: 20150702103151) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status"
   end
 
   create_table "profiles", force: :cascade do |t|

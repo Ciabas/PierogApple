@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   
   def index
+    cart_count
     @categories = Category.all
     @gears = Gear.base
     @products, @cid, @price_low, @price_high, @models, @g, @m = params_check
