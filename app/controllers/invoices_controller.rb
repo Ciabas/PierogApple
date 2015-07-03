@@ -15,7 +15,7 @@ class InvoicesController < ApplicationController
 
   private
   def check_token
-    unless params[:token]==Order.find[:id].token
+    unless params[:token]==Order.find[:id].access_token
       redirect_to root_url
     end
   end
