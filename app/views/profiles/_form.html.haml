@@ -1,36 +1,42 @@
-= form_for(@profile) do |f|
+= form_for @profile, html: { class: 'form-horizontal' } do |f|
   -if @profile.errors.any? 
     %div id="error_explanation"
     %h2= pluralize(@profile.errors.count, "error") 
     prohibited this profile from being saved:
-
     %ul
       - @profile.errors.full_messages.each do |message| 
         %li= message 
-
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :phone_no
-    = f.text_field :phone_no
-  .field
-    = f.label :street_name
-    = f.text_field :street_name
-  .field
-    = f.label :house_no
-    = f.text_field :house_no
-  .field
-    = f.label :apartment_no
-    = f.number_field :apartment_no
-  .field
-    = f.label :zip_code
-    = f.text_field :zip_code
-  .field
-    = f.label :city_name
-    = f.text_field :city_name
-  .actions
-    = f.submit "Zapisz!"
+  .form-group
+    = f.label :first_name, 'Imie', class: 'control-label col-sm-2'
+    .col-sm-8
+      = f.text_field :first_name, class: 'form-control'
+  .form-group
+    = f.label :last_name, 'Nazwisko', class: 'control-label col-sm-2'
+    .col-sm-8
+      = f.text_field :last_name, class: 'form-control'
+  .form-group
+    = f.label :phone_no, 'Numer telefonu', class: 'control-label col-sm-2'
+    .col-sm-8
+      = f.text_field :phone_no, class: 'form-control'
+  .form-group
+    = f.label :street_name, 'Ulica', class: 'control-label col-sm-2'
+    .col-sm-8
+      = f.text_field :street_name, class: 'form-control'
+  .form-group
+    = f.label :house_no, 'Numer domu', class: 'control-label col-sm-2'
+    .col-sm-8
+      = f.text_field :house_no, class: 'form-control'
+  .form-group
+    = f.label :apartment_no, 'Numer mieszkania', class: 'control-label col-sm-2'
+    .col-sm-8
+      = f.number_field :apartment_no, class: 'form-control'
+  .form-group
+    = f.label :zip_code, 'Kod pocztowy', class: 'control-label col-sm-2'
+    .col-sm-8
+      = f.text_field :zip_code, class: 'form-control'
+  .form-group
+    = f.label :city_name, 'Miasto', class: 'control-label col-sm-2'
+    .col-sm-8
+      = f.text_field :city_name, class: 'form-control'
+  .col-md-2.col-md-offset-5  
+    .actions= f.submit "Zapisz!", class: 'btn btn-default btn-primary'

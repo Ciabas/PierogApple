@@ -7,7 +7,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
-      @order.from_session(session[:cart], @order.id)
+      @order.from_session(session[:cart], @order.id)      
+      InvoiceMailer.invoice_email(current_user).deliver_now
       session[:cart] = nil
       redirect_to root_path, notice: 'Złożono zamówienie. Szczegóły transakcji wysłano na adres e-mail.'
     else

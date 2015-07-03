@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702103151) do
+ActiveRecord::Schema.define(version: 20150703100749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,10 +60,10 @@ ActiveRecord::Schema.define(version: 20150702103151) do
     t.float    "sum"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "client_email"
   end
 
   create_table "product_images", force: :cascade do |t|
-    t.string   "caption"
     t.integer  "product_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20150702103151) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -93,6 +94,18 @@ ActiveRecord::Schema.define(version: 20150702103151) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "slider_images", force: :cascade do |t|
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "title"
+    t.string   "caption"
+    t.string   "link"
   end
 
   create_table "users", force: :cascade do |t|

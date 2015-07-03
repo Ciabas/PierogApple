@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :profiles, only: [:show, :index, :destroy]
     resources :categories, only: [:index, :new, :destroy, :create]
-    resources :products
+    resources :products, except: [:destroy]
     resources :gears, except: [:show]
+    resources :slider_images, only: [:index, :new, :create, :destroy]
     get '/modelindex', to: 'gears#modelindex', as: :modelindex
     get '/new_model' => 'gears#new_model'
     post '/new_model' => 'gears#create'
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'products#index'
   resources :profiles, except:  [:index, :destroy]
-  resources :products, except: [:update, :edit]
+  resources :products, only: [:index, :show]
   resource :cart, only: [:show]
   post '/cart/edititem', to: 'carts#edititem', as: :edititem
   post '/cart/removeitem', to: 'carts#removeitem', as: :removeitem

@@ -9,6 +9,7 @@ class Admin::AdminController < ApplicationController
     @categories = Category.count
     @models = Gear.notbase.count
     @types = Gear.base.count
+    @slider_images = SliderImage.count
   end
 
   private
