@@ -29,7 +29,7 @@ class InvoicesController < ApplicationController
 
   private
   def check_token
-    #unless params[:token]==Invoices.find[:id].token - autentykacja rozwiązana!
+    #unless params[:token]==Invoices.find[:id].token #that's how it should be done
     unless params[:token]=="aaa"
       redirect_to root_url
     end
