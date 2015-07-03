@@ -6,7 +6,7 @@
       %span.caret-wrap
         %span.caret
   .list-group-item.filters
-    = form_tag(products_path, method: :get, id: "filters-form") do
+    = form_tag(products_path(anchor: 'products'), method: :get, id: "filters-form") do
       .price
         %h4 Cena
         = text_field_tag 'price_min', nil, placeholder: "od", value: @price_low

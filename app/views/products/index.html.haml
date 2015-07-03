@@ -6,6 +6,7 @@
     .col-md-2.text-center
       =render 'filters'
     .col-md-10
+      %a.anchor{:name => 'products'}
       %h1 Produkty:
       - @products.each do |p|
         .col-xs-4.col-md-2.text-center
