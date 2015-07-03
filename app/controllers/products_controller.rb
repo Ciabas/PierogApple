@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   
   def index
+    cart_count
     @sliders = SliderImage.all
     @categories = Category.all
     @gears = Gear.base
