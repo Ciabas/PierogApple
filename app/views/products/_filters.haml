@@ -1,0 +1,37 @@
+.list-group
+  .list-group-item
+    %h3.filters-header
+      = icon 'search'
+      Filtrowanie
+      %span.caret-wrap
+        %span.caret
+  .list-group-item.filters
+    = form_tag(products_path, method: :get, id: "filters-form") do
+      .price
+        %h4 Cena
+        = text_field_tag 'price_min', nil, placeholder: "od", value: @price_low
+        = text_field_tag 'price_max', nil, placeholder: "do", value: @price_high
+      %hr
+      .categories
+        %h4 Kategorie
+        - @categories.each do |category|
+          = label_tag do
+            = check_box_tag 'cid[]', category.id, ( !@cid.blank? and @cid.include?( (category.id).to_s ) )
+            = category.name.capitalize
+      %hr
+      .gears
+        %h4 Typy
+        - @gears.each do |gear|
+          = label_tag do
+            = check_box_tag 'g[]', gear.id, ( !@g.blank? and @g.include?( (gear.id).to_s ) )
+            = gear.name
+      %hr
+      .models
+        - unless @models == nil
+          %h4 Modele
+          - @models.each do |model|
+            = label_tag do
+              = check_box_tag 'm[]', model.id, ( !@m.blank? and @m.include?( (model.id).to_s ) )
+              = model.name
+          %hr
+      = button_tag 'Filtruj!', name: nil, class: "btn btn-default"
