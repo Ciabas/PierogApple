@@ -45,11 +45,12 @@
       %h1 Produkty:
       - @products.each do |p|
         .col-xs-4.col-md-2.text-center
-          %a.thumbnail{:href => product_path(p.id), title: "#{p.gear.parent.name.capitalize} - model: #{p.gear.name} - status: #{p.status}", 'data-placement' => 'bottom', 'data-toggle' => 'onorder tooltip'}
+          %a.thumbnail{:href => product_path(p.id), title: "#{p.gear.parent.name.capitalize} - model: #{p.gear.name} - status: #{p.status}", 'data-placement' => 'bottom', 'data-toggle' => 'tooltip'}
             =image_tag p.product_images.first.photo(:thumb)
             .caption
-              =p.name.truncate(28)
+              =p.name.truncate(20)
               %br/
               %b=number_to_currency(p.price, format: '%n%u', unit: 'zł')
+              / =link_to "+", addoneitem_path (p.id), method: "post"
 :javascript
   $(document).ready(filters);

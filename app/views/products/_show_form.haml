@@ -54,7 +54,7 @@
         %h4.unavailable
           Produkt obecnie niedostępny
       -if @product.status == 'zamowienie'
-        %h4.special-order
+        %h4.onorder-order
           Produkt dostępny na specjalne zamówienie. Skontaktuj się ze sklepem.
     -if @product.status == 'dostepny'
       = form_tag :additem, method: "post" do

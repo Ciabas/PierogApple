@@ -11,26 +11,13 @@
 }
 
 .unavailable{
-  color: red;
+  color: #FF0000;
 }
 
-.special-order{
-  color: orange;
+.onorder-order{
+  color: #FF6347;
 }
 
 .available{
-  color: green;
-}
-
-
-.avalible > .tooltip > .tooltip-inner {
-  background-color: #FF0000;
-}
-
-.unavalible > .tooltip > .tooltip-inner {
-  background-color: #00FF00;
-}
-
-.onorder > .tooltip > .tooltip-inner {
-  background-color: #FF6347;
+  color: #00FF00;
 }

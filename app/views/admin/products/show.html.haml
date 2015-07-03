@@ -1,5 +1,2 @@
 .container 
   =render 'products/show_form'
-  .row
-    .col-md-offset-8
-      =button_to "Edytuj ten produkt", { action: "edit", id: @product.id }, method: 'get',class: 'btn btn-primary'

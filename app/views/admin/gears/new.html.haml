@@ -4,13 +4,10 @@
       %li
         =err
 .row
-  .jumbotron
-    %h1.padded Stwórz nowy typ
-    %p
-      = form_for @gear, url: admin_gears_path do |f|
-        .field.padded
-          = f.label :name
-          = f.text_field :name
-        .actions.padded
-          = button_to "Zapisz", { action: "create"} , class: 'btn btn-primary'
- 
+  .col-md-4.col-md-offset-4.text-center
+    %h2 Stwórz nowy typ
+    = form_for @gear, url: admin_gears_path, html: { class: 'form-inline' } do |f|
+      .form-group
+        = f.label :name, 'Nazwa', class: 'control-label'
+        = f.text_field :name, class: 'form-control'
+        = button_to "Zapisz", { action: "create"} , class: 'btn btn-primary' 

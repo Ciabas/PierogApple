@@ -67,7 +67,11 @@
                   %td=  p.gear.parent.name
                   %td=  p.gear.name
                   %td=  p.status
-                  %td=  button_to "Szczegóły", { action: "show", id: p.id }, method: 'get',class: 'btn btn-primary'
+                  %td
+                    .col-md-5
+                      =button_to "Szczegóły", { action: "show", id: p.id }, method: 'get',class: 'btn btn-primary'
+                    .col-md-5
+                      =button_to "Edytuj", { action: "edit", id: p.id }, method: 'get',class: 'btn btn-primary'
             %tfoot
       .row
         .col-sm-5
