@@ -17,6 +17,8 @@
 $icon-font-path: 'bootstrap/';
 
 @import 'bootstrap-sass';
+@import 'font-awesome';
+
 
 body {
   font-family: 'Lato', sans-serif;  
@@ -132,3 +134,23 @@ footer {
 .cart-summary{
   float: right;
 }
+
+.symbol{
+  width:80px;
+  height:80px;
+}
+
+.fb-blue{
+  color: #3b5998;
+}
+.fb-blue a:link{
+  color: #3b5998;
+}
+
+.insta-brown{
+  color: #905d34;
+}
+.insta-brown a:link{
+  color: #905d34;
+}
+
