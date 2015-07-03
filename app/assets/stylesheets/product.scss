@@ -21,3 +21,16 @@
 .available{
   color: green;
 }
+
+
+.avalible > .tooltip > .tooltip-inner {
+  background-color: #FF0000;
+}
+
+.unavalible > .tooltip > .tooltip-inner {
+  background-color: #00FF00;
+}
+
+.onorder > .tooltip > .tooltip-inner {
+  background-color: #FF6347;
+}
