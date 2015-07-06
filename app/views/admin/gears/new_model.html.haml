@@ -4,15 +4,13 @@
       %li
         =err
 .row
-  .jumbotron
-    %h1.padded Stwórz nowy model
-    %p
-      = form_for @gear, :html => {multipart: true}, url: admin_new_model_path do |f|
-        .field.padded
-          = f.label :name
-          = f.text_field :name
-        .field.padded
-          =f.label :parent_id, 'Typ'
-          =f.collection_select(:parent_id, @types, :id, :name)
-        .actions.padded
-          = button_to "Zapisz", { action: "create"} , class: 'btn btn-primary' 
+  .col-md-4.col-md-offset-4.text-center
+    %h2 Stwórz nowy model
+    = form_for @gear, :html => {multipart: true}, url: admin_gears_new_model_path, html: { class: 'form-inline' } do |f|
+      .form-group
+        = f.label :name, 'Nazwa', class: 'control-label'
+        = f.text_field :name, class: 'form-control' 
+      .form-group
+        = f.label :parent_id, 'Typ', class: 'control-label'
+        = f.collection_select :parent_id, @types, :id, :name, {}, {class: 'form-control'}
+        = f.submit "Zapisz", class: 'btn btn-primary' 

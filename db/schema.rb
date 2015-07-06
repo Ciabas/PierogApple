@@ -88,12 +88,12 @@ ActiveRecord::Schema.define(version: 20150703100749) do
     t.string   "phone_no",     null: false
     t.string   "street_name",  null: false
     t.string   "house_no",     null: false
-    t.integer  "apartment_no", null: false
     t.string   "zip_code",     null: false
     t.string   "city_name",    null: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "apartment_no"
   end
 
   create_table "slider_images", force: :cascade do |t|

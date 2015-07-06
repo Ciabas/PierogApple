@@ -1,32 +1,23 @@
 .row
-  .col-sm-1
-  .col-sm-6
+  .col-sm-6.col-sm-offset-2
     %h2 Modele Twoich produktów
-  .col-sm-5
-#example2_wrapper.dataTables_wrapper.form-inline.dt-bootstrap
-  .row
-    .col-sm-1
-    .col-sm-2
-      = link_to 'Dodaj model', admin_new_model_path , class: 'btn btn-primary btn-block'
-  %br/
-  .row
-    .col-sm-1
-    .col-sm-10
-      %table#example2.table.table-bordered.table-hover.dataTable{"aria-describedby" => "example2_info", :role => "grid"}
-        %thead
-          %tr{:role => "row"}
-            %th.sorting_asc.col-md-6{"aria-controls" => "example2", "aria-label" => "Rendering engine: activate to sort column descending", "aria-sort" => "ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Model
-            %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Akcje
-        %tbody
-          - @notbasegears.each do |gear|
-            %tr.odd{:role => "row"}
-              %td.sorting_1 
-                = gear.name
-              %td 
-                = link_to "Usuń", { action: "destroy", id: gear.id }, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-warning'
-                = link_to 'Edytuj', edit_admin_gear_path(gear.id) , class: 'btn btn-primary'
-
-        %tfoot
-  .row
-    .col-sm-5
-      #example2_info.dataTables_info{"aria-live" => "polite", :role => "status"} Pokazuję #{@notbasegears.count} modeli
+    =link_to 'Dodaj model', admin_gears_new_model_path, class: 'btn btn-primary'
+%br/
+.row
+  .col-sm-8.col-sm-offset-2
+    %table.table.table-hover
+      %thead
+        %tr
+          %th.col-sm-8 Model
+          %th.col-sm-4 Akcje
+      %tbody
+        - @notbasegears.each do |gear|
+          %tr
+            %td
+              = gear.name
+            %td 
+              = link_to 'Edytuj', edit_admin_gear_path(gear.id) , class: 'btn btn-primary'
+              = link_to "Usuń", { action: "destroy", id: gear.id }, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-warning'
+    .row
+      .col-sm-5
+        #{@notbasegears.count} modeli

@@ -93,7 +93,7 @@ body {
     transform: translate(230px, 0);
   }
 }
-@media (max-width:800px) {
+/*@media (max-width:800px) {
   .thumbnail {
     font-size: 10px;
     height: 150px;
@@ -103,7 +103,7 @@ body {
   .thumbnail {
     height: 220px;
   }
-}
+}*/
 .content-wrapper,
 .right-side {
   min-height: 100%;

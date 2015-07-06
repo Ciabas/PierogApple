@@ -7,15 +7,6 @@
     = csrf_meta_tags
   %body
     = render 'navbar'
-    -if flash[:notice]
-      .alert.alert-info{:role => "alert"}
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times; 
-        .text-center
-          =flash[:notice]
-    -if alert
-      .alert.alert-warning{:role => "warning"}
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times; 
-        .text-center
-          = alert
+    = render 'flash'
     = yield
-    =render 'footer'
+    = render 'footer'
