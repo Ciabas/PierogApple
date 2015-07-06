@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702093146) do
+ActiveRecord::Schema.define(version: 20150703100749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,40 @@ ActiveRecord::Schema.define(version: 20150702093146) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.integer  "quantity"
+    t.string   "product_name"
+    t.float    "product_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "company_first_name"
+    t.string   "company_last_name"
+    t.string   "company_phone_no"
+    t.string   "company_street_name"
+    t.string   "company_house_no"
+    t.string   "company_apartment_no"
+    t.string   "company_zip_code"
+    t.string   "company_city_name"
+    t.string   "client_first_name"
+    t.string   "client_last_name"
+    t.string   "client_phone_no"
+    t.string   "client_street_name"
+    t.string   "client_house_no"
+    t.integer  "client_apartment_no"
+    t.string   "client_zip_code"
+    t.string   "client_city_name"
+    t.integer  "user_id"
+    t.float    "sum"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "client_email"
   end
 
   create_table "product_images", force: :cascade do |t|
@@ -54,12 +88,12 @@ ActiveRecord::Schema.define(version: 20150702093146) do
     t.string   "phone_no",     null: false
     t.string   "street_name",  null: false
     t.string   "house_no",     null: false
-    t.integer  "apartment_no", null: false
     t.string   "zip_code",     null: false
     t.string   "city_name",    null: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "apartment_no"
   end
 
   create_table "slider_images", force: :cascade do |t|

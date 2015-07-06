@@ -21,6 +21,19 @@ class CartsController < ApplicationController
     redirect_to root_url
   end
 
+  def addoneitem
+    product_id = params[:p_id]
+    #if the product isn't already in cart, add a new item to the cart
+    if session[:cart].select{|a| a['id'].to_i==product_id}.empty?
+      session[:cart] << {'id' => product_id, 'quantity' => 1}
+    #if the product is already in cart, increment quantity by the number of ordered items
+    else
+      session[:cart].collect!{|a| (a['id'].to_i==product_id) ? {'id' => a['id'], 'quantity' => a['quantity'].to_i+1} : a}
+    end
+    flash[:notice] = 'Produkt dodany.'
+    redirect_to cart_path
+  end
+
   def edititem
     #allows only integers larger than zero, else returns an error
     if params[:quantity].to_i>0
@@ -67,6 +80,7 @@ class CartsController < ApplicationController
 
   
   private
+  
   def cart_params
     params.require(:product_id,:quantity).permit(:product_id,:quantity)
   end
@@ -77,19 +91,5 @@ class CartsController < ApplicationController
     end
   end
 
-  def cart_count
-    #set counting variable to 0, iterate through the cart elements, add their values to the variables
-    count=0
-    value=0
-
-    if session[:cart]
-      session[:cart].each do |p|
-        if p['id']
-          count += p['quantity'].to_i
-          value += Product.find(p['id']).price * p['quantity'].to_i
-        end
-      end
-    end
-    session[:cart_count] = {'count_items' => count, 'items_value' => value}
-  end
+  
 end

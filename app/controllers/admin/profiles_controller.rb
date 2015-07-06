@@ -11,6 +11,7 @@ class Admin::ProfilesController < Admin::AdminController
   def destroy
     @profile = Profile.find(params[:id])
     @profile.destroy
+    flash[:notice] = 'Konto usunięte'
     redirect_to admin_profiles_path
   end
 

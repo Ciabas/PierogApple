@@ -43,6 +43,9 @@ h3{
 h4{
   font-size: 14px;
 }
+small{
+  font-size: 12px;
+}
 /* nav styles */
 
 .navbar{
@@ -100,22 +103,24 @@ h4{
 }
 
 .thumbnail img {
-    width: 100%;
+  width: 100%;
 }
 
 .ratings {
-    padding-right: 10px;
-    padding-left: 10px;
-    color: #d17581;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: #d17581;
 }
 
 .thumbnail {
-    padding: 0;
+  display: inline-block;
+  height: auto;
+  padding: 0;
 }
 
 .thumbnail .caption-full {
-    padding: 9px;
-    color: #333;
+  padding: 9px;
+  color: #333;
 }
 
 .item-number-field {
@@ -154,3 +159,6 @@ footer {
   color: #905d34;
 }
 
+.anchor{
+  padding-top: 40px; margin-top: -40px;
+}
