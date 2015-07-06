@@ -32,7 +32,13 @@ class Admin::CategoriesController < Admin::AdminController
 
   def destroy
     @category = Category.find(params[:id])
-    @category.destroy
+    @products = Product.where(category_id: @category.id)
+    if @products.empty?
+      @category.destroy
+      flash[:notice] = 'Usunięto kategorię'
+    else
+      flash[:alert] = 'Nie można usunąć kategorii, do której należą produkty.'
+    end
     redirect_to admin_categories_path
   end
 

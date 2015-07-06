@@ -2,6 +2,8 @@ class Product < ActiveRecord::Base
   belongs_to :gear
   belongs_to :category
   has_many :product_images
+  has_many :order_products
+  has_many :orders, through: :order_product
   accepts_nested_attributes_for :product_images
 
   validates :name, :price, presence: true

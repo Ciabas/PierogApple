@@ -8,6 +8,7 @@ class Admin::ProductsController < Admin::AdminController
 
   def show
     @product = Product.find(params[:id])
+    @similar = Product.where(category_id: @product.category_id, gear_id: @product.gear_id)
   end
 
   def new

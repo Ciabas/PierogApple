@@ -11,20 +11,20 @@
   .row
     .col-sm-1
     .col-sm-10
-      %table#example2.table.table-bordered.table-hover.dataTable{"aria-describedby" => "example2_info", :role => "grid"}
+      %table.table.table-hover
         %thead
-          %tr{:role => "row"}
-            %th.sorting_asc{"aria-controls" => "example2", "aria-label" => "Rendering engine: activate to sort column descending", "aria-sort" => "ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Imię
-            %th.sorting{"aria-controls" => "example2", "aria-label" => "Browser: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Nazwisko
-            %th.sorting{"aria-controls" => "example2", "aria-label" => "Platform(s): activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Numer telefonu
-            %th.sorting{"aria-controls" => "example2", "aria-label" => "Engine version: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Adres
-            %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Miasto
-            %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Akcje
+          %tr
+            %th Imię
+            %th Nazwisko
+            %th Numer telefonu
+            %th Adres
+            %th Miasto
+            %th Akcje
         %tbody
           - @profiles.each do |profile|
             -unless profile.user == current_user
-              %tr.odd{:role => "row"}
-                %td.sorting_1
+              %tr
+                %td
                   = profile.first_name
                 %td
                   = profile.last_name
@@ -40,14 +40,7 @@
                 %td
                   = link_to "Usuń", { action: "destroy", id: profile.id }, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-warning'
                   = link_to "Zobacz szczegóły", admin_profile_path(profile.id) , class: 'btn btn-primary'
-        %tfoot
-          %tr
-            %th{:colspan => "1", :rowspan => "1"} Imię
-            %th{:colspan => "1", :rowspan => "1"} Nazwisko
-            %th{:colspan => "1", :rowspan => "1"} Numer telefonu
-            %th{:colspan => "1", :rowspan => "1"} Adres
-            %th{:colspan => "1", :rowspan => "1"} Miasto
-            %th{:colspan => "1", :rowspan => "1"} Akcje
-  .row
-    .col-sm-5
-      #example2_info.dataTables_info{"aria-live" => "polite", :role => "status"} Pokazuję #{@profiles.count} klientów
+      .row
+        .col-sm-5
+          .dataTables_info
+            #{@profiles.count} klientów
