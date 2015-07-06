@@ -10,10 +10,6 @@
     left: 7px;
     top: 122px;
     width: 315px;
-    /*margin-bottom: 15px;*/
-    /*border-top: 1pt solid #EEEEEE; */
-    /*border-left: 1pt solid #EEEEEE; */
-    /*border-right: 1pt solid #EEEEEE; */
   }
   .invoice-detail { margin-top: -5mm; }
 
@@ -156,13 +152,13 @@
             %td
               =item.quantity
             %td
-              =number_to_currency(item.product_price * (100/123), format: '%n%u', unit: 'zł')
+              =number_to_currency(item.product_price * 100 / 123, format: '%n%u', unit: 'zł')
             %td.bold
-              =number_to_currency(item.quantity * item.product_price * (100/123), format: '%n%u', unit: 'zł')
+              =number_to_currency(item.quantity * item.product_price * 100/123, format: '%n%u', unit: 'zł')
             %td
               23%
             %td
-              =number_to_currency(item.quantity * item.product_price * (23/123), format: '%n%u', unit: 'zł')
+              =number_to_currency(item.quantity * item.product_price * 23/123, format: '%n%u', unit: 'zł')
             %td.bold
               =number_to_currency(item.quantity * item.product_price, format: '%n%u', unit: 'zł')
         /*summing row*/
@@ -174,11 +170,11 @@
           %td
             RAZEM
           %td
-            =number_to_currency(@order.sum*(100/123), format: '%n%u', unit: 'zł')
+            =number_to_currency(@order.sum*100/123, format: '%n%u', unit: 'zł')
           %td
             =' '
           %td
-            =number_to_currency(@order.sum*(23/123), format: '%n%u', unit: 'zł')
+            =number_to_currency(@order.sum*23/123, format: '%n%u', unit: 'zł')
           %td
             =number_to_currency(@order.sum, format: '%n%u', unit: 'zł')
         %tr.al-right
@@ -189,11 +185,11 @@
           %td
             w tym
           %td
-            =number_to_currency(@order.sum*(100/123), format: '%n%u', unit: 'zł')
+            =number_to_currency(@order.sum*100/123, format: '%n%u', unit: 'zł')
           %td
             23%
           %td
-            =number_to_currency(@order.sum*(23/123), format: '%n%u', unit: 'zł')
+            =number_to_currency(@order.sum*23/123, format: '%n%u', unit: 'zł')
           %td
             =number_to_currency(@order.sum, format: '%n%u', unit: 'zł')
 
