@@ -3,6 +3,9 @@ var filters = function(){
     $('.filters').show();
     $('.caret-wrap').addClass('dropup');
   }; 
+  if ( $('.filters').css('display','block')){
+    $('.caret-wrap').addClass('dropup');
+  };
   $('.filters-header').click(function(){
     $('.filters').slideToggle(500,function(){
       $('.caret-wrap').toggleClass('dropup');

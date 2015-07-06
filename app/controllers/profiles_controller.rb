@@ -31,7 +31,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     if @profile.update(profile_params)
       flash[:notice] = 'Profil zaktualizowany.'
-      redirect_to root_url
+      redirect_to profile_path(@profile)
     else
       flash[:error] = 'Błąd. Spróbuj ponownie.'
       render :edit

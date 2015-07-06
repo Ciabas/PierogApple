@@ -80,6 +80,7 @@ class CartsController < ApplicationController
 
   
   private
+  
   def cart_params
     params.require(:product_id,:quantity).permit(:product_id,:quantity)
   end
@@ -90,19 +91,5 @@ class CartsController < ApplicationController
     end
   end
 
-  def cart_count
-    #set counting variable to 0, iterate through the cart elements, add their values to the variables
-    count=0
-    value=0
-
-    if session[:cart]
-      session[:cart].each do |p|
-        if p['id']
-          count += p['quantity'].to_i
-          value += Product.find(p['id']).price * p['quantity'].to_i
-        end
-      end
-    end
-    session[:cart_count] = {'count_items' => count, 'items_value' => value}
-  end
+  
 end

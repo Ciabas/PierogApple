@@ -1,43 +1,7 @@
 .container-fluid
   .row
     .col-md-2.text-center
-      .list-group
-        .list-group-item
-          %h3.filters-header
-            = icon 'search'
-            Filtrowanie
-            %span.caret-wrap
-              %span.caret
-        .list-group-item.filters
-          = form_tag(admin_products_path, method: :get, id: "filters-form") do
-            .price
-              %h4 Cena
-              = text_field_tag 'price_min', nil, placeholder: "od", value: @price_low
-              = text_field_tag 'price_max', nil, placeholder: "do", value: @price_high
-            %hr
-            .categories
-              %h4 Kategorie
-              - @categories.each do |category|
-                = label_tag do
-                  = check_box_tag 'cid[]', category.id, ( !@cid.blank? and @cid.include?( (category.id).to_s ) )
-                  = category.name.capitalize
-            %hr
-            .gears
-              %h4 Typy
-              - @gears.each do |gear|
-                = label_tag do
-                  = check_box_tag 'g[]', gear.id, ( !@g.blank? and @g.include?( (gear.id).to_s ) )
-                  = gear.name
-            %hr
-            .models
-              - unless @models == nil
-                %h4 Modele
-                - @models.each do |model|
-                  = label_tag do
-                    = check_box_tag 'm[]', model.id, ( !@m.blank? and @m.include?( (model.id).to_s ) )
-                    = model.name
-                %hr
-            = button_tag 'Filtruj!', name: nil, class: "btn btn-default"
+      =render 'filters'
     .col-sm-10
       %h2 Twoje produkty
       .row
@@ -46,20 +10,20 @@
           %br/
       .row
         .col-sm-10
-          %table#example2.table.table-bordered.table-hover.dataTable{"aria-describedby" => "example2_info", :role => "grid"}
+          %table.table.table-hover
             %thead
-              %tr{:role => "row"}
-                %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"}
-                %th.sorting_asc{"aria-controls" => "example2", "aria-label" => "Rendering engine: activate to sort column descending", "aria-sort" => "ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Produkt
-                %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Cena
-                %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Kategoria
-                %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Typ
-                %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Model
-                %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Status
-                %th.sorting{"aria-controls" => "example2", "aria-label" => "CSS grade: activate to sort column ascending", :colspan => "1", :rowspan => "1", :tabindex => "0"} Akcje
+              %tr
+                %th
+                %th Produkt
+                %th Cena
+                %th Kategoria
+                %th Typ
+                %th Model
+                %th Status
+                %th Akcje
             %tbody
               - @products.each do |p|
-                %tr.odd{:role => "row"}
+                %tr
                   %td=  image_tag p.product_images.first.photo(:miniature)
                   %td=  p.name
                   %td=  p.price
@@ -68,11 +32,10 @@
                   %td=  p.gear.name
                   %td=  p.status
                   %td
+                    .col-md-5 
+                      =link_to "Szczegóły", admin_product_path(p.id), class: 'btn btn-primary'
                     .col-md-5
-                      =button_to "Szczegóły", { action: "show", id: p.id }, method: 'get',class: 'btn btn-primary'
-                    .col-md-5
-                      =button_to "Edytuj", { action: "edit", id: p.id }, method: 'get',class: 'btn btn-primary'
-            %tfoot
+                      =link_to 'Edytuj', edit_admin_product_path(p.id), class: 'btn btn primary'
       .row
         .col-sm-5
-          #example2_info.dataTables_info{"aria-live" => "polite", :role => "status"}#{@products.count} produktów
+          #{@products.count} produktów

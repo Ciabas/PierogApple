@@ -13,4 +13,4 @@
       .form-group
         = f.label :parent_id, 'Typ', class: 'control-label'
         = f.collection_select :parent_id, @types, :id, :name, {}, {class: 'form-control'}
-        = button_to "Zapisz", { action: "create"} , class: 'btn btn-primary'
+        = f.submit "Zapisz", class: 'btn btn-primary' 

@@ -1,0 +1,38 @@
+.row
+  .col-md-4.col-md-offset-4
+    - if @order.errors.any? 
+      #error_explanation
+        %h2= pluralize(@order.errors.count, "error") 
+        prohibited this profile from being saved:
+        %ul
+          - @order.errors.full_messages.each do |message| 
+            %li= message 
+    = form_for(@order) do |f|
+      %h2 Dane kupującego
+      .field
+        = f.label :client_first_name
+        = f.text_field :client_first_name, value: (current_user.profile.first_name if current_user && current_user.profile)
+      .field
+        = f.label :client_last_name
+        = f.text_field :client_last_name, value: (current_user.profile.last_name if current_user && current_user.profile)
+      .field
+        = f.label :client_phone_no
+        = f.text_field :client_phone_no, value: (current_user.profile.phone_no if current_user && current_user.profile)
+      .field
+        = f.label :client_street_name
+        = f.text_field :client_street_name, value: (current_user.profile.street_name if current_user && current_user.profile)
+      .field
+        = f.label :client_house_no
+        = f.text_field :client_house_no, value: (current_user.profile.house_no if current_user && current_user.profile)
+      .field
+        = f.label :client_apartment_no
+        = f.number_field :client_apartment_no, value: (current_user.profile.apartment_no if current_user && current_user.profile)
+      .field
+        = f.label :client_zip_code
+        = f.text_field :client_zip_code, value: (current_user.profile.zip_code if current_user && current_user.profile)
+      .field
+        = f.label :client_city_name
+        = f.text_field :client_city_name, value: (current_user.profile.city_name if current_user && current_user.profile)
+        = f.hidden_field :sum, value: session[:cart_count]['items_value']
+      .actions
+        = f.submit "Zamawiam!", class: 'btn btn-success'
