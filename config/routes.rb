@@ -1,28 +1,34 @@
 Rails.application.routes.draw do
+  
+  root 'products#index'
+  devise_for :users
+  resources :profiles, except:  [:index, :destroy]
+  resources :products, only: [:index, :show]
+  resource :cart, only: [:show]
+  scope '/cart' do 
+    post '/edititem', to: 'carts#edititem', as: :edititem
+    post '/removeitem', to: 'carts#removeitem', as: :removeitem
+    post '/additem', to: 'carts#additem', as: :additem
+    post '/addoneitem', to: 'carts#addoneitem', as: :addoneitem
+  end
+  resources :orders, only: [:new, :create]
 
-  namespace :admin do
+  scope '/static_pages' do 
+    get '/about', to: 'static_pages#about', as: :about
+    get '/contact', to: 'static_pages#contact', as: :contact
+    get '/rules', to: 'static_pages#rules', as: :rules
+  end
+
+   namespace :admin do
+    root 'admin#index'
     resources :profiles, only: [:show, :index, :destroy]
     resources :categories, only: [:index, :new, :destroy, :create]
     resources :products, except: [:destroy]
     resources :gears, except: [:show]
     resources :slider_images, only: [:index, :new, :create, :destroy]
     get '/modelindex', to: 'gears#modelindex', as: :modelindex
-    get '/new_model' => 'gears#new_model'
-    post '/new_model' => 'gears#create'
-    root 'admin#index'
+    get '/new_model', to: 'gears#new_model', as: :gears_new_model
+    post '/new_model', to: 'gears#create', as: :gears_create_model
+    #resources :orders, only
   end
-
-  devise_for :users
-  root 'products#index'
-  resources :profiles, except:  [:index, :destroy]
-  resources :products, only: [:index, :show]
-  resource :cart, only: [:show]
-  post '/cart/edititem', to: 'carts#edititem', as: :edititem
-  post '/cart/removeitem', to: 'carts#removeitem', as: :removeitem
-  post '/cart/additem', to: 'carts#additem', as: :additem
-  resources :orders, only: [:new, :create]
-
-  get 'static_pages/about', to: 'static_pages#about', as: :about
-  get 'static_pages/contact', to: 'static_pages#contact', as: :contact
-  get 'static_pages/rules', to: 'static_pages#rules', as: :rules
 end

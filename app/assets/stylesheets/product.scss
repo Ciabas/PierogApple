@@ -11,13 +11,32 @@
 }
 
 .unavailable{
-  color: red;
+  color: #FF0000;
 }
 
-.special-order{
-  color: orange;
+.onorder-order{
+  color: #FF6347;
 }
 
 .available{
-  color: green;
+  color: #00FF00;
+}
+
+#addonetocart{
+  text-align: center;
+  font-size: 25px;
+  position: absolute;
+  left: 10%;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 3px;
+  margin: 5px 0 0 3px;
+  transition: 0.5s;
+  -webkit-transition: 1s;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+#addonetocart:hover {
+  background-color: rgba(255, 255, 255, 0.7)
 }
