@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     post '/additem', to: 'carts#additem', as: :additem
     post '/addoneitem', to: 'carts#addoneitem', as: :addoneitem
   end
+  resources :orders, only: [:new, :create]
 
   scope '/static_pages' do 
     get '/about', to: 'static_pages#about', as: :about
@@ -26,8 +27,8 @@ Rails.application.routes.draw do
     resources :gears, except: [:show]
     resources :slider_images, only: [:index, :new, :create, :destroy]
     get '/modelindex', to: 'gears#modelindex', as: :modelindex
-    get '/new_model', to: 'gears#new_model', as: :gearsnewmodel
-    post '/new_model', to: 'gears#create', as: :gearscreate
-    #resources :orders
+    get '/new_model', to: 'gears#new_model', as: :gears_new_model
+    post '/new_model', to: 'gears#create', as: :gears_create_model
+    #resources :orders, only
   end
 end
