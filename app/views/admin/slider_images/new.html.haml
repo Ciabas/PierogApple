@@ -4,7 +4,6 @@
       %h1 Dodaj zdjęcie
       =form_for @slider_image, url: admin_slider_images_path, html: { class: 'form-horizontal' } do |f|
         -if @slider_image.errors.any? 
-          %h2= pluralize(@slider_image.errors.count, "error") 
           Nie udało się dodać zdjęcia:
           %ul
             - @slider_image.errors.full_messages.each do |message| 
