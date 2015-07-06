@@ -51,6 +51,7 @@
               =p.name.truncate(20)
               %br/
               %b=number_to_currency(p.price, format: '%n%u', unit: 'zł')
-              / =link_to "+", addoneitem_path (p.id), method: "post"
+            =link_to addoneitem_path(p_id: p.id), method: :products_path do
+              %i.glyphicon.glyphicon-plus#addonetocart 
 :javascript
-  $(document).ready(filters);
+  $(document).ready(filters); 

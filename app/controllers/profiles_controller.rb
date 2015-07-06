@@ -15,8 +15,10 @@ class ProfilesController < ApplicationController
     @profile.user = current_user
     if @profile.save
       InvoiceMailer.invoice_email(@profile.user).deliver_now
+      flash[:notice] = 'Profil utworzony.'
       redirect_to root_url
     else
+      flash[:error] = 'Błąd. Spróbuj ponownie.'
       render :new
     end
   end
@@ -28,8 +30,10 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find(params[:id])
     if @profile.update(profile_params)
+      flash[:notice] = 'Profil zaktualizowany.'
       redirect_to root_url
     else
+      flash[:error] = 'Błąd. Spróbuj ponownie.'
       render :edit
     end
   end

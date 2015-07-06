@@ -21,16 +21,18 @@ class CartsController < ApplicationController
     redirect_to root_url
   end
 
-  # def addoneitem(product_id)
-  #   #if the product isn't already in cart, add a new item to the cart
-  #   if session[:cart].select{|a| a['id'].to_i==product_id}.empty?
-  #     session[:cart] << {'id' => product_id, 'quantity' => 1}
-  #   #if the product is already in cart, increment quantity by the number of ordered items
-  #   else
-  #     session[:cart].collect!{|a| (a['id'].to_i==product_id) ? {'id' => a['id'], 'quantity' => a['quantity'].to_i+1} : a}
-  #   end
-  #   flash[:notice] = 'Produkt dodany.'
-  # end
+  def addoneitem
+    product_id = params[:p_id]
+    #if the product isn't already in cart, add a new item to the cart
+    if session[:cart].select{|a| a['id'].to_i==product_id}.empty?
+      session[:cart] << {'id' => product_id, 'quantity' => 1}
+    #if the product is already in cart, increment quantity by the number of ordered items
+    else
+      session[:cart].collect!{|a| (a['id'].to_i==product_id) ? {'id' => a['id'], 'quantity' => a['quantity'].to_i+1} : a}
+    end
+    flash[:notice] = 'Produkt dodany.'
+    redirect_to cart_path
+  end
 
   def edititem
     #allows only integers larger than zero, else returns an error

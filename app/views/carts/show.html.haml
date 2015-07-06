@@ -6,7 +6,7 @@
   #example2_wrapper.dataTables_wrapper.form-inline.dt-bootstrap
     .row
     .col-md-10.col-md-offset-1
-      %table#example2.table.table-bordered.table-hover.dataTable{"aria-describedby" => "example2_info", :role => "grid"}
+      %table.table.table-hover
         %thead
           %tr{:role => "row"}
             %th
@@ -15,8 +15,8 @@
             %th{data_field: :category} Kategoria
             %th{data_field: 'gear.parent'} Typ
             %th{data_field: :gear} Model
-            %th{:colspan => "2", :rowspan => "1"} Ilość
-            %th{:colspan => "2", :rowspan => "1"} Wartość
+            %th{colspan: "2", :rowspan => "1"} Ilość
+            %th{colspan: "2", :rowspan => "1"} Wartość
         -#iterator used to align the quantity contained in cart to the listed product
         -#both lists sorted by ids, so it's only required to increment the iterator after displaying each product
         %tbody
