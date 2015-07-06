@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     post '/additem', to: 'carts#additem', as: :additem
     post '/addoneitem', to: 'carts#addoneitem', as: :addoneitem
   end
-  resources :orders, only: [:new, :create]
+  resources :orders, only: [:new, :create] do
+    member{ get :success }
+  end
 
   scope '/static_pages' do 
     get '/about', to: 'static_pages#about', as: :about
