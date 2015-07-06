@@ -5,10 +5,17 @@ class Order < ActiveRecord::Base
   has_many :products, through: :order_products
   
   validates :company_first_name, :company_last_name, :company_street_name, :company_house_no,
-    :company_zip_code, :company_city_name, :company_phone_no,
-    :client_first_name, :client_last_name, :client_street_name, :client_house_no,
-    :client_apartment_no, :client_zip_code, :client_city_name, :client_phone_no, :sum,
-    presence: true
+    :company_zip_code, :company_city_name, :company_phone_no, :sum,
+    presence: true  
+  
+  validates :client_apartment_no, presence: true, numericality: { only_integer: true, :greater_than => 0}
+  validates :client_last_name, presence: true, length: { maximum: 40 }
+  validates :client_first_name, presence: true, length: { maximum: 40 }
+  validates :client_street_name, presence: true, length: { maximum: 80 }
+  validates :client_city_name, presence: true, length: { maximum: 80 }
+  validates :client_house_no, presence: true, format: { with: /\A(\d)((\w)|(\/))*\z/i }
+  validates :client_phone_no, presence: true, format: { with: /\A[0-9]{9}\z/ }
+  validates :client_email, presence: true, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
   
   COMPANY_FIRST_NAME = 'Krystyna'
   COMPANY_LAST_NAME = 'Pieróg'
@@ -17,26 +24,32 @@ class Order < ActiveRecord::Base
   COMPANY_ZIP_CODE = '99-999'
   COMPANY_CITY_NAME = 'Łódź'
   COMPANY_PHONE_NO = '(22)999-999-999'
-  
-  validates :client_apartment_no, numericality: { only_integer: true, :greater_than => 0}
-  validates :client_last_name, length: { maximum: 40 }
-  validates :client_first_name, length: { maximum: 40 }
-  validates :client_street_name, length: { maximum: 80 }
-  validates :client_city_name, length: { maximum: 80 }
-  validates :client_house_no, format: { with: /\A(\d)((\w)|(\/))*\z/i }
-  validates :client_phone_no, format: { with: /\A[0-9]{9}\z/ }
-  
 
   def from_session(cart, order_id)
+    products_for_email = []
     cart.each do |t|
       product_id = t['id']
       quantity = t['quantity']
       product_name = Product.find_by(id: product_id).name
       product_price = Product.find_by(id: product_id).price
       order_product = OrderProduct.create(product_id: product_id, quantity: quantity, product_name: product_name, product_price: product_price, order_id: order_id)
+      products_for_email << order_product
     end
+    products_for_email
   end
 
+  def company_data
+    company_data_arr = []
+    company_data_arr << COMPANY_FIRST_NAME
+    company_data_arr << COMPANY_LAST_NAME
+    company_data_arr << COMPANY_STREET_NAME
+    company_data_arr << COMPANY_HOUSE_NO
+    company_data_arr << COMPANY_ZIP_CODE
+    company_data_arr << COMPANY_CITY_NAME
+    company_data_arr << COMPANY_PHONE_NO
+    company_data_arr
+  end
+  
   private
   
   def populate_company_data
