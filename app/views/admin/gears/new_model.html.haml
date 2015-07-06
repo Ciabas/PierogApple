@@ -15,4 +15,4 @@
           =f.label :parent_id, 'Typ'
           =f.collection_select(:parent_id, @types, :id, :name)
         .actions.padded
-          = button_to "Zapisz", { action: "create"} , class: 'btn btn-primary' 
+          = f.submit "Zapisz", class: 'btn btn-primary' 

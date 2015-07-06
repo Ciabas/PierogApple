@@ -2,4 +2,4 @@
   =render 'products/show_form'
   .row
     .col-md-2.text-center.col-md-offset-5
-      =button_to "Edytuj ten produkt", { action: "edit", id: @product.id }, method: 'get',class: 'btn btn-primary'
+      =link_to "Edytuj ten produkt", edit_admin_product_path(@product.id),class: 'btn btn-primary'
