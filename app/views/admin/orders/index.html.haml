@@ -1,0 +1,35 @@
+.row
+  .col-sm-6.col-sm-offset-1
+    %h2 Twoje zamówienia
+    %br/
+.row
+  .col-sm-10.col-sm-offset-1
+    %table.table.table-hover
+      %thead
+        %tr
+          %th Numer
+          %th Klient
+          %th Data zamówienia
+          %th Ilość produktów
+          %th Kwota
+          %th Akcje
+      %tbody
+        - @orders.each do |order|
+          %tr
+            %td
+              = order.id
+            %td
+              = link_to "#{order.client_first_name} #{order.client_last_name}", admin_profile_path(User.find(order.user_id).profile.id)
+            %td
+              = order.created_at.strftime('%d-%m-%Y')
+            %td
+              = order.order_products.count.to_s
+            %td
+              = order.sum.to_s
+            %td
+              = link_to "Szczegóły", admin_order_path(order.id), class: 'btn btn-primary'
+              = link_to "Faktura", admin_invoice_path(order.id, format: :pdf) , class: 'btn btn-primary'
+    .row
+      .col-sm-5
+        .dataTables_info
+          #{@orders.count} zamówień

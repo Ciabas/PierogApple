@@ -31,7 +31,8 @@ Rails.application.routes.draw do
     get '/modelindex', to: 'gears#modelindex', as: :modelindex
     get '/new_model', to: 'gears#new_model', as: :gears_new_model
     post '/new_model', to: 'gears#create', as: :gears_create_model
-    #resources :orders, only
+    resources :orders, only: [:show, :index]
+    resources :invoices, only: [:show]
   end
 
   resources :invoices, only: :show
