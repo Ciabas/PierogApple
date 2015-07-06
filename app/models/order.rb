@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   before_validation :populate_company_data, on: :create
+  before_validation :generate_access_token, on: :create
   
   has_many :order_products
   has_many :products, through: :order_products
@@ -17,6 +18,10 @@ class Order < ActiveRecord::Base
   COMPANY_ZIP_CODE = '99-999'
   COMPANY_CITY_NAME = 'Łódź'
   COMPANY_PHONE_NO = '(22)999-999-999'
+  COMPANY_NUMBER = '185-816-00-90'
+  COMPANY_ACCOUNT_NO = '45 1090 7159 5086 9599 2059 3875 3725'
+  COMPANY_BANK_NAME = 'NazwaBank'
+
   
   validates :client_apartment_no, numericality: { only_integer: true, :greater_than => 0}
   validates :client_last_name, length: { maximum: 40 }
@@ -47,5 +52,12 @@ class Order < ActiveRecord::Base
     self.company_zip_code = COMPANY_ZIP_CODE
     self.company_city_name = COMPANY_CITY_NAME
     self.company_phone_no = COMPANY_PHONE_NO
+    self.company_number = COMPANY_NUMBER
+    self.company_account_no = COMPANY_ACCOUNT_NO
+    self.company_bank_name = COMPANY_BANK_NAME
+  end
+  
+  def generate_access_token
+    self.access_token = SecureRandom.urlsafe_base64
   end
 end

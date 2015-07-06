@@ -32,6 +32,6 @@ Rails.application.routes.draw do
     #resources :orders, only
   end
 
-  resources :invoices, only: :index
+  resources :invoices, only: :show
   
 end
