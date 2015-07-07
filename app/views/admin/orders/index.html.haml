@@ -19,9 +19,10 @@
             %td
               = order.id
             %td
-              -if User.find(order.user_id)
+              -if User.find(order.user_id).profile
                 = link_to "#{order.client_first_name} #{order.client_last_name}", admin_profile_path(User.find(order.user_id).profile.id)
-              -else "#{order.client_first_name} #{order.client_last_name}"
+              -else
+                = "#{order.client_first_name} #{order.client_last_name}"
             %td
               = order.created_at.strftime('%d-%m-%Y')
             %td
