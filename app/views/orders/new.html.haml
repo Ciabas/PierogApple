@@ -3,31 +3,31 @@
     = form_for @order, :html => { :class => "form-horizontal" } do |f|
       %h2.text-center Dane kupującego
       .form-group{ :class => ('has-error' if @order.errors[:client_first_name].any?) }
-        = f.label :client_first_name, "Imię"
+        = f.label :first_name, "Imię"
         = f.text_field :client_first_name, class: "form-control", value: (current_user.profile.first_name if current_user && current_user.profile)
       .form-group{ :class => ('has-error' if @order.errors[:client_last_name].any?) }
-        = f.label :client_last_name, "Nazwisko"
+        = f.label :last_name, "Nazwisko"
         = f.text_field :client_last_name, class: "form-control", value: (current_user.profile.last_name if current_user && current_user.profile)
       .form-group{ :class => ('has-error' if @order.errors[:client_phone_no].any?) }
-        = f.label :client_phone_no, "Numer telefonu"
+        = f.label :phone_no, "Numer telefonu"
         = f.text_field :client_phone_no, class: "form-control", value: (current_user.profile.phone_no if current_user && current_user.profile)
       .form-group{ :class => ('has-error' if @order.errors[:client_street_name].any?) }
-        = f.label :client_street_name, "Ulica"
+        = f.label :street_name, "Ulica"
         = f.text_field :client_street_name, class: "form-control", value: (current_user.profile.street_name if current_user && current_user.profile)
       .form-group{ :class => ('has-error' if @order.errors[:client_house_no].any?) }
-        = f.label :client_house_no, "Numer domu"
+        = f.label :house_no, "Numer domu"
         = f.text_field :client_house_no, class: "form-control", value: (current_user.profile.house_no if current_user && current_user.profile)
       .form-group{ :class => ('has-error' if @order.errors[:client_apartment_no].any?) }
-        = f.label :client_apartment_no, "Numer mieszkania"
+        = f.label :apartment_no, "Numer mieszkania"
         = f.number_field :client_apartment_no, class: "form-control", value: (current_user.profile.apartment_no if current_user && current_user.profile)
       .form-group{ :class => ('has-error' if @order.errors[:client_zip_code].any?) }
-        = f.label :client_zip_code, "Kod pocztowy"
+        = f.label :zip_code, "Kod pocztowy"
         = f.text_field :client_zip_code, class: "form-control", value: (current_user.profile.zip_code if current_user && current_user.profile)
       .form-group{ :class => ('has-error' if @order.errors[:client_city_name].any?) }
-        = f.label :client_city_name, "Miasto"
+        = f.label :city_name, "Miasto"
         = f.text_field :client_city_name, class: "form-control", value: (current_user.profile.city_name if current_user && current_user.profile)
       .form-group{ :class => ('has-error' if @order.errors[:client_email].any?) }
-        = f.label :client_email, "Adres email"
+        = f.label :email, "Adres email"
         = f.text_field :client_email, class: "form-control", value: (current_user.email if current_user && current_user.profile)
       .checkbox
         = label_tag do
