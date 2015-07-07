@@ -31,6 +31,15 @@ pl:
         apartment_no: 'Nr mieszkania'
         zip_code: 'Kod pocztowy'
         city_name: 'Miasto'
+      order:
+        first_name: 'Imię'
+        last_name: 'Nazwisko'
+        phone_no: 'Nr telefonu'
+        street_name: 'Ulica'
+        house_no: 'Nr domu'
+        apartment_no: 'Nr mieszkania'
+        zip_code: 'Kod pocztowy'
+        city_name: 'Miasto'
       user:
         password: 'Hasło'
         password_confirmation: 'Potwierdź hasło'
@@ -72,6 +81,15 @@ pl:
         price: 'Cena'
       gear:
         name: ''
+      order:
+        client_first_name: 'Imię'
+        client_last_name: 'Nazwisko'
+        client_phone_no: 'Nr telefonu'
+        client_street_name: 'Ulica'
+        client_house_no: 'Nr domu'
+        client_apartment_no: 'Nr mieszkania'
+        client_zip_code: 'Kod pocztowy'
+        client_city_name: 'Miasto'
     errors:
       messages:
         blank: nie może być puste
