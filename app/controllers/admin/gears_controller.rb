@@ -38,11 +38,6 @@ class Admin::GearsController < Admin::AdminController
     @gear = Gear.find(params[:id])
   end
 
-  def edit_model
-    @gear = Gear.find(params[:id])
-    @types = Gear.base
-  end
-
   def update
     @gear = Gear.find(params[:id])
     @types = Gear.base
@@ -53,11 +48,7 @@ class Admin::GearsController < Admin::AdminController
         redirect_to admin_modelindex_path, notice: 'Model zmieniony'
       end
     else 
-      if (@gear.parent_id == nil)
-        render :edit
-      else
-        render :edit_model
-      end
+      render :edit
     end
   end
 

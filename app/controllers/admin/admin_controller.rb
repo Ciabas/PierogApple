@@ -4,7 +4,7 @@ class Admin::AdminController < ApplicationController
 
   def index
     @users = User.count
-   # @orders = Order.all
+    @orders = Order.count
     @products = Product.count
     @categories = Category.count
     @models = Gear.notbase.count
@@ -17,6 +17,6 @@ class Admin::AdminController < ApplicationController
   def authorized
     unless current_user.is_admin
       redirect_to root_path, alert: 'Nie masz uprawnień do przeglądania tej strony.'
-   end
+    end
   end
 end

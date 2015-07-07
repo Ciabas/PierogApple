@@ -1,0 +1,44 @@
+.container-fluid
+  .row
+    .col-md-6.col-md-offset-1
+      %h2= "Zamówienie nr #{@order.id}"
+      %h3
+        = "#{@order.client_first_name} #{@order.client_last_name}"
+        %br/
+        = @order.created_at.strftime('%d-%m-%Y')
+  .row
+    .col-md-10.col-md-offset-1
+      %table.table.table-hover.text-center
+        %thead
+          %tr
+            %th
+            %th Produkt
+            %th Cena
+            %th Kategoria
+            %th Typ
+            %th Model
+            %th Ilość
+            %th Wartość
+        %tbody
+          - @order.order_products.each do |item|
+            %tr
+              %td=  image_tag item.product.product_images.first.photo(:miniature)
+              %td=  item.product_name
+              %td=  number_to_currency(item.product_price, format: '%n%u', unit: 'zł')
+              %td=  item.product.category.name
+              %td=  item.product.gear.parent.name
+              %td=  item.product.gear.name
+              %td=  item.quantity
+              %td=  number_to_currency(item.product_price*item.quantity, format: '%n%u', unit: 'zł')
+  .row
+    .col-md-5.col-md-offset-6.text-center
+      %div.cart-summary
+        %hr/
+        %h3
+          %strong= "SUMA = #{number_to_currency(@order.sum, format: '%n%u', unit: 'zł')}"
+  .row
+    .col-md-6.col-md-offset-3.text-center
+      %hr
+        %small
+          .row= ''
+          .row= link_to "Powrót", orders_path, class: 'btn btn-primary'
