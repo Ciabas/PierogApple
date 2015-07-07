@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     post '/additem', to: 'carts#additem', as: :additem
     post '/addoneitem', to: 'carts#addoneitem', as: :addoneitem
   end
-  resources :orders, only: [:new, :create] do
+  resources :orders, only: [:new, :create, :index, :show] do
     member{ get :success }
   end
 

@@ -5,7 +5,7 @@ class Admin::OrdersController < Admin::AdminController
   end
 
   def show
-    @orders = Order.find(params[:id])
+    @order = Order.find(params[:id])
   end
 
 end

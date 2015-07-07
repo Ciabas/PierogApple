@@ -3,10 +3,7 @@
     .col-md-6.col-md-offset-1
       %h2= "Zamówienie nr #{@order.id}"
       %h3
-        -if User.find(@order.user_id)
-          = link_to "#{@order.client_first_name} #{@order.client_last_name}", admin_profile_path(User.find(@order.user_id).profile.id)
-        -else
-          = "#{@order.client_first_name} #{@order.client_last_name}"
+        = "#{@order.client_first_name} #{@order.client_last_name}"
         %br/
         = @order.created_at.strftime('%d-%m-%Y')
   .row
@@ -44,4 +41,4 @@
       %hr
         %small
           .row= ''
-          .row= link_to "Cofnij", admin_orders_path, class: 'btn btn-primary'
+          .row= link_to "Powrót", orders_path, class: 'btn btn-primary'

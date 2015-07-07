@@ -1,6 +1,15 @@
 class OrdersController < ApplicationController
      
-  before_action :check_availability
+  before_action :check_availability, only: [:new, :create, :success]
+  before_action :authorized, only: [:show]
+
+  def index
+    @orders = Order.where(user_id: current_user.id).order(created_at: :desc)
+  end
+
+  def show
+    @order = Order.find(params[:id])
+  end
 
   def new
     @order = Order.new
@@ -24,7 +33,8 @@ class OrdersController < ApplicationController
     session[:cart] = nil
     redirect_to root_path, notice: 'Złożono zamówienie. Szczegóły transakcji wysłano na adres e-mail.'
   end
-  
+
+ 
   private
   
   def order_params
@@ -44,6 +54,12 @@ class OrdersController < ApplicationController
     end
     if error
       redirect_to cart_path
+    end
+  end
+
+  def authorized
+    unless Order.find(params[:id]).user_id==current_user.id
+      redirect_to root_path, alert: 'Nie masz uprawnień do przeglądania tej strony.'
     end
   end
   
