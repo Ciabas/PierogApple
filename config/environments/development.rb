@@ -55,4 +55,5 @@ Rails.application.configure do
     user_name: 'internship@binarapps.com',
     password: 'u!h8xak4qlP&'
   }
+
 end

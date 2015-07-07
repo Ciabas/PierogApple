@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     post '/additem', to: 'carts#additem', as: :additem
     post '/addoneitem', to: 'carts#addoneitem', as: :addoneitem
   end
-  resources :orders, only: [:new, :create]
+  resources :orders, only: [:new, :create, :index, :show] do
+    member{ get :success }
+  end
 
   scope '/static_pages' do 
     get '/about', to: 'static_pages#about', as: :about
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
     get '/rules', to: 'static_pages#rules', as: :rules
   end
 
-   namespace :admin do
+  namespace :admin do
     root 'admin#index'
     resources :profiles, only: [:show, :index, :destroy]
     resources :categories, only: [:index, :new, :destroy, :create]
@@ -29,6 +31,10 @@ Rails.application.routes.draw do
     get '/modelindex', to: 'gears#modelindex', as: :modelindex
     get '/new_model', to: 'gears#new_model', as: :gears_new_model
     post '/new_model', to: 'gears#create', as: :gears_create_model
-    #resources :orders, only
+    resources :orders, only: [:show, :index]
+    resources :invoices, only: [:show]
   end
+
+  resources :invoices, only: :show
+  
 end

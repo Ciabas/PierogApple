@@ -10,11 +10,11 @@
       / small box
       .small-box.bg-purple
         .inner
-          %h3 150
+          %h3 #{@orders}
           %p Zamówień
         .icon
           %i.fa.fa-cart-plus
-        %a.small-box-footer{:href => "#"}
+        %a.small-box-footer{:href => admin_orders_path}
           Zarządzaj
           %i.fa.fa-arrow-circle-right
     / ./col

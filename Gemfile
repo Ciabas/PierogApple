@@ -24,6 +24,10 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass', '~> 3.3.1'
 end
 
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
+gem 'polish_number'
+
 gem 'pg'
 gem 'devise'
 gem 'haml-rails'
@@ -31,3 +35,4 @@ gem 'rspec-rails', '~> 3.0'
 gem 'paperclip' 
 gem 'font-awesome-rails'
 gem 'omniauth-facebook'
+gem 'aws-sdk', '< 2.0'

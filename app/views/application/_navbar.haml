@@ -40,6 +40,10 @@
                     = icon 'list'
                     Panel Administratora
               %li
+                = link_to (orders_path) do
+                  = icon 'shopping-cart'
+                  Twoje zamówienia
+              %li
                 = link_to( destroy_user_session_path, method: :delete, data: { confirm: 'Jesteś pewien?' } ) do
                   = icon 'log-out'
                   Wyloguj się

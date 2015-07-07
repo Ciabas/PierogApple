@@ -61,6 +61,10 @@ ActiveRecord::Schema.define(version: 20150707122037) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "client_email"
+    t.string   "company_number"
+    t.string   "company_account_no"
+    t.string   "company_bank_name"
+    t.string   "access_token"
   end
 
   create_table "product_images", force: :cascade do |t|
