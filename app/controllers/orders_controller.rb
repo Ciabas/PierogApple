@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to success_order_path(@order)
     else
-      flash.now[:notice] = 'Błąd, sprawdź czy wszystkie dane są poprawne.'
+      flash.now[:alert] = 'Błąd, sprawdź czy wszystkie dane są poprawne.'
       render :new
     end
   end
@@ -44,16 +44,12 @@ class OrdersController < ApplicationController
   end
 
   def check_availability
-    error=nil
     session[:cart].each do |hash|
       current = Product.find(hash['id'])
       unless current.status == 'dostepny'
-        error=1
-        flash[:notice] = "#{current.name} jest chwilowo niedostępny. Przepraszamy."
+        flash[:alert] = "#{current.name} jest chwilowo niedostępny. Przepraszamy."
+        redirect_to cart_path and return
       end
-    end
-    if error
-      redirect_to cart_path
     end
   end
 

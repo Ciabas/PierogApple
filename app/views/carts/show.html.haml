@@ -41,5 +41,5 @@
         %hr/
         %h3
           %strong= "SUMA = #{number_to_currency(session[:cart_count]['items_value'], format: '%n%u', unit: 'zł')}"
-        - if session[:cart_count]['count_items'] > 0
+        - if @products.count > 0
           = link_to 'Przejdź do płatności', new_order_path, class: "btn btn-success"

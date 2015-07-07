@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
   has_many :products, through: :order_products
   
   validates :company_first_name, :company_last_name, :company_street_name, :company_house_no,
-    :company_zip_code, :company_city_name, :company_phone_no, :sum,
+    :company_zip_code, :company_city_name, :company_phone_no, :sum, :access_token,
     presence: true  
   
   validates :client_apartment_no, presence: true, numericality: { only_integer: true, :greater_than => 0}
