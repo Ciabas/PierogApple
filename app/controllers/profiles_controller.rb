@@ -14,7 +14,6 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user = current_user
     if @profile.save
-      InvoiceMailer.invoice_email(@profile.user).deliver_now
       flash[:notice] = 'Profil utworzony.'
       redirect_to root_url
     else
