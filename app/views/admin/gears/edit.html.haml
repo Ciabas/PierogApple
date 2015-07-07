@@ -1,13 +1,5 @@
 .row
-  %ul
-    -@gear.errors.full_messages.each do |err|
-      %li
-        =err
-.row
   .col-md-4.col-md-offset-4.text-center
     %h2 Edytuj typ
     = form_for @gear, :html => {multipart: true}, url: admin_gear_path, html: { class: 'form-inline' } do |f|
-      .form-group
-        = f.label :name, 'Nazwa', class: 'control-label'
-        = f.text_field :name, class: 'form-control'
-        = f.submit "Zapisz", class: 'btn btn-primary' 
+      =render 'form', f: f
