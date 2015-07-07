@@ -3,25 +3,24 @@
     .col-md-6.col-md-offset-1
       %h2 Twój koszyk
       %br/
-  #example2_wrapper.dataTables_wrapper.form-inline.dt-bootstrap
-    .row
+  .row
     .col-md-10.col-md-offset-1
-      %table.table.table-hover
+      %table.table.table-hover.text-center
         %thead
-          %tr{:role => "row"}
+          %tr
             %th
-            %th{data_field: :product} Produkt
-            %th{data_field: :price} Cena
-            %th{data_field: :category} Kategoria
-            %th{data_field: 'gear.parent'} Typ
-            %th{data_field: :gear} Model
-            %th{colspan: "2", :rowspan => "1"} Ilość
-            %th{colspan: "2", :rowspan => "1"} Wartość
+            %th Produkt
+            %th Cena
+            %th Kategoria
+            %th Typ
+            %th Model
+            %th{colspan: "2"} Ilość
+            %th Wartość
         -#iterator used to align the quantity contained in cart to the listed product
         -#both lists sorted by ids, so it's only required to increment the iterator after displaying each product
         %tbody
           - @products.each_with_index do |p, iter|
-            %tr.odd{:role => "row"}
+            %tr
               %td=  image_tag p.product_images.first.photo(:miniature)
               %td=  p.name
               %td=  number_to_currency(p.price, format: '%n%u', unit: 'zł')
@@ -29,18 +28,18 @@
               %td=  p.gear.parent.name
               %td=  p.gear.name
               = form_tag :edititem, method: "post" do
-                %td=  number_field_tag :quantity, session[:cart][iter]['quantity'], min:1, max:99, class: 'item-number-field'
+                %td= number_field_tag :quantity, session[:cart][iter]['quantity'], min:1, max:99, class: 'item-number-field'
                 = hidden_field_tag :product_id, p.id
-                %td=  submit_tag "Zmień", class: 'btn btn-primary'
+                %td= submit_tag "Zmień", class: 'btn btn-primary'
               %td= number_to_currency(p.price * session[:cart][iter]['quantity'].to_i, format: '%n%u', unit: 'zł')
               = form_tag :removeitem, method: "post" do
                 = hidden_field_tag :product_id, p.id
                 %td=  submit_tag "Usuń", class: 'btn btn-primary'
   .row
-    .col-md-5.col-md-offset-6
+    .col-md-5.col-md-offset-6.text-center
       %div.cart-summary
         %hr/
         %h3
           %strong= "SUMA = #{number_to_currency(session[:cart_count]['items_value'], format: '%n%u', unit: 'zł')}"
-        - if session[:cart_count]['count_items'] > 0
+        - if @products.count > 0
           = link_to 'Przejdź do płatności', new_order_path, class: "btn btn-success"
