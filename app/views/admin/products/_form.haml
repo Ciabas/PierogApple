@@ -1,29 +1,39 @@
 .row
+  %ul
+    -@product.errors.full_messages.each do |err|
+      %li
+        =err
   .col-md-6{:style => 'padding-right:10px; border-right: 1px solid #ccc;'}
     .form-group
       =f.label :name, 'Nazwa', class: 'control-label col-sm-2'
       .col-sm-10
         =f.text_field :name, class: 'form-control'
+    %br/
     .form-group
       =f.label :price, 'Cena', class: 'control-label col-sm-2'
       .col-sm-10
         =f.text_field :price, class: 'form-control'
+    %br/
     .form-group
       =f.label :staus, "Status", class: 'control-label col-sm-2'
       .col-sm-10
         =f.select :status, Product::STATUSES.map {|a| [a, a]}, {}, {class: 'form-control'}
+    %br/
     .form-group
       =f.label :category, 'Kategoria', class: 'control-label col-sm-2'
       .col-sm-10
         =f.collection_select :category_id, @categories, :id, :name, {}, {class: 'form-control'}
+    %br/
     .form-group
       =f.label :parent, 'Model', class: 'control-label col-sm-2'
       .col-sm-10
         =f.collection_select :gear_id, @gears.base, :id, :name, {}, {class: 'form-control'}
+    %br/
     .form-group
       =f.label :gear, 'Typ', class: 'control-label col-sm-2'
       .col-sm-10
         =f.collection_select :gear_id, @gears.notbase, :id, :name, {}, {class: 'form-control'}
+    %br/
     .form-group
       =f.label :description, 'Opis', class: 'control-label col-sm-2'
       .col-sm-10

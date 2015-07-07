@@ -1,12 +1,12 @@
 .row
-  %ul
-    -@category.errors.full_messages.each do |err|
-      %li
-        =err
 .row
   .col-md-4.col-md-offset-4.text-center
     %h2 Stwórz nową kategorię
     = form_for @category, url: admin_categories_path, html: { class: 'form-inline' } do |f|
+      %ul
+        -@category.errors.full_messages.each do |err|
+          %li
+            =err
       .form-group
         = f.label :name, 'Nazwa', class: 'control-label'
         = f.text_field :name, class: 'form-control'

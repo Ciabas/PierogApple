@@ -1,13 +1,13 @@
 .row
   .col-md-4.col-md-offset-4
-    - if @order.errors.any? 
-      #error_explanation
-        %h2= pluralize(@order.errors.count, "error") 
-        prohibited this profile from being saved:
-        %ul
-          - @order.errors.full_messages.each do |message| 
-            %li= message 
     = form_for(@order) do |f|
+      - if @order.errors.any? 
+        #error_explanation
+          %h2= pluralize(@order.errors.count, "error") 
+          prohibited this profile from being saved:
+          %ul
+            - @order.errors.full_messages.each do |message| 
+              %li= message 
       %h2 Dane kupującego
       .field
         = f.label :client_first_name
