@@ -35,3 +35,6 @@ gem 'rspec-rails', '~> 3.0'
 gem 'paperclip' 
 gem 'font-awesome-rails'
 gem 'aws-sdk', '< 2.0'
+
+gem 'comfortable_mexican_sofa', '~> 1.12.0'
+gem 'will_paginate'
