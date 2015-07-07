@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   def success
     @order = Order.find(params[:id])
     products_for_email = @order.from_session(session[:cart], @order.id)
-    company_data_arr = @order.company_data
+    company_data_arr = Order.company_data
     InvoiceMailer.invoice_email(@order, products_for_email, company_data_arr).deliver_now
     session[:cart] = nil
     redirect_to root_path, notice: 'Złożono zamówienie. Szczegóły transakcji wysłano na adres e-mail.'
