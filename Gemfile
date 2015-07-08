@@ -36,3 +36,4 @@ gem 'paperclip'
 gem 'font-awesome-rails'
 gem 'omniauth-facebook'
 gem 'aws-sdk', '< 2.0'
+gem 'simplecov', :require => false, :group => :test

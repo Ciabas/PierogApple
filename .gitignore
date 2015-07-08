@@ -26,3 +26,6 @@
 
 #Ignore public system files
 /public/system
+
+#Ignore simplecov folder
+/coverage

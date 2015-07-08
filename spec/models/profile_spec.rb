@@ -9,8 +9,6 @@ RSpec.describe Profile, :type => :model do
   it { should validate_presence_of(:house_no) }
   it { should validate_presence_of(:zip_code) }
   it { should validate_presence_of(:city_name) }
-  it { should validate_numericality_of(:apartment_no).only_integer }
-  it { should validate_numericality_of(:apartment_no).is_greater_than(0) }
   it { should validate_length_of(:first_name).is_at_most(40) }
   it { should validate_length_of(:last_name).is_at_most(40) }
   it { should validate_length_of(:street_name).is_at_most(80) }
