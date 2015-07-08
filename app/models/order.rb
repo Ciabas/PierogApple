@@ -4,16 +4,13 @@ class Order < ActiveRecord::Base
   
   has_many :order_products
   has_many :products, through: :order_products
+  belongs_to :user
   
-  validates :access_token, :client_apartment_no, :client_last_name, :client_first_name, :client_street_name,
+  validates :access_token, :client_last_name, :client_first_name, :client_street_name,
     :client_city_name, :client_house_no, :client_phone_no, :client_zip_code, :client_email, :sum,
     presence: true  
-  
-  validates :client_apartment_no, numericality: { only_integer: true, :greater_than => 0}
-  validates :client_last_name, length: { maximum: 40 }
-  validates :client_first_name, length: { maximum: 40 }
-  validates :client_street_name, length: { maximum: 80 }
-  validates :client_city_name, length: { maximum: 80 }
+  validates :client_last_name, :client_first_name, length: { maximum: 40 }
+  validates :client_street_name, :client_city_name, length: { maximum: 80 }
   validates :client_house_no, format: { with: /\A(\d)((\w)|(\/))*\z/i }
   validates :client_phone_no, format: { with: /\A[0-9]{9}\z/i }
   validates :client_zip_code, format: { with: /\A[0-9]{2}-[0-9]{3}\z/i }
@@ -36,9 +33,8 @@ class Order < ActiveRecord::Base
     cart.each do |t|
       product_id = t['id']
       quantity = t['quantity']
-      product_name = Product.find_by(id: product_id).name
-      product_price = Product.find_by(id: product_id).price
-      order_product = OrderProduct.create(product_id: product_id, quantity: quantity, product_name: product_name, product_price: product_price, order_id: order_id)
+      product = Product.find_by(id: product_id)
+      order_product = OrderProduct.create(product_id: product_id, quantity: quantity, product_name: product.name, product_price: product.price, order_id: order_id)
       products_for_email << order_product
     end
     products_for_email

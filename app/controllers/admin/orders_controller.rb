@@ -6,6 +6,7 @@ class Admin::OrdersController < Admin::AdminController
 
   def show
     @order = Order.find(params[:id])
+    @profile = @order.user.profile
   end
 
 end

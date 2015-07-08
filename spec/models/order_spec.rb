@@ -4,9 +4,7 @@ RSpec.describe Order, type: :model do
   
   it { should have_many(:order_products) }
   it { should have_many(:products).through(:order_products) }  
-  it { should validate_presence_of(:client_apartment_no) }
-  it { should validate_numericality_of(:client_apartment_no).only_integer }
-  it { should validate_numericality_of(:client_apartment_no).is_greater_than(0) }
+  it { should belong_to(:user) }
   it { should validate_presence_of(:client_first_name) }
   it { should validate_length_of(:client_first_name).is_at_most(40) }
   it { should validate_presence_of(:client_last_name) }
@@ -72,13 +70,14 @@ RSpec.describe Order, type: :model do
   describe 'from_session' do
     it 'should create OrderProduct from cart' do
       expect(OrderProduct.exists?(order_id: 1)).to eq(false)
-      product = Product.create(name: 'rondel', price: 20.00)
+      product = Product.new(name: 'rondel', price: 20.00)
+      product.save validate: false
+      puts product.errors.full_messages
       cart = [ { "id"=> product.id, "quantity"=>1 } ]
       order = Order.create
       order.from_session(cart, 1)
       expect(OrderProduct.exists?(order_id: 1)).to eq(true)
     end
   end
-    
-    
+       
 end
