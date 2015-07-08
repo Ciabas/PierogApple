@@ -28,13 +28,9 @@
         = f.text_field :client_city_name, class: "form-control", value: (current_user.profile.city_name if current_user && current_user.profile)
       .form-group{ :class => ('has-error' if @order.errors[:client_email].any?) }
         = f.label :email, "Adres email"
-        = f.text_field :client_email, class: "form-control", value: (current_user.email if current_user && current_user.profile)
-      .checkbox
-        = label_tag do
-          = check_box_tag 'invoice_agreement'
-          Chcę otrzymać fakturę w postaci elektronicznej.          
+        = f.text_field :client_email, class: "form-control", value: (current_user.email if current_user && current_user.profile)         
         = f.hidden_field :user_id, value: (current_user.id if current_user)
         = f.hidden_field :sum, value: session[:cart_count]['items_value']
-      %br/
       .submit-container
         = f.submit "Zamawiam!", class: 'btn btn-success' 
+      %br/
