@@ -8,6 +8,9 @@
         %span.icon-bar
       = link_to 'ApplePieróg', root_path, class: "navbar-brand"
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-left
+        %li
+          = link_to 'Blog', comfy_cms_render_page_path
       %ul.nav.navbar-nav.navbar-right
         %li
           = link_to cart_path do
