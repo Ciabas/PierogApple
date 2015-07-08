@@ -1,0 +1,12 @@
+.list-group
+  .list-group-item.blognav-top
+    %h3.blognav-header.text-center
+      = link_to 'Blog', @cms_site.pages.root.url
+  .list-group-item.blognav
+    - @cms_site.pages.root.children.published.sort{ |x,y| y.created_at <=> x.created_at }.each do |page|
+      %li
+        = link_to page.label, page.url
+        %ul.sublist
+          -page.children.published.each do |child|
+            %li
+              = link_to child.label, child.url
