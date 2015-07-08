@@ -22,6 +22,8 @@ SimpleCov.start
 
 require "paperclip/matchers"
 
+require 'capybara/rspec'
+
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
