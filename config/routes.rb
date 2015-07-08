@@ -25,7 +25,10 @@ Rails.application.routes.draw do
     root 'admin#index'
     resources :profiles, only: [:show, :index, :destroy]
     resources :categories, only: [:index, :new, :destroy, :create]
-    resources :products, except: [:destroy]
+    resources :products, except: [:destroy] do
+      collection{ get :products_seq }
+      collection{ patch :products_seq_update }
+    end
     resources :gears, except: [:show]
     resources :slider_images, only: [:index, :new, :create, :destroy]
     get '/modelindex', to: 'gears#modelindex', as: :modelindex
