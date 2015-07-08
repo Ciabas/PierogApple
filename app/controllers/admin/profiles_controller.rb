@@ -2,6 +2,7 @@ class Admin::ProfilesController < Admin::AdminController
   
   def index
     @profiles = Profile.all
+    @users = User.all
   end
 
   def show

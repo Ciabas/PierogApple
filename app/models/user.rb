@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :validatable, :confirmable,
          :omniauthable, :omniauth_providers => [:facebook]
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
 
   validates :email, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
 
