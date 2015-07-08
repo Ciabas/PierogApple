@@ -7,6 +7,7 @@
     %table.table.table-hover
       %thead
         %tr
+          %th E-mail
           %th Imię
           %th Nazwisko
           %th Numer telefonu
@@ -14,26 +15,36 @@
           %th Miasto
           %th Akcje
       %tbody
-        - @profiles.each do |profile|
-          -unless profile.user == current_user
+        - @users.each do |user|
+          -unless user == current_user
             %tr
               %td
-                = profile.first_name
+                = user.email
+              -if user.profile
+                %td
+                  = user.profile.first_name
+                %td
+                  = user.profile.last_name
+                %td
+                  = user.profile.phone_no.to_s
+                %td
+                  = user.profile.street_name
+                  = user.profile.house_no.to_s
+                  = user.profile.apartment_no.to_s
+                %td
+                  = user.profile.zip_code
+                  = user.profile.city_name
+              - else
+                %td
+                %td
+                %td
+                %td
+                %td
               %td
-                = profile.last_name
-              %td
-                = profile.phone_no.to_s
-              %td
-                = profile.street_name
-                = profile.house_no.to_s
-                = profile.apartment_no.to_s
-              %td
-                = profile.zip_code
-                = profile.city_name
-              %td
-                = link_to "Usuń", { action: "destroy", id: profile.id }, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-warning'
-                = link_to "Zobacz szczegóły", admin_profile_path(profile.id) , class: 'btn btn-primary'
+                = link_to "Usuń", { action: "destroy", id: user.id }, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-warning'
+                -unless user.profile.nil?
+                  = link_to "Zobacz szczegóły", admin_profile_path(user.profile.id) , class: 'btn btn-primary'
     .row
       .col-sm-5
         .dataTables_info
-          #{@profiles.count} klientów
+          #{@users.count-1} klientów

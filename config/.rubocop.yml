@@ -1,0 +1,20 @@
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+
+Metrics/LineLength:
+  Max: 120
+Style/EmptyLinesAroundBody:
+  Enabled: false
+Style/WhileUntilModifier:
+  MaxLineLength: 120
+Style/WhileUntilModifier:
+  MaxLineLength: 120
+Metrics/MethodLength:
+  Max: 25
