@@ -30,9 +30,19 @@ ComfortableMexicanSofa.configure do |config|
   # the upload method and appropriate settings based on Paperclip.  For S3 see:
   # http://rdoc.info/gems/paperclip/2.3.8/Paperclip/Storage/S3, and for
   # filesystem see: http://rdoc.info/gems/paperclip/2.3.8/Paperclip/Storage/Filesystem
-  # If you are using S3 and HTTPS, pass :s3_protocol => '' to have URLs that use the protocol of the page
-  #   config.upload_file_options = {:url => '/system/:class/:id/:attachment/:style/:filename'}
-
+  # If you are using S3 and HTTPS, pass :s3_protocol: '' to have URLs that use the protocol of the page
+  #   config.upload_file_options = {:url: '/system/:class/:id/:attachment/:style/:filename'}
+  if Rails.env.production?
+    config.upload_file_options = {
+      storage: :s3,
+      path: '/:class/:attachment/:id_partition/:style/:filename',
+      bucket: 'applepierog',
+      url: ':s3_domain_url',
+      s3_credentials: 'config/s3.yml',
+      s3_endpoint: 's3-eu-central-1.amazonaws.com',
+      s3_region: 'eu-central-1'
+    }
+  end
   # Sofa allows you to setup entire site from files. Database is updated with each
   # request (if necessary). Please note that database entries are destroyed if there's
   # no corresponding file. Fixtures are disabled by default.
@@ -59,8 +69,8 @@ ComfortableMexicanSofa.configure do |config|
      config.revisions_limit = 10
 
   # Locale definitions. If you want to define your own locale merge
-  # {:locale => 'Locale Title'} with this.
-  #   config.locales = {:en => 'English', :es => 'Español'}
+  # {:locale: 'Locale Title'} with this.
+  #   config.locales = {:en: 'English', :es: 'Español'}
 
   # Admin interface will respect the locale of the site being managed. However you can
   # force it to English by setting this to `:en`
@@ -85,7 +95,7 @@ ComfortableMexicanSofa.configure do |config|
 
   # Site aliases, if you want to have aliases for your site. Good for harmonizing
   # production env with dev/testing envs.
-  # e.g. config.hostname_aliases = {'host.com' => 'host.inv', 'host_a.com' => ['host.lvh.me', 'host.dev']}
+  # e.g. config.hostname_aliases = {'host.com': 'host.inv', 'host_a.com': ['host.lvh.me', 'host.dev']}
   # Default is nil (not used)
   #   config.hostname_aliases = nil
 
