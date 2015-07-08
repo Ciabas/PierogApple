@@ -36,5 +36,10 @@ Rails.application.routes.draw do
   end
 
   resources :invoices, only: :show
+
+  comfy_route :cms_admin, :path => '/blog/admin'
+
+  # Make sure this routeset is defined last
+  comfy_route :cms, :path => '/blog', :sitemap => false
   
 end

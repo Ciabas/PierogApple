@@ -172,3 +172,33 @@ footer {
 .facebook-login{
   color: #989b9c
 }
+
+
+.blognav{
+  display: block;
+  padding-left: 20px;
+  font-size: 90%;
+}
+.blognav a{
+  color: #333;
+}
+.blognav-header{
+  margin: 0;
+  cursor: pointer;
+}
+.blognav-header a{
+  color: #555;
+  text-decoration: none;
+}
+.blognav-header a:hover{
+  color: #333;
+  text-decoration: none;
+}
+.sublist{
+  margin: 0;
+  padding: 0px 0px 0px 17px;
+  list-style-type: circle;
+}
+.blognav-top{
+  background-color: #97ddfb;
+}
