@@ -12,5 +12,7 @@
         .form-group
           = f.check_box :remember_me
           = f.label :remember_me
-      .actions= f.submit 'Zaloguj się', class: 'btn btn-default btn-primary'
+      .actions.text-center= f.submit 'Zaloguj się', class: 'btn btn-default btn-primary'
+      %h4.text-center.facebook-login Albo
+      %h4.text-center= render 'devise/shared/facebook'
     %hr= render 'devise/shared/links'

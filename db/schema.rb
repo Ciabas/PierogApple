@@ -243,6 +243,8 @@ ActiveRecord::Schema.define(version: 20150707124301) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

@@ -14,5 +14,7 @@
       .form-group
         = f.label :password_confirmation, 'Ponów hasło', class: 'control-label'
         = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
-      .actions= f.submit 'Zarejestruj się', class: 'btn btn-default btn-primary'
+      .actions.text-center= f.submit 'Zarejestruj się', class: 'btn btn-default btn-primary'
+      %h4.text-center.facebook-login Albo
+      %h4.text-center= render 'devise/shared/facebook'
     %hr= render 'devise/shared/links'
