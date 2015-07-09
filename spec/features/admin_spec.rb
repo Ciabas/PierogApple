@@ -37,8 +37,7 @@ describe 'Admin sign-in' do
 
   it 'allows admin to create product' do
     FactoryGirl.create(:category)
-    gear = FactoryGirl.create(:gear)
-    FactoryGirl.create(:gear, parent_id: gear.id)
+    FactoryGirl.create(:model)
 
     visit new_admin_product_path
     fill_in 'product_name', with: Faker::Commerce.department

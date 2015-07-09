@@ -14,6 +14,11 @@ FactoryGirl.define do
 
   factory :gear do
     name Faker::Commerce.department
+
+    factory :model do
+      @gear = FactoryGirl.create(:gear)
+      parent_id @gear.id
+    end
   end
 
   factory :category do
@@ -21,6 +26,7 @@ FactoryGirl.define do
   end
 
   factory :profile do
+    # untested - we'll see soon
     user
     first_name Faker::Name.first_name
     last_name Faker::Name.last_name
@@ -36,9 +42,9 @@ FactoryGirl.define do
 
 
   factory :product do
+    category
+    model
     name Faker::Commerce.department
-    category_id 1
-    gear_id 2
     price Faker::Commerce.price
     description Faker::Lorem.paragraph
     status 'dostepny'
