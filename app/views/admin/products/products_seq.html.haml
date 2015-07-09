@@ -55,42 +55,10 @@
                   %i.glyphicon.glyphicon-plus#addonetocart 
     .container-fluid
       .row
-        .col-md-3.col-md-offset-7{ :style => 'padding: 10px;' }
+        .col-md-3.col-md-offset-7{ :style => 'padding: 10px; text-align: right;' }
           = image_tag('ajax-loader.gif', id: 'ajax-loader', :style => 'display: none;')
-          = link_to '#', id: 'submit_products_seq',class: 'btn btn-primary' do
-            Zapisz
+          = button_tag( 'Zapisz', type: 'button', id: 'save_products_seq',class: 'btn btn-primary' )
           = link_to 'Anuluj', products_seq_admin_products_path, class: 'btn btn-danger'
 
 :javascript
-  $(document).ready(function() {
-    $(function(){
-      $('#sortable').sortable({
-        change: function(){
-          $('#submit_products_seq').removeClass('btn-success').addClass('btn-primary').html( "Zapisz" );
-        }
-      });
-    });
-    $('#submit_products_seq').click(function(){
-      var ids = []
-      $('#sortable .ui-sortable-handle').each(function(){
-        ids.push( $(this).attr("data-id") );
-      });
-      $.ajax("#{products_seq_update_admin_products_path}", { 
-        method: "PATCH", 
-        data: { ids: ids },
-        beforeSend: function(){
-          $('#ajax-loader').show();
-        },
-        complete: function(){
-          $('#ajax-loader').hide();
-        },
-        error: function(){
-          $('#submit_products_seq').removeClass('btn-primary').addClass('btn-success').html( "<span class='glyphicon glyphicon-ok'></span> Zapisano pomyślnie!" );
-        },
-        success: function(){
-          $('#submit_products_seq').removeClass('btn-primary').addClass('btn-success');
-        }
-     });
-    });
-  });
-
+  $(document).ready(sortable_seq);

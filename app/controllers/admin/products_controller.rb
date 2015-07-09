@@ -61,12 +61,12 @@ class Admin::ProductsController < Admin::AdminController
   end
   
   def products_seq_update
-    params[:ids].each_with_index do |pid,index|
+    params[:ids].each_with_index do |pid, index|
       p = Product.find(pid)
       p.displayorder = index
       p.save
     end
-    render json: 'Układ produktów został zapisany.'
+    render json: 'true'
   end
 
   private
