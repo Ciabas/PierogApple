@@ -25,7 +25,7 @@
               = number_to_currency(order.sum, format: '%n%u', unit: 'zł')
             %td
               = link_to "Szczegóły", order_path(order.id), class: 'btn btn-primary'
-              = link_to "Faktura", invoice_path(order.id, token: order.access_token , format: :pdf) , class: 'btn btn-primary'
+              = link_to "Faktura", invoice_path(order.id, token: order.access_token , format: :pdf), target: '_blank', class: 'btn btn-primary'
     .row
       .col-sm-5
         .dataTables_info

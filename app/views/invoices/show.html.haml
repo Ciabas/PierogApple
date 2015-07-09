@@ -144,7 +144,7 @@
         -@order.order_products.each_with_index do |item, i|
           %tr.al-right
             %td
-              =i
+              = i+1
             %td.al-left
               =item.product_name
             %td

@@ -17,5 +17,5 @@
               %br/
               %b=number_to_currency(p.price, format: '%n%u', unit: 'zł')
             -if p.status == 'dostepny'
-              =link_to addoneitem_path(p_id: p.id), method: :products_path do
+              =link_to addoneitem_path(p_id: p.id), id: 'addtocart', method: :post do
                 %i.glyphicon.glyphicon-plus#addonetocart 
