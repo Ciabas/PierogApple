@@ -51,13 +51,30 @@ module Admin
         render :edit
       end
     end
+  
+    def products_seq
+      @products = Product.all.order(displayorder: :asc)
+      @sliders = SliderImage.all
+      @categories = Category.all
+      @gears = Gear.base
+      @models = Gear.where.not(parent_id: nil)
+    end
+    
+    def products_seq_update
+      params[:ids].each_with_index do |pid,index|
+        p = Product.find(pid)
+        p.displayorder = index
+        p.save
+      end
+      render json: 'Układ produktów został zapisany.'
+    end
 
     private
 
     def product_params
-      params.require(:product).permit(:name, :price, :status, :category_id,
-                                      :gear_id, :description,
-                                      product_images_attributes: [:caption, :photo])
+        params.require(:product).permit(:name, :price, :status, :category_id,
+                                        :gear_id, :description,
+                                        product_images_attributes: [:caption, :photo])
     end
   end
 end
