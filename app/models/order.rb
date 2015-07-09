@@ -31,9 +31,10 @@ class Order < ActiveRecord::Base
   def from_session(cart, order_id)
     products_for_email = []
     cart.each do |t|
-      product_id = t['id']
-      quantity = t['quantity']
+      product_id = t[:id]
+      quantity = t[:quantity]
       product = Product.find_by(id: product_id)
+      binding.pry
       order_product = OrderProduct.create(product_id: product_id, quantity: quantity,
                                           product_name: product.name, product_price: product.price, order_id: order_id)
       products_for_email << order_product
