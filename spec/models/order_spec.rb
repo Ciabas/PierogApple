@@ -72,7 +72,7 @@ RSpec.describe Order, type: :model do
       product = Product.new(name: 'rondel', price: 20.00)
       product.save validate: false
       puts product.errors.full_messages
-      cart = [{ 'id': product.id, 'quantity': 1 }]
+      cart = [{ id: product.id, quantity: 1 }]
       order = Order.create
       order.from_session(cart, 1)
       expect(OrderProduct.exists?(order_id: 1)).to eq(true)
