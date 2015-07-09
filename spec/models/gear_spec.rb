@@ -1,10 +1,8 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe Gear, :type => :model do
+RSpec.describe Gear, type: :model do
   it { should have_many(:products) }
   it { should validate_presence_of(:name) }
-
-
 
   describe 'base scope' do
     let!(:gear_base_one) { Gear.create(name: 'telefon') }
@@ -48,5 +46,4 @@ RSpec.describe Gear, :type => :model do
       gear_mom.children.should eq [gear_kid_adam, gear_kid_basia]
     end
   end
-
 end

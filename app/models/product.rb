@@ -1,3 +1,4 @@
+# model for product
 class Product < ActiveRecord::Base
   belongs_to :gear
   belongs_to :category
@@ -8,9 +9,9 @@ class Product < ActiveRecord::Base
 
   validates :name, :price, presence: true
   validates :name, uniqueness: true
-  validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/}
-  validates :price, :numericality => {:greater_than => 0}
+  validates :price, format: { with: /\A\d+(?:\.\d{0,2})?\z/ }
+  validates :price, numericality: { greater_than: 0 }
   validates_presence_of :product_images
 
-  STATUSES = %w[dostepny niedostepny zamowienie]
-end 
+  STATUSES = %w(dostepny niedostepny zamowienie)
+end

@@ -1,6 +1,6 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe Profile, :type => :model do
+RSpec.describe Profile, type: :model do
   it { should belong_to(:user) }
   it { should validate_presence_of(:user_id) }
   it { should validate_presence_of(:first_name) }
@@ -18,5 +18,4 @@ RSpec.describe Profile, :type => :model do
     should allow_value('32/34', '888a', '95', '44444F', '12/190').for(:house_no)
     should_not allow_value('w', 'w2', '/').for(:house_no)
   end
-
 end

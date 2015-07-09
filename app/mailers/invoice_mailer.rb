@@ -1,5 +1,6 @@
+# mailer for invoices
 class InvoiceMailer < ApplicationMailer
-  def invoice_email(order, orderproducts, company_data)   
+  def invoice_email(order, orderproducts, company_data)
     @adress = order.client_email
     @products_for_email = orderproducts
     @company_data = company_data
