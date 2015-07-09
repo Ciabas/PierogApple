@@ -40,4 +40,13 @@ gem 'aws-sdk', '< 2.0'
 
 gem 'comfortable_mexican_sofa', '~> 1.12.0'
 gem 'will_paginate'
-gem 'simplecov', :require => false, :group => :test
+
+
+group :test do
+  gem 'simplecov', :require => false
+  gem 'capybara'
+  gem 'faker'
+  gem 'factory_girl_rails'
+  gem 'launchy'
+end
+
