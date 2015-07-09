@@ -6,7 +6,6 @@ FactoryGirl.define do
     trait :admin do
       is_admin true
     end
-
     trait :confirmed do
       confirmed_at Time.now
     end
@@ -14,7 +13,6 @@ FactoryGirl.define do
 
   factory :gear do
     name { Faker::Commerce.department }
-
     factory :model do
       @gear = FactoryGirl.create(:gear)
       parent_id @gear.id
@@ -26,7 +24,6 @@ FactoryGirl.define do
   end
 
   factory :profile do
-    # untested - we'll see soon
     user
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
@@ -50,22 +47,32 @@ FactoryGirl.define do
     price { Faker::Commerce.price }
     description { Faker::Lorem.paragraph }
     status 'dostepny'
-
-    transient do
-      images_count 1
-    end
-
     trait :unavailable do
       status 'niedostepny'
     end
     trait :on_demand do
       status 'zamowienie'
     end
-
+    transient do
+      images_count 1
+    end
     after :build do |product, evaluator|
-      product.product_images << FactoryGirl.build_list(:product_image, evaluator.images_count, product: product)
+      product.product_images << FactoryGirl.build_list(:product_image,
+                                                        evaluator.images_count,
+                                                        product: product)
     end
   end
 
-  
+  factory :slider_image do
+    photo { Faker::Avatar.image }
+    trait :titled do
+      title { Faker::Commerce.department }
+    end
+    trait :captioned do
+      caption { Faker::Lorem.paragraph }
+    end
+    trait :linked do
+      link '/static_pages/contact'
+    end
+  end
 end
