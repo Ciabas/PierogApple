@@ -38,20 +38,34 @@ FactoryGirl.define do
     apartment_no Faker::Number.number(2)
   end
 
-
-
+  factory :product_image do
+    photo Faker::Avatar.image
+    product
+  end
 
   factory :product do
     category
-    model
+    association :gear, factory: :model
     name Faker::Commerce.department
     price Faker::Commerce.price
     description Faker::Lorem.paragraph
     status 'dostepny'
+
+    transient do
+      images_count 1
+    end
+
+    trait :unavailable do
+      status 'niedostepny'
+    end
+    trait :on_demand do
+      status 'zamowienie'
+    end
+
+    after :build do |product, evaluator|
+      product.product_images << FactoryGirl.build_list(:product_image, evaluator.images_count, product: product)
+    end
   end
 
-  factory :product_image do
-    product
-    photo Faker::Avatar.image
-  end
+  
 end

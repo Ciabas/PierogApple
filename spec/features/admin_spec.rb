@@ -49,4 +49,8 @@ describe 'Admin sign-in' do
     click_button 'Zapisz'
     expect(page).to have_content('Produkt dodany')
   end
+
+  it 'has a working profile factory' do
+    FactoryGirl.create(:profile)
+  end
 end
