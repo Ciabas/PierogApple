@@ -3,9 +3,9 @@
   %ol.carousel-indicators
     -@sliders.each do |slider|
       -if slider == @sliders.first
-        %li.active{"data-slide-to" => slider, "data-target" => "#myCarousel"}
+        %li.active
       -else 
-        %li{"data-slide-to" => slider, "data-target" => "#myCarousel"}
+        %li
   / Wrapper for slides
   .carousel-inner.slider{:role => "listbox"}
     -@sliders.each do |image|
