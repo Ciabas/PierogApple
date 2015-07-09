@@ -66,7 +66,7 @@ module Admin
         p.displayorder = index
         p.save
       end
-      render json: 'Układ produktów został zapisany.'
+      render json: 'true'
     end
 
     private
