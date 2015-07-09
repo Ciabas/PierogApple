@@ -12,10 +12,10 @@ class Order < ActiveRecord::Base
             :client_email, :sum, presence: true
   validates :client_last_name, :client_first_name, length: { maximum: 40 }
   validates :client_street_name, :client_city_name, length: { maximum: 80 }
-  validates :client_house_no, format: { with: %r{/\A(\d)((\w)|(\/))*\z/i} }
-  validates :client_phone_no, format: { with: %r{/\A[0-9]{9}\z/i} }
-  validates :client_zip_code, format: { with: %r{/\A[0-9]{2}-[0-9]{3}\z/i} }
-  validates :client_email, format: { with: %r{/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i} }
+  validates :client_house_no, format: { with: /\A(\d)((\w)|(\/))*\z/i }
+  validates :client_phone_no, format: { with: /\A[0-9]{9}\z/i }
+  validates :client_zip_code, format: { with: /\A[0-9]{2}-[0-9]{3}\z/i }
+  validates :client_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
   COMPANY_FIRST_NAME = 'Krystyna'
   COMPANY_LAST_NAME = 'Pieróg'
