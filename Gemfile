@@ -48,5 +48,6 @@ group :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'launchy'
+  gem 'database_cleaner'
 end
 

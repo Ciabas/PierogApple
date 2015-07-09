@@ -98,6 +98,7 @@ FactoryGirl.define do
     client_city_name @profile.city_name
     client_email @profile.user.email
     sum 0
+
     transient do
       products_count 2
     end
@@ -108,6 +109,7 @@ FactoryGirl.define do
       order.order_products.each do |item|
         order.sum += item.product_price * item.quantity
       end
+      order.save!
     end
   end
 end
