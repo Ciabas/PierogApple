@@ -8,16 +8,17 @@
         %span.icon-bar
       = link_to 'ApplePieróg', root_path, class: "navbar-brand"
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav.navbar-left
-        %li
-          = link_to 'Blog', comfy_cms_render_page_path
       %ul.nav.navbar-nav.navbar-right
         %li
           = link_to cart_path do
             = icon 'shopping-cart'
             Koszyk
             %span{ :style => "color: green" }
-              = "(#{get_count_items.to_s} produktów, #{number_to_currency(get_items_value, format: '%n%u', unit: 'zł')})"
+              = "(#{show_count_items.to_s} produktów, #{number_to_currency(show_items_value, format: '%n%u', unit: 'zł')})"
+        %li
+          = link_to comfy_cms_render_page_path do
+            = icon 'pencil'
+            Blog
         - if user_signed_in?
           %li.dropdown 
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

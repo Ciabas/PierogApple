@@ -1,5 +1,5 @@
+# responsible for creating or showing current user's profile
 class ProfilesController < ApplicationController
-
   before_action :authenticate_user!
 
   def show
@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :street_name, :house_no, :apartment_no, 
-      :zip_code, :city_name, :phone_no)
+    params.require(:profile).permit(:first_name, :last_name, :street_name, :house_no,
+                                    :apartment_no, :zip_code, :city_name, :phone_no)
   end
 end

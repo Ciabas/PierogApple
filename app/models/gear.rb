@@ -1,4 +1,5 @@
-class Gear < ActiveRecord::Base 
+# model for product's types AND models
+class Gear < ActiveRecord::Base
   has_many :products
 
   validates :name, presence: true
@@ -7,10 +8,10 @@ class Gear < ActiveRecord::Base
   scope :notbase, -> { where.not(parent_id: nil) }
 
   def parent
-    Gear.base.find_by(id: self.parent_id)
+    Gear.base.find_by(id: parent_id)
   end
 
   def children
-    Gear.where(parent_id: self.id)
+    Gear.where(parent_id: id)
   end
 end
