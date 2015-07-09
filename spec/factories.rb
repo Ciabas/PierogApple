@@ -1,9 +1,8 @@
 FactoryGirl.define do
-  
   factory :user do
     email Faker::Internet.email
     password Faker::Internet.password
-    
+
     trait :admin do
       is_admin true
     end
@@ -34,7 +33,7 @@ FactoryGirl.define do
   end
 
 
-  
+
 
   factory :product do
     name Faker::Commerce.department
@@ -49,9 +48,4 @@ FactoryGirl.define do
     product
     photo Faker::Avatar.image
   end
-
-  
-
-
-
 end

@@ -1,15 +1,11 @@
 require 'rails_helper'
-
 describe 'Admin sign-in' do
 
   before :each do
     admin = FactoryGirl.create(:user, :admin, :confirmed)
-    
     visit new_user_session_path
-
     fill_in 'user_email', with: admin.email
     fill_in 'user_password', with: admin.password
-
     click_button 'Zaloguj się'
   end
 
@@ -33,7 +29,6 @@ describe 'Admin sign-in' do
 
   it 'allows admin to create model' do
     FactoryGirl.create(:gear)
-
     visit admin_gears_new_model_path
     fill_in 'gear_name', with: Faker::Commerce.department
     click_button 'Zapisz'
@@ -42,7 +37,6 @@ describe 'Admin sign-in' do
 
   it 'allows admin to create product' do
     FactoryGirl.create(:category)
-    
     gear = FactoryGirl.create(:gear)
     FactoryGirl.create(:gear, parent_id: gear.id)
 
@@ -56,5 +50,4 @@ describe 'Admin sign-in' do
     click_button 'Zapisz'
     expect(page).to have_content('Produkt dodany')
   end
-
 end
