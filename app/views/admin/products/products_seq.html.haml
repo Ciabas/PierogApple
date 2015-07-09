@@ -1,0 +1,96 @@
+.container-fluid
+  .row
+    .col-md-2
+      .list-group
+        .list-group-item
+          %h3.filters-header{ :style => 'cursor: default;' }
+            = icon 'search'
+            Filtrowanie
+            %span.caret-wrap
+              %span.caret
+        .list-group-item.filters.text-center
+          = form_tag(products_path(anchor: 'products'), method: :get, id: "filters-form") do
+            .price
+              %h4 Cena
+              = text_field_tag 'price_min', nil, placeholder: "od", disabled: 'disabled'
+              = text_field_tag 'price_max', nil, placeholder: "do", disabled: 'disabled'
+            %hr
+            .categories
+              %h4 Kategorie
+              - @categories.each do |category|
+                = label_tag do
+                  = check_box_tag 'cid[]', category.id, false, disabled: true
+                  = category.name.capitalize
+            %hr
+            .gears
+              %h4 Typy
+              - @gears.each do |gear|
+                = label_tag do
+                  = check_box_tag 'g[]', gear.id, false, disabled: true
+                  = gear.name
+            %hr
+            .models
+              %h4 Modele
+              - @models.each do |model|
+                = label_tag do
+                  = check_box_tag 'm[]', model.id, false, disabled: true
+                  = model.name
+              %hr
+            = button_tag 'Filtruj!', name: nil, disabled: true, class: "btn btn-default disabled"
+    .col-md-10{ :style => "border: 1px dashed black;" }
+      %h2.text-center{ :style => 'text-decoration: underline' } Edycja układu produktów na stronie głównej
+      %a.anchor{:name => 'products'}
+      %h1 Produkty:
+      #sortable
+        - @products.each do |p|
+          %div{ 'class' => 'col-xs-4 col-md-2 text-center ui-sortable-handle', 'data-id' => p.id }
+            %a.thumbnail{:href => product_path(p.id), title: "#{p.gear.parent.name.capitalize} - model: #{p.gear.name} - status: #{p.status}", 'data-placement' => 'bottom', 'data-toggle' => 'tooltip'}
+              =image_tag p.product_images.first.photo(:thumb)
+              .caption
+                =p.name.truncate(20)
+                %br/
+                %b=number_to_currency(p.price, format: '%n%u', unit: 'zł')
+              -if p.status == 'dostepny'
+                =link_to addoneitem_path(p_id: p.id), method: :products_path do
+                  %i.glyphicon.glyphicon-plus#addonetocart 
+    .container-fluid
+      .row
+        .col-md-3.col-md-offset-7{ :style => 'padding: 10px;' }
+          = image_tag('ajax-loader.gif', id: 'ajax-loader', :style => 'display: none;')
+          = link_to '#', id: 'submit_products_seq',class: 'btn btn-primary' do
+            Zapisz
+          = link_to 'Anuluj', products_seq_admin_products_path, class: 'btn btn-danger'
+
+:javascript
+  $(document).ready(function() {
+    $(function(){
+      $('#sortable').sortable({
+        change: function(){
+          $('#submit_products_seq').removeClass('btn-success').addClass('btn-primary').html( "Zapisz" );
+        }
+      });
+    });
+    $('#submit_products_seq').click(function(){
+      var ids = []
+      $('#sortable .ui-sortable-handle').each(function(){
+        ids.push( $(this).attr("data-id") );
+      });
+      $.ajax("#{products_seq_update_admin_products_path}", { 
+        method: "PATCH", 
+        data: { ids: ids },
+        beforeSend: function(){
+          $('#ajax-loader').show();
+        },
+        complete: function(){
+          $('#ajax-loader').hide();
+        },
+        error: function(){
+          $('#submit_products_seq').removeClass('btn-primary').addClass('btn-success').html( "<span class='glyphicon glyphicon-ok'></span> Zapisano pomyślnie!" );
+        },
+        success: function(){
+          $('#submit_products_seq').removeClass('btn-primary').addClass('btn-success');
+        }
+     });
+    });
+  });
+

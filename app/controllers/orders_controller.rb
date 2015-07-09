@@ -1,5 +1,5 @@
+# responsible for managing user's orders
 class OrdersController < ApplicationController
-     
   before_action :check_availability, only: [:new, :create, :success]
   before_action :authorized, only: [:show]
 
@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
   end
-  
+
   def create
     @order = Order.new(order_params)
     if @order.save
@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
       render :new
     end
   end
-  
+
   def success
     @order = Order.find(params[:id])
     products_for_email = @order.from_session(session[:cart], @order.id)
@@ -34,13 +34,15 @@ class OrdersController < ApplicationController
     redirect_to root_path, notice: 'Złożono zamówienie. Szczegóły transakcji wysłano na adres e-mail.'
   end
 
- 
   private
-  
+
   def order_params
-    params.require(:order).permit(:user_id, :company_first_name, :company_last_name, :company_street_name, :company_house_no,
-    :company_zip_code, :company_city_name, :company_phone_no, :client_first_name, :client_last_name, :client_street_name, :client_house_no,
-    :client_apartment_no, :client_zip_code, :client_city_name, :client_phone_no, :client_email, :sum)
+    params.require(:order).permit(:user_id, :company_first_name, :company_last_name,
+                                  :company_street_name, :company_house_no, :company_zip_code,
+                                  :company_city_name, :company_phone_no, :client_first_name,
+                                  :client_last_name, :client_street_name, :client_house_no,
+                                  :client_apartment_no, :client_zip_code, :client_city_name,
+                                  :client_phone_no, :client_email, :sum)
   end
 
   def check_availability
@@ -48,15 +50,15 @@ class OrdersController < ApplicationController
       current = Product.find(hash['id'])
       unless current.status == 'dostepny'
         flash[:alert] = "#{current.name} jest chwilowo niedostępny. Przepraszamy."
-        redirect_to cart_path and return
+        redirect_to cart_path
+        break
       end
     end
   end
 
   def authorized
-    unless Order.find(params[:id]).user_id==current_user.id
-      redirect_to root_path, alert: 'Nie masz uprawnień do przeglądania tej strony.'
-    end
+    redirect_to root_path,
+                alert: 'Nie masz uprawnień do przeglądania tej strony.' unless
+                Order.find(params[:id]).user_id == current_user.id
   end
-  
 end
