@@ -9,7 +9,7 @@ RSpec.describe Product, type: :model do
   it { should accept_nested_attributes_for(:product_images) }
 
   describe 'price validation' do
-    it do 
+    it do
       should allow_value('24.55', '24.5', '24').for(:price)
       should_not allow_value('24.', '42.334', 'abs', '$#.34', '-20', '-2.20').for(:price)
     end

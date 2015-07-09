@@ -2,7 +2,7 @@
 module Filterable
   extend ActiveSupport::Concern
 
-  def params_check    
+  def params_check
     products = Product.all.order(displayorder: :asc)
     unless params[:cid].blank?
       products = products.where(category_id: params[:cid])
