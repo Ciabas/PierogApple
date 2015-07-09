@@ -3,9 +3,9 @@
   %ol.carousel-indicators
     -(@product.product_images).each do |index|
       -if index == @product.product_images.first
-        %li.active{"data-slide-to" => index, "data-target" => "#myCarousel"}
+        %li.active
       -else 
-        %li{"data-slide-to" => index, "data-target" => "#myCarousel"}
+        %li
   / Wrapper for slides
   .carousel-inner{:role => "listbox"}
     -(@product.product_images).each do |image|

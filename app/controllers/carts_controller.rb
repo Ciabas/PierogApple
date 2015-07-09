@@ -13,7 +13,7 @@ class CartsController < ApplicationController
       else
         session[:cart].collect! {|a|
           if a['id'].to_i == params[:product_id].to_i
-            { 'id': a['id'], 'quantity': a['quantity'].to_i + params[:quantity].to_i }
+            { id: a['id'], quantity: a['quantity'].to_i + params[:quantity].to_i }
           else
             a
           end
@@ -31,12 +31,12 @@ class CartsController < ApplicationController
     product_id = params[:p_id]
     # if the product isn't already in cart, add a new item to the cart
     if session[:cart].select { |a| a['id'].to_i == product_id }.empty?
-      session[:cart] << { 'id': product_id, 'quantity': 1 }
+      session[:cart] << { 'id' => product_id, 'quantity' => 1 }
     # if the product is already in cart, increment quantity by the number of ordered items
     else
       session[:cart].collect! {|a|
         if a['id'].to_i == product_id
-          { 'id': a['id'], 'quantity': a['quantity'].to_i + 1 }
+          { id: a['id'], quantity: a['quantity'].to_i + 1 }
         else
           a
         end
@@ -51,12 +51,12 @@ class CartsController < ApplicationController
     if params[:quantity].to_i > 0
       # if the product isn't already in cart, add it - it shouldn't happen, but handling is simple
       if session[:cart].select { |a| a['id'] == params[:product_id] }.empty?
-        session[:cart] << { 'id': params[:product_id], 'quantity': params[:quantity] }
+        session[:cart] << { 'id' => params[:product_id], 'quantity' => params[:quantity] }
       # if the product is already in cart, set quantity to the submitted one
       else
         session[:cart].collect! {|a|
           if a['id'] == params[:product_id]
-            { 'id': a['id'], 'quantity': params[:quantity].to_i }
+            { id: a['id'], quantity: params[:quantity].to_i }
           else
             a
           end
