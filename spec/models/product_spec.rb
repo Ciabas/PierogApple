@@ -11,15 +11,8 @@ RSpec.describe Product, :type => :model do
 
   describe 'price validation' do
     it do 
-      should allow_value('24.55').for(:price)
-      should allow_value('24.5').for(:price)
-      should allow_value('24').for(:price)
-      should_not allow_value('24.').for(:price)
-      should_not allow_value('42.445').for(:price)
-      should_not allow_value('abs').for(:price)
-      should_not allow_value('$#.34').for(:price)
-      should_not allow_value('-20').for(:price)
-      should_not allow_value('-2.20').for(:price)
+      should allow_value('24.55', '24.5', '24').for(:price)
+      should_not allow_value('24.', '42.334', 'abs', '$#.34', '-20', '-2.20').for(:price)
     end
   end
 end
