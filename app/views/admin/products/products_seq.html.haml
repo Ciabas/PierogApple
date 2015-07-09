@@ -51,8 +51,7 @@
                 %br/
                 %b=number_to_currency(p.price, format: '%n%u', unit: 'zł')
               -if p.status == 'dostepny'
-                =link_to addoneitem_path(p_id: p.id), method: :products_path do
-                  %i.glyphicon.glyphicon-plus#addonetocart 
+                %i.glyphicon.glyphicon-plus#addonetocart 
     .container-fluid
       .row
         .col-md-3.col-md-offset-7{ :style => 'padding: 10px; text-align: right;' }
