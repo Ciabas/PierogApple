@@ -9,7 +9,9 @@ module Admin
         end
         format.pdf do
           # Excluding ".pdf" extension.
-          render pdf: "ApplePierog - faktura nr #{@order.id}", template: 'invoices/show.html.haml'
+          render pdf: "ApplePierog - faktura nr #{@order.id}",
+                  template: 'invoices/show.html.haml',
+                  show_as_html: params[:debug].present?
         end
       end
     end

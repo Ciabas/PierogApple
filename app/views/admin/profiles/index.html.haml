@@ -41,7 +41,6 @@
                 %td
                 %td
               %td
-                = link_to "Usuń", { action: "destroy", id: user.id }, method: :delete, data: { confirm: 'Na pewno?' }, class: 'btn btn-warning'
                 -unless user.profile.nil?
                   = link_to "Zobacz szczegóły", admin_profile_path(user.profile.id) , class: 'btn btn-primary'
     .row
